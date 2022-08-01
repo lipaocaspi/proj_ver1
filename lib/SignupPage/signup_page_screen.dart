@@ -9,7 +9,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Background(
-      child: Text("Hola", style: GoogleFonts.fahkwang()),
+      child: Text("SIGNUP", style: GoogleFonts.fahkwang()),
     ); // backgroundColor: kPrimaryColor;
   }
 }
