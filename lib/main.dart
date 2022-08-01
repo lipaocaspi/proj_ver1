@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/constants.dart';
 import 'FirstPage/first_page_screen.dart';
 
 void main() {
@@ -11,6 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'UIS Wheels',
+      theme: ThemeData(
+          primaryColor: Colors.green,
+          scaffoldBackgroundColor: Colors.white,
+      ),
       home: const FirstPage(),
     );
   }

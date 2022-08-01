@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
+import '../SignupPage/signup_page_screen.dart';
+import '../components/background.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -8,9 +11,8 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // MediaQuery.of(context).size.height;
-    return Scaffold(
-      // backgroundColor: kPrimaryColor,
-      body: SafeArea(
+    return Background(
+      child: SafeArea(
           child: Center(
         child: Column(
           children: [
@@ -25,13 +27,22 @@ class FirstPage extends StatelessWidget {
               height: 200,
               scale: 0.1,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginPage();
+                  },
+                ),
+              );
+            },
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 elevation: 6,
-                fixedSize: const Size(250, 45),
+                fixedSize: const Size(250, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
                 ),
@@ -41,13 +52,22 @@ class FirstPage extends StatelessWidget {
                 style: GoogleFonts.lato(color: Colors.white),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SignUpPage();
+                  },
+                ),
+              );
+            },
               style: ElevatedButton.styleFrom(
                 primary: Colors.green,
                 elevation: 6,
-                fixedSize: const Size(250, 45),
+                fixedSize: const Size(250, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
                 ),
@@ -59,7 +79,8 @@ class FirstPage extends StatelessWidget {
             ),
           ],
         ),
-      )),
-    );
+      )
+      ),
+    ); // backgroundColor: kPrimaryColor;
   }
 }
