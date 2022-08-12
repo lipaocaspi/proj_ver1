@@ -1,86 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/FirstPage/components/image.dart';
+import '../../responsive.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proj_ver1/LoginPage/login_page_screen.dart';
-import 'package:proj_ver1/constants.dart';
-import '../SignupPage/signup_page_screen.dart';
 import '../components/background.dart';
+import 'components/signup_login_btn.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // MediaQuery.of(context).size.height;
     return Background(
-      child: SafeArea(
-          child: Center(
-        child: Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.11),
-            Text(
-              "UIS Wheels",
-              style: GoogleFonts.pressStart2p(fontSize: 18),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.06),
-            Image.asset(
-              "assets/images/llanta.png",
-              height: 200,
-              scale: 0.1,
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-            ElevatedButton(
-              onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return LoginPage();
-                  },
+      child: SingleChildScrollView(
+        child: SafeArea(
+          child: Responsive(
+            desktop: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Expanded(
+                  child: Imag(),
                 ),
-              );
-            },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.green,
-                elevation: 6,
-                fixedSize: const Size(250, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SizedBox(
+                        width: 450,
+                        child: LoginSignUpBtn(),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              child: Text(
-                "INGRESAR",
-                style: GoogleFonts.lato(color: Colors.white),
-              ),
+              ],
             ),
-            SizedBox(height: 15),
-            ElevatedButton(
-              onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SignUpPage();
-                  },
-                ),
-              );
-            },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.green,
-                elevation: 6,
-                fixedSize: const Size(250, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-              child: Text(
-                "REGISTRARSE",
-                style: GoogleFonts.lato(color: Colors.white),
-              ),
-            ),
-          ],
+            mobile: const MobileFirstPage(),
+          ),
         ),
-      )
       ),
     ); // backgroundColor: kPrimaryColor;
+  }
+}
+
+class MobileFirstPage extends StatelessWidget {
+  const MobileFirstPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        const Imag(),
+        Row(
+          children: const[
+            Spacer(),
+            Expanded(
+              flex: 6,
+              child: LoginSignUpBtn(),
+            ),
+            Spacer(),
+          ],
+        ),
+      ],
+    );
   }
 }
