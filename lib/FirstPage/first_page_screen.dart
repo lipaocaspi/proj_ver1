@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/FirstPage/components/image.dart';
 import '../../responsive.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../components/background.dart';
 import 'components/signup_login_btn.dart';
 

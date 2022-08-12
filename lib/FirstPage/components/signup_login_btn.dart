@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../constants.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/SignupPage/signup_page_screen.dart';
 
@@ -15,12 +15,10 @@ class LoginSignUpBtn extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return LoginPage();
-                },
+            Navigator.of(context).push(
+              PageTransition(
+                child: LoginPage(),
+                type: PageTransitionType.fade,
               ),
             );
           },
@@ -40,12 +38,10 @@ class LoginSignUpBtn extends StatelessWidget {
         const SizedBox(height: 15),
         ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return SignUpPage();
-                },
+            Navigator.of(context).push(
+              PageTransition(
+                child: SignUpPage(),
+                type: PageTransitionType.fade,
               ),
             );
           },

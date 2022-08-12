@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Imag extends StatelessWidget {
@@ -28,7 +27,7 @@ class Imag extends StatelessWidget {
             Spacer(),
           ],
         ),
-        SizedBox(height: 16 * 1.5),
+        SizedBox(height: 16 * 2),
       ],
     );
   }
