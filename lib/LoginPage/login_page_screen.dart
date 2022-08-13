@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/FirstPage/components/image.dart';
 import 'package:proj_ver1/LoginPage/components/login_form.dart';
+import 'package:proj_ver1/LoginPage/components/login_screen_image.dart';
 import 'package:proj_ver1/components/background.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -40,11 +41,12 @@ class MobileLoginPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        const ImagLog(),
         Row(
           children: const[
             Spacer(),
             Expanded(
-              flex: 3,
+              flex: 6,
               child: LoginForm(),
             ),
             Spacer(),

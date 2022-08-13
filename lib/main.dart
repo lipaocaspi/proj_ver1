@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/FirstPage/first_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
