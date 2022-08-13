@@ -14,20 +14,20 @@ class Imag extends StatelessWidget {
           "UIS Wheels",
           style: GoogleFonts.pressStart2p(fontSize: 19),
         ),
-        SizedBox(height: 16 * 2),
+        const SizedBox(height: 16 * 2),
         Row(
           children: [
-            Spacer(),
+            const Spacer(),
             Expanded(
               flex: 2,
               child: Image.asset(
                 "assets/images/llanta.png",
               ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
-        SizedBox(height: 16 * 2),
+        const SizedBox(height: 16 * 2),
       ],
     );
   }

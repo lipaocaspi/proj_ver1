@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proj_ver1/constants.dart';
-import '../SignupPage/signup_page_screen.dart';
-import '../components/background.dart';
+import 'package:proj_ver1/components/background.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -27,7 +25,7 @@ class LoginPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return LoginPage();
+                    return const LoginPage();
                   },
                 ),
               );
@@ -49,6 +47,6 @@ class LoginPage extends StatelessWidget {
         ),
       )
       ),
-    ); // backgroundColor: kPrimaryColor;
+    ); 
   }
 }

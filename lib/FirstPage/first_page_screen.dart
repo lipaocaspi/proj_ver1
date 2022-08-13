@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/FirstPage/components/image.dart';
-import '../../responsive.dart';
-import '../components/background.dart';
-import 'components/signup_login_btn.dart';
+import 'package:proj_ver1/FirstPage/components/signup_login_btn.dart';
+import 'package:proj_ver1/components/background.dart';
+import 'package:proj_ver1/responsive.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class FirstPage extends StatelessWidget {
           ),
         ),
       ),
-    ); // backgroundColor: kPrimaryColor;
+    );
   }
 }
 

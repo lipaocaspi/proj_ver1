@@ -16,7 +16,7 @@ class Background extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
-        color: Color.fromARGB(255, 150, 255, 141),
+        color: const Color.fromARGB(255, 150, 255, 141),
         height: MediaQuery.of(context).size.height,
         child: Stack(
           alignment: Alignment.center,
@@ -29,16 +29,11 @@ class Background extends StatelessWidget {
                 width: 90,
               ),
             ),
-            Positioned(
+            const Positioned(
               bottom: 20,
               left: 20,
               child: Text("© Derechos")
             ),
-            // Positioned(
-            //   bottom: 0,
-            //   right: 0,
-            //   child: Image.asset(bottomImage, width: 120),
-            // ),
             SafeArea(child: child),
           ],
         ),

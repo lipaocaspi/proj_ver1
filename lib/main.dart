@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'FirstPage/first_page_screen.dart';
-import 'constants.dart';
+import 'package:proj_ver1/FirstPage/first_page_screen.dart';
+import 'package:proj_ver1/constants.dart';
 
 void main() => runApp(const MyApp());
 

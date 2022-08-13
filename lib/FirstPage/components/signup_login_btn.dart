@@ -17,7 +17,7 @@ class LoginSignUpBtn extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               PageTransition(
-                child: LoginPage(),
+                child: const LoginPage(),
                 type: PageTransitionType.fade,
               ),
             );
@@ -40,7 +40,7 @@ class LoginSignUpBtn extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               PageTransition(
-                child: SignUpPage(),
+                child: const SignUpPage(),
                 type: PageTransitionType.fade,
               ),
             );
