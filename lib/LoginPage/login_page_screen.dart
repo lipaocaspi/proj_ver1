@@ -1,52 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:proj_ver1/FirstPage/components/image.dart';
+import 'package:proj_ver1/LoginPage/components/login_form.dart';
 import 'package:proj_ver1/components/background.dart';
+import 'package:proj_ver1/responsive.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Background(
-      child: SafeArea(
-          child: Center(
-        child: Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.06),
-            Image.asset(
-              "assets/images/llanta.png",
-              height: 100,
-              scale: 0.1,
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-            ElevatedButton(
-              onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const LoginPage();
-                  },
+      child: SingleChildScrollView(
+        child: SafeArea(
+          child: Responsive(
+            desktop: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                Expanded(
+                  flex: 4,
+                  child: Imag(),
                 ),
-              );
-            },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.green,
-                elevation: 6,
-                fixedSize: const Size(250, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-              ),
-              child: Text(
-                "INGRESAR",
-                style: GoogleFonts.lato(color: Colors.white),
-              ),
+              ],
             ),
+            mobile: const MobileLoginPage(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MobileLoginPage extends StatelessWidget {
+  const MobileLoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Row(
+          children: const[
+            Spacer(),
+            Expanded(
+              flex: 3,
+              child: LoginForm(),
+            ),
+            Spacer(),
           ],
         ),
-      )
-      ),
-    ); 
+      ],
+    );
   }
 }
