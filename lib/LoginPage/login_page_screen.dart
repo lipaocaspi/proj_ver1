@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:proj_ver1/FirstPage/components/image.dart';
 import 'package:proj_ver1/LoginPage/components/login_form.dart';
 import 'package:proj_ver1/LoginPage/components/login_screen_image.dart';
 import 'package:proj_ver1/components/background.dart';
@@ -21,7 +20,7 @@ class LoginPage extends StatelessWidget {
               children: const [
                 Expanded(
                   flex: 4,
-                  child: Imag(),
+                  child: ImagLog(),
                 ),
               ],
             ),

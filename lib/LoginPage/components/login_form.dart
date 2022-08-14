@@ -48,7 +48,7 @@ class LoginForm extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                primary: Colors.green,
+                primary: kButtonPrimaryColor,
                 elevation: 6,
                 fixedSize: const Size(250, 50),
                 shape: RoundedRectangleBorder(
@@ -57,7 +57,7 @@ class LoginForm extends StatelessWidget {
               ),
               child: Text(
                 "Ingresar".toUpperCase(),
-                style: GoogleFonts.lato(color: Colors.black),
+                style: GoogleFonts.lato(color: kButtonPrimaryLightColor, fontWeight: FontWeight.bold),
               ),
             ),
           ),

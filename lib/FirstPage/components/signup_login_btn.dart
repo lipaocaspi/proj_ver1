@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/SignupPage/signup_page_screen.dart';
+import 'package:proj_ver1/constants.dart';
 
 class LoginSignUpBtn extends StatelessWidget {
   const LoginSignUpBtn({
@@ -23,7 +24,7 @@ class LoginSignUpBtn extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-            primary: Colors.green,
+            primary: kButtonPrimaryColor,
             elevation: 6,
             fixedSize: const Size(250, 50),
             shape: RoundedRectangleBorder(
@@ -32,7 +33,7 @@ class LoginSignUpBtn extends StatelessWidget {
           ),
           child: Text(
             "INGRESAR",
-            style: GoogleFonts.lato(color: Colors.white),
+            style: GoogleFonts.lato(color: kButtonPrimaryLightColor, fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(height: 15),
@@ -46,7 +47,7 @@ class LoginSignUpBtn extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-            primary: Colors.green,
+            primary: kButtonPrimaryLightColor,
             elevation: 6,
             fixedSize: const Size(250, 50),
             shape: RoundedRectangleBorder(
@@ -55,7 +56,7 @@ class LoginSignUpBtn extends StatelessWidget {
           ),
           child: Text(
             "REGISTRARSE",
-            style: GoogleFonts.lato(color: Colors.white),
+            style: GoogleFonts.lato(color: kButtonPrimaryColor, fontWeight: FontWeight.bold),
           ),
         ),
       ],
