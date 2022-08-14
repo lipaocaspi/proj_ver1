@@ -38,7 +38,7 @@ class MobileSignUpPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // const ImagLog(),
+        const ImagLog(),
         Row(
           children: const[
             Spacer(),

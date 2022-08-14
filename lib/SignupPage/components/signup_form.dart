@@ -27,11 +27,12 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Stack(
-            children: [
-              Row(
-                children: [
-                  ElevatedButton(
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: ElevatedButton(
                     onPressed: () async {
                       DateTime? newDate = await showDatePicker(
                         context: context,
@@ -40,12 +41,32 @@ class SignUpForm extends StatelessWidget {
                         lastDate: DateTime(2100)
                       );
                     },
-                    child: const Text("Fecha de Nacimiento"),
-                  ),
-                ],
+                    style: ElevatedButton.styleFrom(
+                      primary: kButtonPrimaryColor,
+                      elevation: 6,
+                      fixedSize: const Size(50, 50),
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
-              TextFormField(
-                  keyboardType: TextInputType.text,
+                    child: const Icon(Icons.calendar_month, color: kButtonPrimaryLightColor),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    cursorColor: Colors.black,
+                    decoration: const InputDecoration(
+                      fillColor: Colors.white,
+                      hintText: "Fecha de Nacimiento",
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

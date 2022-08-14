@@ -12,20 +12,7 @@ class ImagLog extends StatelessWidget {
       children: [
         Text(
           "Registro",
-          style: GoogleFonts.pressStart2p(fontSize: 19),
-        ),
-        const SizedBox(height: 16 * 2),
-        Row(
-          children: [
-            const Spacer(),
-            Expanded(
-              flex: 1,
-              child: Image.asset(
-                "assets/images/llanta.png",
-              ),
-            ),
-            const Spacer(),
-          ],
+          style: GoogleFonts.pressStart2p(fontSize: 15),
         ),
         const SizedBox(height: 16 * 2),
       ],

@@ -12,7 +12,7 @@ class ImagLog extends StatelessWidget {
       children: [
         Text(
           "Ingreso",
-          style: GoogleFonts.pressStart2p(fontSize: 19),
+          style: GoogleFonts.pressStart2p(fontSize: 15),
         ),
         const SizedBox(height: 16 * 2),
         Row(
