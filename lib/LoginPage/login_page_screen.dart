@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/LoginPage/components/btn_back_login.dart';
 import 'package:proj_ver1/LoginPage/components/login_form.dart';
 import 'package:proj_ver1/LoginPage/components/login_screen_image.dart';
-import 'package:proj_ver1/components/background.dart';
 import 'package:proj_ver1/responsive.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return BtnBackLogin(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(

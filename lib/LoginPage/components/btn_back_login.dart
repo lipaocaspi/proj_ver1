@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/constants.dart';
 
-class Background extends StatelessWidget {
+class BtnBackLogin extends StatelessWidget {
   final Widget child;
-  const Background({
+  const BtnBackLogin({
     Key? key,
     required this.child,
+    this.topButton = const Icon(Icons.person_add, color: kButtonPrimaryLightColor),
     this.bottomImage = "assets/images/logo_UIS.png",
   }) : super(key: key);
 
+  final Icon topButton;
   final String bottomImage;
 
   @override
@@ -21,6 +24,21 @@ class Background extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
+            Positioned(
+              top: 25,
+              right: 10,
+              child: SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    primary: kButtonPrimaryColor,
+                    shape: const CircleBorder(),
+                  ),
+                  child: topButton,
+                ),
+              ),
+            ),
             Positioned(
               bottom: 20,
               right: 20,

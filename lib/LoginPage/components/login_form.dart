@@ -58,7 +58,7 @@ class LoginFormState extends State<LoginForm> {
               style: ElevatedButton.styleFrom(
                 primary: kButtonPrimaryColor,
                 elevation: 6,
-                fixedSize: const Size(250, 50),
+                fixedSize: const Size(225, 45),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
                 ),

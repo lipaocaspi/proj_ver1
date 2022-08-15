@@ -36,6 +36,8 @@ class SignUpFormState extends State<SignUpForm> {
             ),
           ),
           const SizedBox(height: 12),
+          const Text("Fecha de Nacimiento"),
+          const SizedBox(height: 6),
           Row(
             children: <Widget>[
               Expanded(
@@ -133,7 +135,7 @@ class SignUpFormState extends State<SignUpForm> {
               style: ElevatedButton.styleFrom(
                 primary: kButtonPrimaryColor,
                 elevation: 6,
-                fixedSize: const Size(250, 50),
+                fixedSize: const Size(225, 45),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/SignupPage/components/btn_back_sign.dart';
 import 'package:proj_ver1/SignupPage/components/signup_form.dart';
 import 'package:proj_ver1/SignupPage/components/signup_screen_image.dart';
-import 'package:proj_ver1/components/background.dart';
 import 'package:proj_ver1/responsive.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -9,7 +9,7 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return BtnBackSign(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
