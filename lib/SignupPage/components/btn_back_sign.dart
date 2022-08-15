@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 
 class BtnBackSign extends StatelessWidget {
@@ -30,7 +32,14 @@ class BtnBackSign extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      PageTransition(
+                        child: const LoginPage(),
+                        type: PageTransitionType.fade,
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: kButtonPrimaryColor,
                     shape: const CircleBorder(),
