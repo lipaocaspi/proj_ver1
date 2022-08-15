@@ -40,7 +40,7 @@ class MobileSignUpPage extends StatelessWidget {
       children: <Widget>[
         const ImagLog(),
         Row(
-          children: const[
+          children: const [
             Spacer(),
             Expanded(
               flex: 6,

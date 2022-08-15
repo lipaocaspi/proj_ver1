@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proj_ver1/constants.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
-    Key? key,
-  }) : super(key: key);
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
+  @override
+  LoginFormState createState() {
+    return LoginFormState();
+  }
+}
+
+class LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
           TextFormField(

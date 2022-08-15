@@ -2,14 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proj_ver1/constants.dart';
 
-class SignUpForm extends StatelessWidget {
-  const SignUpForm({
-    Key? key,
-  }) : super(key: key);
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
+
+  @override
+  SignUpFormState createState() {
+    return SignUpFormState();
+  }
+}
+
+class SignUpFormState extends State<SignUpForm> {
+  DateTime date = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
           TextFormField(
@@ -38,18 +47,20 @@ class SignUpForm extends StatelessWidget {
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(1900),
-                        lastDate: DateTime(2100)
-                      );
+                        lastDate: DateTime(2100));
+                      if (newDate == null) return;
+                      setState(() => date = newDate);
                     },
                     style: ElevatedButton.styleFrom(
                       primary: kButtonPrimaryColor,
                       elevation: 6,
                       fixedSize: const Size(50, 50),
                       shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-                    child: const Icon(Icons.calendar_month, color: kButtonPrimaryLightColor),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    child: const Icon(Icons.calendar_month,
+                      color: kButtonPrimaryLightColor),
                   ),
                 ),
               ),
@@ -58,9 +69,10 @@ class SignUpForm extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 5),
                   child: TextFormField(
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.datetime,
                     textInputAction: TextInputAction.next,
                     cursorColor: Colors.black,
+                    controller: TextEditingController(text: '${date.day}/${date.month}/${date.year}'),
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
                       hintText: "Fecha de Nacimiento",
