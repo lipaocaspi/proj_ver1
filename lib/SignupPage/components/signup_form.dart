@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proj_ver1/constants.dart';
+import 'package:form_validator/form_validator.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -15,6 +16,10 @@ class SignUpFormState extends State<SignUpForm> {
   DateTime date = DateTime.now();
   final _formKey = GlobalKey<FormState>();
 
+  void _validate() {
+    _formKey.currentState?.validate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -25,7 +30,7 @@ class SignUpFormState extends State<SignUpForm> {
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            onSaved: (name) {},
+            validator: ValidationBuilder().maxLength(50).build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Nombre",
@@ -74,6 +79,7 @@ class SignUpFormState extends State<SignUpForm> {
                     keyboardType: TextInputType.datetime,
                     textInputAction: TextInputAction.next,
                     cursorColor: Colors.black,
+                    validator: ValidationBuilder().maxLength(30).build(),
                     controller: TextEditingController(text: '${date.day}/${date.month}/${date.year}'),
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
@@ -89,7 +95,7 @@ class SignUpFormState extends State<SignUpForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            onSaved: (email) {},
+            validator: ValidationBuilder().email().maxLength(50).build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Correo",
@@ -104,6 +110,7 @@ class SignUpFormState extends State<SignUpForm> {
             textInputAction: TextInputAction.next,
             obscureText: true,
             cursorColor: Colors.black,
+            validator: ValidationBuilder().maxLength(30).build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Contraseña",
@@ -118,6 +125,7 @@ class SignUpFormState extends State<SignUpForm> {
             textInputAction: TextInputAction.done,
             obscureText: true,
             cursorColor: Colors.black,
+            validator: ValidationBuilder().maxLength(30).build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Confirmar contraseña",
@@ -131,7 +139,7 @@ class SignUpFormState extends State<SignUpForm> {
           Hero(
             tag: "signup_btn",
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: _validate,
               style: ElevatedButton.styleFrom(
                 primary: kButtonPrimaryColor,
                 elevation: 6,
@@ -143,24 +151,13 @@ class SignUpFormState extends State<SignUpForm> {
               child: Text(
                 "Registrarse".toUpperCase(),
                 style: GoogleFonts.lato(
-                    color: kButtonPrimaryLightColor,
-                    fontWeight: FontWeight.bold),
+                  color: kButtonPrimaryLightColor,
+                  fontWeight: FontWeight.bold
+                ),
               ),
             ),
           ),
           const SizedBox(height: 10),
-          // AccountCheck(
-          // press: () {
-          // Navigator.push(
-          // context,
-          // MaterialPageRoute(
-          // builder: (context) {
-          // return SignUpScreen();
-          // },
-          // ),
-          // );
-          // },
-          // ),
         ],
       ),
     );

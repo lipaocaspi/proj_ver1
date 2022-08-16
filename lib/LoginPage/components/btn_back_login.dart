@@ -9,11 +9,11 @@ class BtnBackLogin extends StatelessWidget {
     Key? key,
     required this.child,
     this.topButton = const Icon(Icons.person_add, color: kButtonPrimaryLightColor),
-    this.bottomImage = "assets/images/logo_UIS.png",
+    // this.bottomImage = "assets/images/logo_UIS.png",
   }) : super(key: key);
 
   final Icon topButton;
-  final String bottomImage;
+  // final String bottomImage;
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +48,15 @@ class BtnBackLogin extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
-              bottom: 20,
-              right: 20,
-              child: Image.asset(
-                bottomImage,
-                width: 90,
-              ),
-            ),
-            const Positioned(bottom: 20, left: 20, child: Text("© Derechos")),
+            // Positioned(
+              // bottom: 20,
+              // right: 20,
+              // child: Image.asset(
+                // bottomImage,
+                // width: 90,
+              // ),
+            // ),
+            // const Positioned(bottom: 20, left: 20, child: Text("© Derechos")),
             SafeArea(child: child),
           ],
         ),

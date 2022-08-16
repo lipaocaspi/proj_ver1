@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proj_ver1/constants.dart';
+import 'package:form_validator/form_validator.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -14,6 +15,10 @@ class LoginForm extends StatefulWidget {
 class LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
+  void _validate() {
+    _formKey.currentState?.validate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -24,7 +29,7 @@ class LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            onSaved: (email) {},
+            validator: ValidationBuilder().email().maxLength(50).build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Correo",
@@ -40,6 +45,7 @@ class LoginFormState extends State<LoginForm> {
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: Colors.black,
+              validator: ValidationBuilder().maxLength(30).build(),
               decoration: const InputDecoration(
                 fillColor: Colors.white,
                 hintText: "Contraseña",
@@ -54,7 +60,7 @@ class LoginFormState extends State<LoginForm> {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: _validate,
               style: ElevatedButton.styleFrom(
                 primary: kButtonPrimaryColor,
                 elevation: 6,
@@ -70,18 +76,6 @@ class LoginFormState extends State<LoginForm> {
             ),
           ),
           const SizedBox(height: 10),
-          // AccountCheck(
-            // press: () {
-              // Navigator.push(
-                // context,
-                // MaterialPageRoute(
-                  // builder: (context) {
-                    // return SignUpScreen();
-                  // },
-                // ),
-              // );
-            // },
-          // ),
         ],
       ),
     );
