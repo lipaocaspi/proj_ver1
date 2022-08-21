@@ -29,7 +29,7 @@ class LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            validator: ValidationBuilder().email().maxLength(50).build(),
+            validator: ValidationBuilder().maxLength(50).regExp(RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"), 'Ingrese un correo válido').build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Correo",
@@ -45,7 +45,7 @@ class LoginFormState extends State<LoginForm> {
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: Colors.black,
-              validator: ValidationBuilder().maxLength(30).build(),
+              validator: ValidationBuilder().maxLength(30, 'Número máximo de caracteres: 30').build(),
               decoration: const InputDecoration(
                 fillColor: Colors.white,
                 hintText: "Contraseña",
