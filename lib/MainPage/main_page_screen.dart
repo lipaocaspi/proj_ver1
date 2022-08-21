@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/MainPage/components/background.dart';
+import 'package:proj_ver1/MainPage/components/menu.dart';
 import 'package:proj_ver1/responsive.dart';
 
 class MainPage extends StatelessWidget {
@@ -15,10 +16,9 @@ class MainPage extends StatelessWidget {
           child: Responsive(
             desktop: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-              ],
+              children: const [],
             ),
-            mobile: const MobileLoginPage(),
+            mobile: const MobileMainPage(),
           ),
         ),
       ),
@@ -26,14 +26,15 @@ class MainPage extends StatelessWidget {
   }
 }
 
-class MobileLoginPage extends StatelessWidget {
-  const MobileLoginPage({Key? key}) : super(key: key);
+class MobileMainPage extends StatelessWidget {
+  const MobileMainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
+      children: const <Widget>[
+        Menu()
       ],
     );
   }
