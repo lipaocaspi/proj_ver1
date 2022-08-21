@@ -30,7 +30,7 @@ class SignUpFormState extends State<SignUpForm> {
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            validator: ValidationBuilder().maxLength(50).build(),
+            validator: ValidationBuilder().maxLength(50, 'Número máximo de caracteres: 50').build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Nombre",
@@ -79,7 +79,7 @@ class SignUpFormState extends State<SignUpForm> {
                     keyboardType: TextInputType.datetime,
                     textInputAction: TextInputAction.next,
                     cursorColor: Colors.black,
-                    validator: ValidationBuilder().maxLength(30).build(),
+                    validator: ValidationBuilder().maxLength(20, 'Número máximo de caracteres: 20').build(),
                     controller: TextEditingController(text: '${date.day}/${date.month}/${date.year}'),
                     decoration: const InputDecoration(
                       fillColor: Colors.white,
@@ -95,7 +95,7 @@ class SignUpFormState extends State<SignUpForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            validator: ValidationBuilder().email().maxLength(50).build(),
+            validator: ValidationBuilder().maxLength(50).regExp(RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"), 'Ingrese un correo válido').build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Correo",
@@ -110,7 +110,7 @@ class SignUpFormState extends State<SignUpForm> {
             textInputAction: TextInputAction.next,
             obscureText: true,
             cursorColor: Colors.black,
-            validator: ValidationBuilder().maxLength(30).build(),
+            validator: ValidationBuilder().maxLength(30, 'Número máximo de caracteres: 30').build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Contraseña",
@@ -125,7 +125,7 @@ class SignUpFormState extends State<SignUpForm> {
             textInputAction: TextInputAction.done,
             obscureText: true,
             cursorColor: Colors.black,
-            validator: ValidationBuilder().maxLength(30).build(),
+            validator: ValidationBuilder().maxLength(30, 'Número máximo de caracteres: 30').build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Confirmar contraseña",
