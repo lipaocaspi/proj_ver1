@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:proj_ver1/MainPage/main_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:form_validator/form_validator.dart';
 
@@ -29,7 +31,11 @@ class LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: Colors.black,
-            validator: ValidationBuilder().maxLength(50).regExp(RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"), 'Ingrese un correo válido').build(),
+            validator: ValidationBuilder()
+                .maxLength(50)
+                .regExp(RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
+                    'Ingrese un correo válido')
+                .build(),
             decoration: const InputDecoration(
               fillColor: Colors.white,
               hintText: "Correo",
@@ -45,7 +51,9 @@ class LoginFormState extends State<LoginForm> {
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: Colors.black,
-              validator: ValidationBuilder().maxLength(30, 'Número máximo de caracteres: 30').build(),
+              validator: ValidationBuilder()
+                  .maxLength(30, 'Número máximo de caracteres: 30')
+                  .build(),
               decoration: const InputDecoration(
                 fillColor: Colors.white,
                 hintText: "Contraseña",
@@ -60,7 +68,14 @@ class LoginFormState extends State<LoginForm> {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: _validate,
+              onPressed: () {
+                Navigator.of(context).push(
+                  PageTransition(
+                    child: const MainPage(),
+                    type: PageTransitionType.fade,
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 primary: kButtonPrimaryColor,
                 elevation: 6,
@@ -71,7 +86,9 @@ class LoginFormState extends State<LoginForm> {
               ),
               child: Text(
                 "Ingresar".toUpperCase(),
-                style: GoogleFonts.lato(color: kButtonPrimaryLightColor, fontWeight: FontWeight.bold),
+                style: GoogleFonts.lato(
+                    color: kButtonPrimaryLightColor,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
