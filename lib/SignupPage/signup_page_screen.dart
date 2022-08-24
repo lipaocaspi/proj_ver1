@@ -9,20 +9,20 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BtnBackSign(
+    return const BtnBackSign(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
-            desktop: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                Expanded(
-                  flex: 4,
-                  child: ImagLog(),
-                ),
-              ],
-            ),
-            mobile: const MobileSignUpPage(),
+            // desktop: Row(
+              // mainAxisAlignment: MainAxisAlignment.end,
+              // children: const [
+                // Expanded(
+                  // flex: 4,
+                  // child: ImagLog(),
+                // ),
+              // ],
+            // ),
+            mobile: MobileSignUpPage(),
           ),
         ),
       ),

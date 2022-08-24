@@ -20,7 +20,7 @@ class Background extends StatelessWidget {
         color: const Color.fromARGB(255, 150, 255, 141),
         height: MediaQuery.of(context).size.height,
         child: Stack(
-          alignment: Alignment.center,
+          alignment: Alignment.topLeft,
         ),
       ),
     );

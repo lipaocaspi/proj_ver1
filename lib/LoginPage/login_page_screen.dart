@@ -11,20 +11,20 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BtnBackLogin(
+    return const BtnBackLogin(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
-            desktop: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                Expanded(
-                  flex: 4,
-                  child: ImagLog(),
-                ),
-              ],
-            ),
-            mobile: const MobileLoginPage(),
+            // desktop: Row(
+              // mainAxisAlignment: MainAxisAlignment.end,
+              // children: const [
+                // Expanded(
+                  // flex: 4,
+                  // child: ImagLog(),
+                // ),
+              // ],
+            // ),
+            mobile: MobileLoginPage(),
           ),
         ),
       ),
