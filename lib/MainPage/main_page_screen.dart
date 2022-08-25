@@ -10,13 +10,6 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Responsive(
-      // height: MediaQuery.of(context).size.height,
-      // desktop: Row(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        // children: const [
-          // Menu(),
-        // ],
-      // ),
       mobile: MobileMainPage(),
     );
   }
@@ -29,7 +22,6 @@ class MobileMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Menu(),
-      // mainAxisAlignment: MainAxisAlignment.start,
     );
   }
 }

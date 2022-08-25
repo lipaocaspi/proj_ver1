@@ -18,7 +18,7 @@ class LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
   void _validate() {
-    _formKey.currentState?.validate();
+    _formKey.currentState?.validate();  
   }
 
   @override
