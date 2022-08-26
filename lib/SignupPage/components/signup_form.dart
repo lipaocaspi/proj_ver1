@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:proj_ver1/MainPage/main_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:form_validator/form_validator.dart';
 
@@ -139,7 +141,14 @@ class SignUpFormState extends State<SignUpForm> {
           Hero(
             tag: "signup_btn",
             child: ElevatedButton(
-              onPressed: _validate,
+              onPressed: () {
+                Navigator.of(context).push(
+                  PageTransition(
+                    child: const MainPage(),
+                    type: PageTransitionType.fade,
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 primary: kButtonPrimaryColor,
                 elevation: 6,
