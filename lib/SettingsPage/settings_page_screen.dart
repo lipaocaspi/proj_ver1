@@ -24,6 +24,7 @@ class MobileSettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Configuración"),
         backgroundColor: kButtonPrimaryColor,
+        foregroundColor: Colors.black,
       ),
     );
   }

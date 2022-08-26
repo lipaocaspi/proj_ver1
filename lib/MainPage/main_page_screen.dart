@@ -32,7 +32,7 @@ class MobileMainPage extends StatelessWidget {
         title: const Text("DEMO"),
         backgroundColor: kButtonPrimaryColor,
         foregroundColor: Colors.black,
-        iconTheme: const IconThemeData(color: Colors.white),
+        // iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: const NavigationDrawer(),
     );

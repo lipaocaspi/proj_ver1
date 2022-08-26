@@ -24,6 +24,7 @@ class MobileTutorialPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Tutorial"),
         backgroundColor: kButtonPrimaryColor,
+        foregroundColor: Colors.black,
       ),
     );
   }

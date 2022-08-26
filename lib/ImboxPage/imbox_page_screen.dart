@@ -24,6 +24,7 @@ class MobileImboxPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Mensajes"),
         backgroundColor: kButtonPrimaryColor,
+        foregroundColor: Colors.black,
       ),
       // body: Text("Viajes Usuario"),
     );
