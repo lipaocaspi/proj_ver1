@@ -26,7 +26,6 @@ class MobileRidesPage extends StatelessWidget {
         backgroundColor: kButtonPrimaryColor,
         foregroundColor: Colors.black,
       ),
-      // body: Text("Viajes Usuario"),
     );
   }
 }
