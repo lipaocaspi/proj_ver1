@@ -59,7 +59,6 @@ class NavigationDrawer extends StatelessWidget {
       color: kPrimaryLightColor,
       child: InkWell(
         onTap: () {
-          Navigator.pop(context);
           Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => const UserPage()));
         },
