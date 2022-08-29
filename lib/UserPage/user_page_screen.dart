@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({
@@ -15,19 +17,83 @@ class UserPage extends StatelessWidget {
   }
 }
 
-class MobileUserPage extends StatelessWidget {
+class MobileUserPage extends StatefulWidget {
   const MobileUserPage({Key? key}) : super(key: key);
 
   @override
+  MobileUserPageState createState() => MobileUserPageState();
+}
+
+class MobileUserPageState extends State<MobileUserPage> {
+  final toast = FToast();
+
+  @override
+  void initState() {
+    super.initState();
+    toast.init(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    Widget saveToast() => Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: const Color.fromARGB(255, 197, 197, 197),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.person, color: Colors.black87),
+              SizedBox(width: 10.0),
+              Text(
+                'Se ha guardado exitosamente',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+            ],
+          ),
+        );
+
+    Widget deleteToast() => Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: const Color.fromARGB(255, 197, 197, 197),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(Icons.person, color: Colors.black87),
+              SizedBox(width: 10.0),
+              Text(
+                'Se ha borrado exitosamente',
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+            ],
+          ),
+        );
+
+    void showCToast() => toast.showToast(
+          child: saveToast(),
+          gravity: ToastGravity.BOTTOM,
+        );
+
+    void showDToast() => toast.showToast(
+          child: deleteToast(),
+          gravity: ToastGravity.BOTTOM,
+        );
+
     Future<String?> openDialogDelete() => showDialog<String>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Eliminar mi cuenta',
-                textAlign: TextAlign.center),
+            title:
+                const Text('Eliminar mi cuenta', textAlign: TextAlign.center),
             content: const Text(
               "¿Está seguro que desea eliminar su cuenta? Esta acción no se puede deshacer.",
               textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.grey,
+              ),
             ),
             actions: [
               TextButton(
@@ -35,7 +101,13 @@ class MobileUserPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   }),
-              TextButton(child: const Text('CONFIRMAR'), onPressed: () {}),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginPage()));
+                    showDToast();
+                  },
+                  child: const Text('CONFIRMAR')
+              ),
             ],
           ),
         );
@@ -77,7 +149,12 @@ class MobileUserPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   }),
-              TextButton(child: const Text('CONFIRMAR'), onPressed: () {}),
+              TextButton(
+                  onPressed: () {
+                    showCToast();
+                    Navigator.pop(context);
+                  },
+                  child: const Text('CONFIRMAR')),
             ],
           ),
         );
@@ -94,7 +171,6 @@ class MobileUserPage extends StatelessWidget {
         // ],
       ),
       body: Row(
-        // padding: const EdgeInsets.all(20),
         children: [
           Flexible(
               flex: 1,
@@ -115,7 +191,6 @@ class MobileUserPage extends StatelessWidget {
               child: Container(
                   padding: const EdgeInsets.all(15),
                   color: Colors.white,
-                  // child: Form(
                   child: ListView(
                     children: <Widget>[
                       const CircleAvatar(
@@ -225,7 +300,9 @@ class MobileUserPage extends StatelessWidget {
                       ),
                       space,
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showCToast();
+                        },
                         style: ElevatedButton.styleFrom(
                           primary: kButtonPrimaryColor,
                           shape: RoundedRectangleBorder(
@@ -235,9 +312,7 @@ class MobileUserPage extends StatelessWidget {
                         child: const Icon(Icons.save),
                       ),
                     ],
-                  )
-                  // )
-                  )),
+                  ))),
         ],
       ),
     );
