@@ -25,6 +25,7 @@ class MobileUserPage extends StatefulWidget {
 }
 
 class MobileUserPageState extends State<MobileUserPage> {
+  DateTime date = DateTime.now();
   final toast = FToast();
 
   @override
@@ -216,7 +217,15 @@ class MobileUserPageState extends State<MobileUserPage> {
                               child: Padding(
                                 padding: const EdgeInsets.all(3),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    DateTime? newDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2100));
+                                    if (newDate == null) return;
+                                    setState(() => date = newDate);
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     primary: kButtonPrimaryColor,
                                     shape: RoundedRectangleBorder(
@@ -238,8 +247,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                                             borderSide: BorderSide(
                                                 width: 2,
                                                 color: kButtonPrimaryColor))),
-                                    controller: TextEditingController(
-                                        text: "00/00/0000"),
+                                    controller: TextEditingController(text: '${date.day}/${date.month}/${date.year}'),
                                   )))
                         ],
                       ),
