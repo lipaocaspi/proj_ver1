@@ -37,11 +37,10 @@ class LoginFormState extends State<LoginForm> {
                     'Ingrese un correo válido')
                 .build(),
             decoration: const InputDecoration(
-              fillColor: Colors.white,
               hintText: "Correo",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(10),
-                child: Icon(Icons.person, color: kPrimaryLightColor),
+                child: Icon(Icons.person),
               ),
             ),
           ),
@@ -55,11 +54,10 @@ class LoginFormState extends State<LoginForm> {
                   .maxLength(30, 'Número máximo de caracteres: 30')
                   .build(),
               decoration: const InputDecoration(
-                fillColor: Colors.white,
                 hintText: "Contraseña",
                 prefixIcon: Padding(
                   padding: EdgeInsets.all(10),
-                  child: Icon(Icons.lock, color: kPrimaryLightColor),
+                  child: Icon(Icons.lock),
                 ),
               ),
             ),

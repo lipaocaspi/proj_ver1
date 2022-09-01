@@ -31,9 +31,9 @@ class LoginSignUpBtn extends StatelessWidget {
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
-          child: Text(
+          child: const Text(
             "INGRESAR",
-            style: GoogleFonts.lato(color: kButtonPrimaryLightColor, fontWeight: FontWeight.bold),
+            // style: GoogleFonts.lato(color: kButtonPrimaryLightColor, fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(height: 15),

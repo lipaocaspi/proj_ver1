@@ -13,25 +13,6 @@ class FirstPage extends StatelessWidget {
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
-            // desktop: Row(
-              // mainAxisAlignment: MainAxisAlignment.end,
-              // children: [
-                // const Expanded(
-                  // child: Imag(),
-                // ),
-                // Expanded(
-                  // child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    // children: const [
-                      // SizedBox(
-                        // width: 450,
-                        // child: LoginSignUpBtn(),
-                      // ),
-                    // ],
-                  // ),
-                // ),
-              // ],
-            // ),
             mobile: MobileFirstPage(),
           ),
         ),

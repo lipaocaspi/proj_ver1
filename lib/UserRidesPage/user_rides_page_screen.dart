@@ -17,6 +17,18 @@ class UserRidesPage extends StatelessWidget {
 
 class MobileUserRidesPage extends StatelessWidget {
   const MobileUserRidesPage({Key? key}) : super(key: key);
+  static final bdecoration = BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        color: Colors.green.withOpacity(0.2),
+        spreadRadius: 1,
+        blurRadius: 8,
+        blurStyle: BlurStyle.inner,
+        offset: const Offset(0, 3))
+    ],
+    color: Colors.green,
+    borderRadius: BorderRadius.circular(15),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +53,108 @@ class MobileUserRidesPage extends StatelessWidget {
                   child: ListView(
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(10),
-                        color: Colors.green,
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: const [
-                            Text("Hola")
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
                           ],
                         ),
-                      )
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
+                      space,
+                      Container(
+                        decoration: bdecoration,
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: const [
+                            Text("..."),
+                            Text("..."),
+                            Text("..."),
+                          ],
+                        ),
+                      ),
                     ],
                   ))),
         ],

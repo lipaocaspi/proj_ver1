@@ -38,7 +38,7 @@ class SignUpFormState extends State<SignUpForm> {
               hintText: "Nombre",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(10),
-                child: Icon(Icons.person, color: kPrimaryLightColor),
+                child: Icon(Icons.person),
               ),
             ),
           ),
@@ -68,8 +68,7 @@ class SignUpFormState extends State<SignUpForm> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    child: const Icon(Icons.calendar_month,
-                      color: kButtonPrimaryLightColor),
+                    child: const Icon(Icons.calendar_month),
                   ),
                 ),
               ),
@@ -103,7 +102,7 @@ class SignUpFormState extends State<SignUpForm> {
               hintText: "Correo",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(10),
-                child: Icon(Icons.mail, color: kPrimaryLightColor),
+                child: Icon(Icons.mail),
               ),
             ),
           ),
@@ -118,7 +117,7 @@ class SignUpFormState extends State<SignUpForm> {
               hintText: "Contraseña",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(10),
-                child: Icon(Icons.lock, color: kPrimaryLightColor),
+                child: Icon(Icons.lock),
               ),
             ),
           ),
@@ -133,7 +132,7 @@ class SignUpFormState extends State<SignUpForm> {
               hintText: "Confirmar contraseña",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(10),
-                child: Icon(Icons.lock, color: kPrimaryLightColor),
+                child: Icon(Icons.lock),
               ),
             ),
           ),

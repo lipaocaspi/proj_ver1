@@ -73,7 +73,7 @@ class NavigationDrawer extends StatelessWidget {
               CircleAvatar(
                 radius: 35,
                 backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
+                  'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'
                 ),
               ),
               SizedBox(height: 10),

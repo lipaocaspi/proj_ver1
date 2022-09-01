@@ -26,6 +26,9 @@ class MobileUserPage extends StatefulWidget {
 
 class MobileUserPageState extends State<MobileUserPage> {
   DateTime date = DateTime.now();
+  final tfdecoration = const InputDecoration(
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: 1, color: kButtonPrimaryColor)));
   final toast = FToast();
 
   @override
@@ -104,11 +107,11 @@ class MobileUserPageState extends State<MobileUserPage> {
                   }),
               TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginPage()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const LoginPage()));
                     showDToast();
                   },
-                  child: const Text('CONFIRMAR')
-              ),
+                  child: const Text('CONFIRMAR')),
             ],
           ),
         );
@@ -133,11 +136,13 @@ class MobileUserPageState extends State<MobileUserPage> {
                   space,
                   space,
                   TextField(
+                      textInputAction: TextInputAction.next,
                       obscureText: true,
                       decoration:
                           InputDecoration(hintText: "Contraseña actual")),
                   space,
                   TextField(
+                    textInputAction: TextInputAction.done,
                       obscureText: true,
                       decoration:
                           InputDecoration(hintText: "Contraseña nueva")),
@@ -197,16 +202,13 @@ class MobileUserPageState extends State<MobileUserPage> {
                       const CircleAvatar(
                         radius: 50,
                         backgroundImage: NetworkImage(
-                            'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'),
+                            'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'),
                       ),
                       space,
                       space,
                       TextField(
                         textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2, color: kButtonPrimaryColor))),
+                        decoration: tfdecoration,
                         controller: TextEditingController(text: "Usuario"),
                       ),
                       space,
@@ -219,18 +221,18 @@ class MobileUserPageState extends State<MobileUserPage> {
                                 child: ElevatedButton(
                                   onPressed: () async {
                                     DateTime? newDate = await showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime(1900),
-                                      lastDate: DateTime(2100));
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(1900),
+                                        lastDate: DateTime(2100));
                                     if (newDate == null) return;
                                     setState(() => date = newDate);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: kButtonPrimaryColor,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0)),
+                                    // shape: RoundedRectangleBorder(
+                                        // borderRadius:
+                                            // BorderRadius.circular(10.0)),
                                     fixedSize: const Size(45, 45),
                                   ),
                                   child: const Icon(Icons.calendar_month),
@@ -242,22 +244,17 @@ class MobileUserPageState extends State<MobileUserPage> {
                                   padding: const EdgeInsets.all(3),
                                   child: TextField(
                                     textInputAction: TextInputAction.next,
-                                    decoration: const InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                width: 2,
-                                                color: kButtonPrimaryColor))),
-                                    controller: TextEditingController(text: '${date.day}/${date.month}/${date.year}'),
+                                    decoration: tfdecoration,
+                                    controller: TextEditingController(
+                                        text:
+                                            '${date.day}/${date.month}/${date.year}'),
                                   )))
                         ],
                       ),
                       space,
                       TextField(
                         textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2, color: kButtonPrimaryColor))),
+                        decoration: tfdecoration,
                         controller: TextEditingController(text: "Correo"),
                       ),
                       space,
@@ -295,9 +292,6 @@ class MobileUserPageState extends State<MobileUserPage> {
                                   style: ElevatedButton.styleFrom(
                                     primary:
                                         const Color.fromARGB(255, 255, 70, 57),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0)),
                                     fixedSize: const Size(45, 45),
                                   ),
                                   child: const Text("Eliminar mi cuenta",
@@ -308,15 +302,12 @@ class MobileUserPageState extends State<MobileUserPage> {
                       ),
                       space,
                       ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: kButtonPrimaryColor,
+                            fixedSize: const Size(250, 45)),
                         onPressed: () {
                           showCToast();
                         },
-                        style: ElevatedButton.styleFrom(
-                          primary: kButtonPrimaryColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                          fixedSize: const Size(100, 45),
-                        ),
                         child: const Icon(Icons.save),
                       ),
                     ],
