@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:proj_ver1/FirstPage/first_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 void main() => runApp(const MyApp());
@@ -13,27 +14,29 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'UIS Wheels',
       theme: ThemeData(
-          primaryColor: Colors.green,
+          primaryColor: Colors.green.withOpacity(0.8),
           scaffoldBackgroundColor: Colors.white,
+          textTheme: GoogleFonts.latoTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              primary: kPrimaryColor,
-              shape: const StadiumBorder(),
-              // maximumSize: const Size(double.infinity, 56),
-              // minimumSize: const Size(double.infinity, 56),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+              ),
             ),
           ),
-          inputDecorationTheme: const InputDecorationTheme(
+          inputDecorationTheme: InputDecorationTheme(
             filled: true,
-            fillColor: kPrimaryColor,
-            iconColor: kPrimaryColor,
-            prefixIconColor: kPrimaryColor,
+            fillColor: Color.fromARGB(255, 242, 255, 239),
+            iconColor: Colors.grey,
+            prefixIconColor: Colors.grey.withOpacity(0.8),
             contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              borderSide: BorderSide.none,
+              // borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderSide: BorderSide.none
             ),
-          )),
+          ),
+
+        ),
       home: const FirstPage(),
     );
   }
