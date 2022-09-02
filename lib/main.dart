@@ -19,18 +19,23 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.latoTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
+              primary: kButtonPrimaryColor,
+              elevation: 6,
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.bold
+              ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10)
+                borderRadius: BorderRadius.circular(18)
               ),
             ),
           ),
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
-            fillColor: Color.fromARGB(255, 242, 255, 239),
-            iconColor: Colors.grey,
+            fillColor: const Color.fromARGB(255, 242, 255, 239),
+            iconColor: Colors.white,
             prefixIconColor: Colors.grey.withOpacity(0.8),
-            contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            border: OutlineInputBorder(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            border: const OutlineInputBorder(
               // borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide.none
             ),
