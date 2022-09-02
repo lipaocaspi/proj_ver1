@@ -30,9 +30,6 @@ class MobileMainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Inicio"),
-        backgroundColor: kButtonPrimaryColor,
-        foregroundColor: Colors.black,
-        // iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: const NavigationDrawer(),
     );

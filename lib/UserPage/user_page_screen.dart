@@ -168,9 +168,6 @@ class MobileUserPageState extends State<MobileUserPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mi perfil"),
-        centerTitle: true,
-        backgroundColor: kButtonPrimaryColor,
-        foregroundColor: Colors.black,
         // iconTheme: const IconThemeData(color: Colors.white),
         // actions: [
         // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))

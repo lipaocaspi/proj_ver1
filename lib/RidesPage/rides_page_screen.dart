@@ -23,8 +23,6 @@ class MobileRidesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Viajes Programados"),
-        backgroundColor: kButtonPrimaryColor,
-        foregroundColor: Colors.black,
       ),
     );
   }

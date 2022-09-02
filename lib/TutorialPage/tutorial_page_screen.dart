@@ -23,8 +23,6 @@ class MobileTutorialPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tutorial"),
-        backgroundColor: kButtonPrimaryColor,
-        foregroundColor: Colors.black,
       ),
     );
   }

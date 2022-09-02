@@ -35,9 +35,6 @@ class MobileUserRidesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mis viajes"),
-        centerTitle: true,
-        backgroundColor: kButtonPrimaryColor,
-        foregroundColor: Colors.black,
         // iconTheme: const IconThemeData(color: Colors.white),
         // actions: [
         // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))

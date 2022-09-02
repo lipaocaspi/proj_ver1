@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
 class ImboxPage extends StatelessWidget {
@@ -23,10 +22,7 @@ class MobileImboxPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mensajes"),
-        backgroundColor: kButtonPrimaryColor,
-        foregroundColor: Colors.black,
       ),
-      // body: Text("Viajes Usuario"),
     );
   }
 }
