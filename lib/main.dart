@@ -7,20 +7,24 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'UIS Wheels',
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: kPrimaryColor,
+          centerTitle: true,
+          foregroundColor: Colors.black
+        ),
           primaryColor: Colors.green.withOpacity(0.8),
           scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.latoTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               primary: kButtonPrimaryColor,
-              elevation: 6,
+              elevation: 4,
               textStyle: const TextStyle(
                 fontWeight: FontWeight.bold
               ),
