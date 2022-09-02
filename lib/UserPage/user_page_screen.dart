@@ -229,10 +229,6 @@ class MobileUserPageState extends State<MobileUserPage> {
                                     setState(() => date = newDate);
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: kButtonPrimaryColor,
-                                    // shape: RoundedRectangleBorder(
-                                        // borderRadius:
-                                            // BorderRadius.circular(10.0)),
                                     fixedSize: const Size(45, 45),
                                   ),
                                   child: const Icon(Icons.calendar_month),
@@ -270,9 +266,6 @@ class MobileUserPageState extends State<MobileUserPage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     primary: Colors.grey,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0)),
                                     fixedSize: const Size(45, 45),
                                   ),
                                   child: const Text(
@@ -303,7 +296,6 @@ class MobileUserPageState extends State<MobileUserPage> {
                       space,
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: kButtonPrimaryColor,
                             fixedSize: const Size(250, 45)),
                         onPressed: () {
                           showCToast();

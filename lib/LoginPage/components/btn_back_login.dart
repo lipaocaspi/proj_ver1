@@ -8,12 +8,10 @@ class BtnBackLogin extends StatelessWidget {
   const BtnBackLogin({
     Key? key,
     required this.child,
-    this.topButton = const Icon(Icons.person_add, color: kButtonPrimaryLightColor),
-    // this.bottomImage = "assets/images/logo_UIS.png",
+    this.topButton = const Icon(Icons.person_add),
   }) : super(key: key);
 
   final Icon topButton;
-  // final String bottomImage;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class BtnBackLogin extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
-        color: const Color.fromARGB(255, 150, 255, 141),
+        color: kBackgroundColor,
         height: MediaQuery.of(context).size.height,
         child: Stack(
           alignment: Alignment.center,
@@ -41,22 +39,12 @@ class BtnBackLogin extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: kButtonPrimaryColor,
                     shape: const CircleBorder(),
                   ),
                   child: topButton,
                 ),
               ),
             ),
-            // Positioned(
-              // bottom: 20,
-              // right: 20,
-              // child: Image.asset(
-                // bottomImage,
-                // width: 90,
-              // ),
-            // ),
-            // const Positioned(bottom: 20, left: 20, child: Text("© Derechos")),
             SafeArea(child: child),
           ],
         ),

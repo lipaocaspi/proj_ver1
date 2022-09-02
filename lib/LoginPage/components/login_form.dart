@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/MainPage/main_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
@@ -75,18 +74,10 @@ class LoginFormState extends State<LoginForm> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: kButtonPrimaryColor,
-                elevation: 6,
                 fixedSize: const Size(225, 45),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
               ),
               child: Text(
                 "Ingresar".toUpperCase(),
-                style: GoogleFonts.lato(
-                    color: kButtonPrimaryLightColor,
-                    fontWeight: FontWeight.bold),
               ),
             ),
           ),

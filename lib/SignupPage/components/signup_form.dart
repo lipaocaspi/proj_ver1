@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/MainPage/main_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
@@ -61,12 +60,7 @@ class SignUpFormState extends State<SignUpForm> {
                       setState(() => date = newDate);
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: kButtonPrimaryColor,
-                      elevation: 6,
-                      fixedSize: const Size(50, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                      fixedSize: const Size(50, 50)
                     ),
                     child: const Icon(Icons.calendar_month),
                   ),
@@ -149,19 +143,10 @@ class SignUpFormState extends State<SignUpForm> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: kButtonPrimaryColor,
-                elevation: 6,
-                fixedSize: const Size(225, 45),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
+                fixedSize: const Size(225, 45)
               ),
               child: Text(
-                "Registrarse".toUpperCase(),
-                style: GoogleFonts.lato(
-                  color: kButtonPrimaryLightColor,
-                  fontWeight: FontWeight.bold
-                ),
+                "Registrarse".toUpperCase()
               ),
             ),
           ),
