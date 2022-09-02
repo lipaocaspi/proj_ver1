@@ -53,7 +53,7 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) {
     return Material(
-      color: kPrimaryLightColor,
+      color: kPrimaryColor,
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
@@ -75,7 +75,7 @@ class NavigationDrawer extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                "Usuario", 
+                "Mi Perfil", 
                 style: TextStyle(
                   fontSize: 18
                 )
