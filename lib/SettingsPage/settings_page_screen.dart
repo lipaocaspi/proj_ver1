@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
 class SettingsPage extends StatelessWidget {

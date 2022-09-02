@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/MainPage/main_page_screen.dart';
-import 'package:proj_ver1/constants.dart';
 import 'package:form_validator/form_validator.dart';
 
 class SignUpForm extends StatefulWidget {
