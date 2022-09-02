@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/UserRidesPage/components/selected_ride.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -20,13 +21,13 @@ class MobileUserRidesPage extends StatelessWidget {
   static final bdecoration = BoxDecoration(
     boxShadow: [
       BoxShadow(
-        color: Colors.green.withOpacity(0.2),
-        spreadRadius: 1,
-        blurRadius: 8,
-        blurStyle: BlurStyle.inner,
-        offset: const Offset(0, 3))
+          color: Colors.green.withOpacity(0.2),
+          spreadRadius: 1,
+          blurRadius: 8,
+          blurStyle: BlurStyle.inner,
+          offset: const Offset(0, 3))
     ],
-    color: Colors.green,
+    color: Colors.grey.withOpacity(0.3),
     borderRadius: BorderRadius.circular(15),
   );
 
@@ -50,107 +51,135 @@ class MobileUserRidesPage extends StatelessWidget {
                   child: ListView(
                     children: [
                       Container(
+                          decoration: bdecoration,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                            child: Column(
+                              children: const [
+                                Text("Cra 15 # 67-74, B. La Victoria"),
+                                Text("UIS"),
+                                Text("25/10/2022"),
+                                Text("10:30 A.M."),
+                              ],
+                            ),
+                          )),
+                      space,
+                      Container(
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                          child: Column(
+                            children: const [
+                              Text("Cra 15 # 67-74, B. La Victoria"),
+                              Text("UIS"),
+                              Text("25/10/2022"),
+                              Text("10:30 A.M."),
+                            ],
                         ),
+                        )
                       ),
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                          child: Column(
+                            children: const [
+                              Text("Cra 15 # 67-74, B. La Victoria"),
+                              Text("UIS"),
+                              Text("25/10/2022"),
+                              Text("10:30 A.M."),
+                            ],
                         ),
+                        )
                       ),
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                          child: Column(
+                            children: const [
+                              Text("Cra 15 # 67-74, B. La Victoria"),
+                              Text("UIS"),
+                              Text("25/10/2022"),
+                              Text("10:30 A.M."),
+                            ],
                         ),
+                        )
                       ),
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                          child: Column(
+                            children: const [
+                              Text("Cra 15 # 67-74, B. La Victoria"),
+                              Text("UIS"),
+                              Text("25/10/2022"),
+                              Text("10:30 A.M."),
+                            ],
                         ),
+                        )
                       ),
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                          child: Column(
+                            children: const [
+                              Text("Cra 15 # 67-74, B. La Victoria"),
+                              Text("UIS"),
+                              Text("25/10/2022"),
+                              Text("10:30 A.M."),
+                            ],
                         ),
+                        )
                       ),
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
+                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
+                        child: InkWell(
+                          onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
+                            },
+                          child: Column(
+                            children: const [
+                              Text("Cra 15 # 67-74, B. La Victoria"),
+                              Text("UIS"),
+                              Text("25/10/2022"),
+                              Text("10:30 A.M."),
+                            ],
                         ),
-                      ),
-                      space,
-                      Container(
-                        decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
-                        ),
-                      ),
-                      space,
-                      Container(
-                        decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          children: const [
-                            Text("..."),
-                            Text("..."),
-                            Text("..."),
-                          ],
-                        ),
+                        )
                       ),
                     ],
                   ))),
