@@ -27,8 +27,8 @@ class MobileRidesPage extends StatelessWidget {
           blurStyle: BlurStyle.inner,
           offset: const Offset(0, 3))
     ],
-    color: Colors.grey.withOpacity(0.3),
-    borderRadius: BorderRadius.circular(15),
+    color: Colors.grey.withOpacity(0.1),
+    borderRadius: BorderRadius.circular(5),
   );
 
   @override
@@ -43,41 +43,42 @@ class MobileRidesPage extends StatelessWidget {
               flex: 4,
               child: Container(
                   padding: const EdgeInsets.all(15),
-                  color: Colors.white,
                   child: ListView(
                     children: [
                       Container(
                           decoration: bdecoration,
-                          alignment: Alignment.center,
                           padding: const EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
-                                Text("Cra 15 # 67-74, B. La Victoria"),
-                                Text("UIS"),
-                                Text("25/10/2022"),
-                                Text("10:30 A.M."),
+                                Icon(Icons.drive_eta),
+                                space,
+                                Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                                Text("UIS", style: TextStyle(color: kTextColor)),
+                                Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                               ],
                             ),
                           )),
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Cra 15 # 67-74, B. La Victoria"),
-                              Text("UIS"),
-                              Text("25/10/2022"),
-                              Text("10:30 A.M."),
+                              Icon(Icons.motorcycle),
+                              space,
+                              Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -85,18 +86,19 @@ class MobileRidesPage extends StatelessWidget {
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Cra 15 # 67-74, B. La Victoria"),
-                              Text("UIS"),
-                              Text("25/10/2022"),
-                              Text("10:30 A.M."),
+                              Icon(Icons.motorcycle),
+                              space,
+                              Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -104,18 +106,19 @@ class MobileRidesPage extends StatelessWidget {
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Cra 15 # 67-74, B. La Victoria"),
-                              Text("UIS"),
-                              Text("25/10/2022"),
-                              Text("10:30 A.M."),
+                              Icon(Icons.drive_eta),
+                              space,
+                              Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -123,18 +126,19 @@ class MobileRidesPage extends StatelessWidget {
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Cra 15 # 67-74, B. La Victoria"),
-                              Text("UIS"),
-                              Text("25/10/2022"),
-                              Text("10:30 A.M."),
+                              Icon(Icons.motorcycle),
+                              space,
+                              Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -142,18 +146,19 @@ class MobileRidesPage extends StatelessWidget {
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Cra 15 # 67-74, B. La Victoria"),
-                              Text("UIS"),
-                              Text("25/10/2022"),
-                              Text("10:30 A.M."),
+                              Icon(Icons.drive_eta),
+                              space,
+                              Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -161,18 +166,19 @@ class MobileRidesPage extends StatelessWidget {
                       space,
                       Container(
                         decoration: bdecoration,
-                        alignment: Alignment.center,
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RidePage()));
                             },
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Cra 15 # 67-74, B. La Victoria"),
-                              Text("UIS"),
-                              Text("25/10/2022"),
-                              Text("10:30 A.M."),
+                              Icon(Icons.drive_eta),
+                              space,
+                              Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
+                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
