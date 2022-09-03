@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       title: 'UIS Wheels',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          color: kPrimaryColor,
+          color: kPrimaryLightColor,
           centerTitle: true,
           foregroundColor: Colors.black
         ),
           primaryColor: Colors.green.withOpacity(0.8),
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: const Color.fromARGB(255, 230, 230, 230),
           textTheme: GoogleFonts.latoTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
