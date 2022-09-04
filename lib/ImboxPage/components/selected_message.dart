@@ -22,6 +22,9 @@ class MobileMessagePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("NOMBRE"),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+        ],
       ),
       body: Column(
         children: const [
