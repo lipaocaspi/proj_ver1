@@ -26,9 +26,9 @@ class MobileUserPage extends StatefulWidget {
 
 class MobileUserPageState extends State<MobileUserPage> {
   DateTime date = DateTime.now();
-  final tfdecoration = const InputDecoration(
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: 1, color: kButtonPrimaryColor)));
+  // final tfdecoration = const InputDecoration(
+    // enabledBorder: OutlineInputBorder(
+      // borderSide: BorderSide(width: 1, color: kButtonPrimaryColor)));
   final toast = FToast();
 
   @override
@@ -205,7 +205,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                       space,
                       TextField(
                         textInputAction: TextInputAction.next,
-                        decoration: tfdecoration,
+                        // decoration: tfdecoration,
                         controller: TextEditingController(text: "Usuario"),
                       ),
                       space,
@@ -237,7 +237,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                                   padding: const EdgeInsets.all(3),
                                   child: TextField(
                                     textInputAction: TextInputAction.next,
-                                    decoration: tfdecoration,
+                                    // decoration: tfdecoration,
                                     controller: TextEditingController(
                                         text:
                                             '${date.day}/${date.month}/${date.year}'),
@@ -247,7 +247,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                       space,
                       TextField(
                         textInputAction: TextInputAction.next,
-                        decoration: tfdecoration,
+                        // decoration: tfdecoration,
                         controller: TextEditingController(text: "Correo"),
                       ),
                       space,
