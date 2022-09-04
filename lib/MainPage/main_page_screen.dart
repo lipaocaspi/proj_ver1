@@ -53,7 +53,7 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) {
     return Material(
-      color: kPrimaryColor,
+      color: kPrimaryLightColor,
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
