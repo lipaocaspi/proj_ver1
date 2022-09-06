@@ -160,6 +160,7 @@ class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) => Drawer(
+    backgroundColor: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -181,17 +182,32 @@ class NavigationDrawer extends StatelessWidget {
               .push(MaterialPageRoute(builder: (context) => const UserPage()));
         },
         child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.green
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(20))
+          ),
           padding: EdgeInsets.only(
-              top: 15 + MediaQuery.of(context).padding.top, bottom: 15),
-          child: Column(
-            children: const [
-              CircleAvatar(
-                radius: 35,
-                backgroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'),
+              top: 15 + MediaQuery.of(context).padding.top, bottom: 30),
+          child: Row(
+            children: const <Widget>[
+              Expanded(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text("Mi Perfil", style: TextStyle(fontSize: 18)),
+                ),
               ),
-              SizedBox(height: 10),
-              Text("Mi Perfil", style: TextStyle(fontSize: 18))
+              Expanded(
+                // child: Align(
+                  // alignment: Alignment.centerRight,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(
+                    'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'),
+                  ),
+                // )
+              ),
             ],
           ),
         ),
@@ -201,12 +217,12 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildItems(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 10, left: 15, right: 15, bottom: 7),
+      padding: const EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30),
       child: Wrap(
         runSpacing: 5,
         children: [
           ListTile(
-              leading: const Icon(Icons.drive_eta),
+              leading: const Icon(Icons.drive_eta, color: Colors.black87),
               title: const Text("Mis Viajes"),
               onTap: () {
                 Navigator.pop(context);
@@ -214,7 +230,7 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const UserRidesPage()));
               }),
           ListTile(
-              leading: const Icon(Icons.alarm),
+              leading: const Icon(Icons.alarm, color: Colors.black87),
               title: const Text("Viajes Programados"),
               onTap: () {
                 Navigator.pop(context);
@@ -222,7 +238,7 @@ class NavigationDrawer extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const RidesPage()));
               }),
           ListTile(
-              leading: const Icon(Icons.email),
+              leading: const Icon(Icons.email, color: Colors.black87),
               title: const Text("Mensajes"),
               onTap: () {
                 Navigator.pop(context);
@@ -230,7 +246,7 @@ class NavigationDrawer extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const ImboxPage()));
               }),
           ListTile(
-              leading: const Icon(Icons.camera),
+              leading: const Icon(Icons.camera, color: Colors.black87),
               title: const Text("Tutorial"),
               onTap: () {
                 Navigator.pop(context);
@@ -238,7 +254,7 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => const TutorialPage()));
               }),
           ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.settings, color: Colors.black87),
               title: const Text("Configuración"),
               onTap: () {
                 Navigator.pop(context);
