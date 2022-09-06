@@ -245,14 +245,6 @@ class NavigationDrawer extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const SettingsPage()));
               }),
-          ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text("Cerrar Sesión"),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
-              }),
         ],
       ),
     );
