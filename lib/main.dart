@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'UIS Wheels',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          color: kPrimaryLightColor,
+          color: kPrimaryColor,
           centerTitle: true,
           foregroundColor: Colors.black
         ),
