@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/ImboxPage/imbox_page_screen.dart';
-import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/RidesPage/rides_page_screen.dart';
 import 'package:proj_ver1/SettingsPage/settings_page_screen.dart';
 import 'package:proj_ver1/TutorialPage/tutorial_page_screen.dart';
@@ -160,6 +159,11 @@ class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) => Drawer(
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.horizontal(
+        right: Radius.circular(30)
+      )
+    ),
     backgroundColor: Colors.white,
         child: SingleChildScrollView(
           child: Column(
@@ -174,29 +178,40 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) {
     return Material(
-      color: kPrimaryLightColor,
+      color: Colors.white,
       child: InkWell(
         onTap: () {
-          Navigator.pop(context);
+          // Navigator.pop(context);
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => const UserPage()));
         },
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.green
+            gradient: const LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomCenter,
+              colors: [
+                kPrimaryLightColor,
+                Color.fromARGB(255, 232, 248, 231)
+              ]
             ),
-            borderRadius: const BorderRadius.all(Radius.circular(20))
+            color: kPrimaryLightColor,
+            border: Border.all(
+              width: 1,
+              color:kPrimaryLightColor
+            ),
+            borderRadius: const BorderRadius.only(bottomRight: Radius.circular(30))
           ),
           padding: EdgeInsets.only(
-              top: 15 + MediaQuery.of(context).padding.top, bottom: 30),
+              top: 15 + MediaQuery.of(context).padding.top, bottom: 30, left: 30),
           child: Row(
             children: const <Widget>[
               Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text("Mi Perfil", style: TextStyle(fontSize: 18)),
-                ),
+                flex: 1,
+                // child: Align(
+                  // alignment: Alignment.center,
+                  child: Text("Liliana Paola Castellanos Pinzón", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)), 
+                // ),
               ),
               Expanded(
                 // child: Align(
@@ -217,15 +232,15 @@ class NavigationDrawer extends StatelessWidget {
 
   Widget buildItems(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30),
+      padding: const EdgeInsets.only(top: 30, left: 20, right: 15, bottom: 30),
       child: Wrap(
-        runSpacing: 5,
+        runSpacing: 8,
         children: [
           ListTile(
               leading: const Icon(Icons.drive_eta, color: Colors.black87),
               title: const Text("Mis Viajes"),
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const UserRidesPage()));
               }),
@@ -233,7 +248,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: const Icon(Icons.alarm, color: Colors.black87),
               title: const Text("Viajes Programados"),
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const RidesPage()));
               }),
@@ -241,7 +256,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: const Icon(Icons.email, color: Colors.black87),
               title: const Text("Mensajes"),
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const ImboxPage()));
               }),
@@ -249,7 +264,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: const Icon(Icons.camera, color: Colors.black87),
               title: const Text("Tutorial"),
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const TutorialPage()));
               }),
@@ -257,7 +272,7 @@ class NavigationDrawer extends StatelessWidget {
               leading: const Icon(Icons.settings, color: Colors.black87),
               title: const Text("Configuración"),
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const SettingsPage()));
               }),
