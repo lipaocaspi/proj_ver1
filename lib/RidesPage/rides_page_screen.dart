@@ -21,11 +21,12 @@ class MobileRidesPage extends StatelessWidget {
   static final bdecoration = BoxDecoration(
     boxShadow: [
       BoxShadow(
-          color: Colors.green.withOpacity(0.2),
+          color: Colors.green.withOpacity(0.1),
           spreadRadius: 1,
           blurRadius: 8,
           blurStyle: BlurStyle.inner,
-          offset: const Offset(0, 3))
+          offset: const Offset(0, 3)
+      )
     ],
     color: Colors.grey.withOpacity(0.1),
     borderRadius: BorderRadius.circular(5),
