@@ -47,7 +47,7 @@ class MobileUserRidesPage extends StatelessWidget {
           Flexible(
               flex: 4,
               child: Container(
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(10),
                   child: ListView(
                     children: [
                       Container(
