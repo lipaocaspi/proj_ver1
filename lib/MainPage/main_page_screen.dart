@@ -39,7 +39,7 @@ class MobileMainPageState extends State<MobileMainPage> {
     ];
     return Scaffold(
       appBar: AppBar(
-        // title: const Text("Inicio"),
+        title: Text(indexSelected == 2 ? "Mensajes" : "Viajes"),
         actions: [
           IconButton(
               onPressed: () {},
@@ -56,7 +56,7 @@ class MobileMainPageState extends State<MobileMainPage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.alarm), label: "Viajes"),
           BottomNavigationBarItem(icon: Icon(Icons.drive_eta), label: "Mis viajes"),
-          BottomNavigationBarItem(icon: Icon(Icons.email), label: "Mensajes")
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: "Mensajes")
         ],
       ),
     );
