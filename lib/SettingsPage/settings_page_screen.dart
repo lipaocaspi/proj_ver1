@@ -24,12 +24,16 @@ class MobileSettingsPage extends StatelessWidget {
     color: Colors.grey.withOpacity(0.2),
   );
 
+  static final whiteBox = SizedBox(height: 20, child: Container(color: Colors.white));
+  static final greyBox = SizedBox(height: 1, child: Container(color: Colors.grey));
+
   @override
   Widget build(BuildContext context) {
     Future<String?> openDialogAbout() => showDialog<String>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Acerca de UIS Wheels', textAlign: TextAlign.center),
+            title:
+                const Text('Acerca de UIS Wheels', textAlign: TextAlign.center),
             content: SizedBox(
               height: MediaQuery.of(context).size.height * 0.17,
               child: ListView(
@@ -39,7 +43,11 @@ class MobileSettingsPage extends StatelessWidget {
                     height: 70,
                   ),
                   space,
-                  const Text("UIS Wheels V1", textAlign: TextAlign.center, style: TextStyle(fontSize: 15,))
+                  const Text("UIS Wheels V1",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                      ))
                 ],
               ),
             ),
@@ -68,6 +76,7 @@ class MobileSettingsPage extends StatelessWidget {
                 color: Colors.white,
                 child: ListView(
                   children: [
+                    whiteBox,
                     Container(
                         decoration: bdecoration,
                         alignment: Alignment.topLeft,
@@ -93,7 +102,7 @@ class MobileSettingsPage extends StatelessWidget {
                             ],
                           ),
                         )),
-                    SizedBox(height: 20, child: Container(color: Colors.white)),
+                    whiteBox,
                     Container(
                         decoration: bdecoration,
                         alignment: Alignment.topLeft,
@@ -119,7 +128,7 @@ class MobileSettingsPage extends StatelessWidget {
                             ],
                           ),
                         )),
-                    SizedBox(height: 1, child: Container(color: Colors.grey)),
+                    greyBox,
                     Container(
                         decoration: bdecoration,
                         alignment: Alignment.topLeft,
@@ -146,7 +155,7 @@ class MobileSettingsPage extends StatelessWidget {
                             ],
                           ),
                         )),
-                    SizedBox(height: 1, child: Container(color: Colors.grey)),
+                    greyBox,
                     Container(
                         decoration: bdecoration,
                         alignment: Alignment.topLeft,
@@ -171,7 +180,7 @@ class MobileSettingsPage extends StatelessWidget {
                             ],
                           ),
                         )),
-                    SizedBox(height: 1, child: Container(color: Colors.grey)),
+                    whiteBox,
                     Container(
                         decoration: bdecoration,
                         alignment: Alignment.topLeft,
