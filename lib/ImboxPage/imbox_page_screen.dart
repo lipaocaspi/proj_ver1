@@ -26,18 +26,16 @@ class MobileImboxPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mensajes"),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-        ],
-      ),
+      // appBar: AppBar(
+        // title: const Text("Mensajes"),
+        // actions: [
+          // IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+        // ],
+      // ),
       body: Row(
         children: [
           Flexible(
               flex: 4,
-              child: Container(
-                  color: Colors.white,
                   child: ListView(
                     children: [
                       Container(
@@ -110,8 +108,7 @@ class MobileImboxPage extends StatelessWidget {
                             ),
                           ))
                     ],
-                  )),
-
+                  )
                   ),
         ],
       ),
