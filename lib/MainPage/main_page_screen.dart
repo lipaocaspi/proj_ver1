@@ -34,29 +34,29 @@ class MobileMainPageState extends State<MobileMainPage> {
   Widget build(BuildContext context) {
     final children = [
       const RidesPage(),
-      const UserRidesPage()
+      const UserRidesPage(),
+      const ImboxPage()
     ];
     return Scaffold(
       appBar: AppBar(
         // title: const Text("Inicio"),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search))
+          IconButton(
+              onPressed: () {},
+              icon: Icon(indexSelected == 2 ? Icons.settings : Icons.search))
         ],
       ),
       drawer: const NavigationDrawer(),
       body: children[indexSelected],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: kPrimaryColor,
+        fixedColor: Colors.white,
         currentIndex: indexSelected,
         onTap: (index) => setState(() => indexSelected = index),
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.alarm),
-            label: "Viajes programados"
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.drive_eta),
-            label: "Mis viajes"
-          )
+          BottomNavigationBarItem(icon: Icon(Icons.alarm), label: "Viajes"),
+          BottomNavigationBarItem(icon: Icon(Icons.drive_eta), label: "Mis viajes"),
+          BottomNavigationBarItem(icon: Icon(Icons.email), label: "Mensajes")
         ],
       ),
     );
@@ -215,7 +215,7 @@ class NavigationDrawer extends StatelessWidget {
                   begin: Alignment.topRight,
                   end: Alignment.bottomCenter,
                   colors: [
-                    kPrimaryLightColor,
+                    kPrimaryColor,
                     Color.fromARGB(255, 232, 248, 231)
                   ]),
               color: kPrimaryLightColor,
@@ -261,29 +261,29 @@ class NavigationDrawer extends StatelessWidget {
         runSpacing: 8,
         children: [
           // ListTile(
-              // leading: const Icon(Icons.drive_eta, color: Colors.black87),
-              // title: const Text("Mis Viajes"),
-              // onTap: () {
-                // Navigator.pop(context);
-                // Navigator.of(context).push(MaterialPageRoute(
-                    // builder: (context) => const UserRidesPage()));
-              // }),
+          // leading: const Icon(Icons.drive_eta, color: Colors.black87),
+          // title: const Text("Mis Viajes"),
+          // onTap: () {
+          // Navigator.pop(context);
+          // Navigator.of(context).push(MaterialPageRoute(
+          // builder: (context) => const UserRidesPage()));
+          // }),
           // ListTile(
-              // leading: const Icon(Icons.alarm, color: Colors.black87),
-              // title: const Text("Viajes Programados"),
+          // leading: const Icon(Icons.alarm, color: Colors.black87),
+          // title: const Text("Viajes Programados"),
+          // onTap: () {
+          // Navigator.pop(context);
+          // Navigator.of(context).push(
+          // MaterialPageRoute(builder: (context) => const RidesPage()));
+          // }),
+          // ListTile(
+              // leading: const Icon(Icons.email, color: Colors.black87),
+              // title: const Text("Mensajes"),
               // onTap: () {
                 // Navigator.pop(context);
                 // Navigator.of(context).push(
-                    // MaterialPageRoute(builder: (context) => const RidesPage()));
+                    // MaterialPageRoute(builder: (context) => const ImboxPage()));
               // }),
-          ListTile(
-              leading: const Icon(Icons.email, color: Colors.black87),
-              title: const Text("Mensajes"),
-              onTap: () {
-                // Navigator.pop(context);
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const ImboxPage()));
-              }),
           ListTile(
               leading: const Icon(Icons.camera, color: Colors.black87),
               title: const Text("Tutorial"),
