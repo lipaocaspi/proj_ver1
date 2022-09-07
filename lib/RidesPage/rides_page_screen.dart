@@ -34,9 +34,9 @@ class MobileRidesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Viajes Programados"),
-      ),
+      // appBar: AppBar(
+        // title: const Text("Viajes Programados"),
+      // ),
       body: Row(
         children: [
           Flexible(

@@ -35,13 +35,13 @@ class MobileUserRidesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mis viajes"),
+      // appBar: AppBar(
+        // title: const Text("Mis viajes"),
         // iconTheme: const IconThemeData(color: Colors.white),
         // actions: [
         // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
         // ],
-      ),
+      // ),
       body: Row(
         children: [
           Flexible(
