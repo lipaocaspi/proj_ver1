@@ -21,6 +21,8 @@ class MobileImboxPage extends StatelessWidget {
     color: Colors.grey.withOpacity(0.3),
   );
 
+  static final greyBox = SizedBox(height: 1, child: Container(color: Colors.grey));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +54,7 @@ class MobileImboxPage extends StatelessWidget {
                                 Row(
                                   children: const <Widget>[
                                     Expanded(
-                                        flex: 1,
+                                        // flex: 1,
                                         child: Padding(
                                           padding: EdgeInsets.all(3),
                                           child: CircleAvatar(
@@ -62,16 +64,17 @@ class MobileImboxPage extends StatelessWidget {
                                           ),
                                         )),
                                     Expanded(
-                                        flex: 4,
+                                        flex: 3,
                                         child: Padding(
                                             padding: EdgeInsets.all(10),
                                             child: Text("NOMBRE"))),
+                                    Expanded(child: Icon(Icons.arrow_right))
                                   ],
                                 ),
                               ],
                             ),
                           )),
-                      SizedBox(height: 1, child: Container(color: Colors.grey)),
+                      greyBox,
                       Container(
                           decoration: bdecoration,
                           alignment: Alignment.topLeft,
@@ -86,7 +89,7 @@ class MobileImboxPage extends StatelessWidget {
                                 Row(
                                   children: const <Widget>[
                                     Expanded(
-                                        flex: 1,
+                                        // flex: 1,
                                         child: Padding(
                                           padding: EdgeInsets.all(3),
                                           child: CircleAvatar(
@@ -96,10 +99,11 @@ class MobileImboxPage extends StatelessWidget {
                                           ),
                                         )),
                                     Expanded(
-                                        flex: 4,
+                                        flex: 3,
                                         child: Padding(
                                             padding: EdgeInsets.all(10),
                                             child: Text("NOMBRE"))),
+                                    Expanded(child: Icon(Icons.arrow_right))
                                   ],
                                 ),
                               ],
