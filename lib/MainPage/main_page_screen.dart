@@ -53,11 +53,19 @@ class MobileMainPageState extends State<MobileMainPage> {
         backgroundColor: kPrimaryColor,
         fixedColor: Colors.white,
         currentIndex: indexSelected,
-        onTap: (index) => setState(() => indexSelected = index),
+        onTap: (index) => setState(() {
+          indexSelected = index;
+        }),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.alarm), label: "Viajes"),
-          BottomNavigationBarItem(icon: Icon(Icons.drive_eta), label: "Mis Viajes"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil")
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.alarm),
+              icon: Icon(Icons.alarm_outlined), label: "Viajes"),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.drive_eta),
+              icon: Icon(Icons.drive_eta_outlined), label: "Mis Viajes"),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.person),
+              icon: Icon(Icons.person_outline), label: "Perfil")
         ],
       ),
     );
