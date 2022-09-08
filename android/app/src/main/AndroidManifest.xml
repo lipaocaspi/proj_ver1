@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.proj_ver1">
    <application
-        android:label="proj_ver1"
+        android:label="UIS Wheels"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
