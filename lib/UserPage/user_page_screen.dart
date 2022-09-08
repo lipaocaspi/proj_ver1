@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/ImboxPage/imbox_page_screen.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
+import 'package:proj_ver1/SettingsPage/settings_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -27,8 +29,8 @@ class MobileUserPage extends StatefulWidget {
 class MobileUserPageState extends State<MobileUserPage> {
   DateTime date = DateTime.now();
   // final tfdecoration = const InputDecoration(
-    // enabledBorder: OutlineInputBorder(
-      // borderSide: BorderSide(width: 1, color: kButtonPrimaryColor)));
+  // enabledBorder: OutlineInputBorder(
+  // borderSide: BorderSide(width: 1, color: kButtonPrimaryColor)));
   final toast = FToast();
 
   @override
@@ -142,7 +144,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                           InputDecoration(hintText: "Contraseña actual")),
                   space,
                   TextField(
-                    textInputAction: TextInputAction.done,
+                      textInputAction: TextInputAction.done,
                       obscureText: true,
                       decoration:
                           InputDecoration(hintText: "Contraseña nueva")),
@@ -166,13 +168,13 @@ class MobileUserPageState extends State<MobileUserPage> {
         );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mi Perfil"),
-        // iconTheme: const IconThemeData(color: Colors.white),
-        // actions: [
-        // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
-        // ],
-      ),
+      // appBar: AppBar(
+      // title: const Text("Mi Perfil"),
+      // iconTheme: const IconThemeData(color: Colors.white),
+      // actions: [
+      // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
+      // ],
+      // ),
       body: Row(
         children: [
           Flexible(
@@ -180,13 +182,42 @@ class MobileUserPageState extends State<MobileUserPage> {
               child: Container(
                   padding: const EdgeInsets.all(20),
                   color: kButtonPrimaryLightColor,
-                  child: Column(
-                    children: const [
-                      Icon(Icons.drive_eta, color: Colors.black54),
+                  child: ListView(
+                    children: [
+                      const Icon(Icons.drive_eta, color: Colors.black54),
                       space,
-                      Icon(Icons.face, color: Colors.black54),
+                      const Icon(Icons.face, color: Colors.black54),
                       space,
-                      Icon(Icons.star, color: Colors.black54),
+                      const Icon(Icons.star, color: Colors.black54),
+                      space, space, space, space, space, space, space, space, space, space, space,
+                      space, space, space, space, space, space, space, space, space, space, space,
+                      SizedBox(
+                        child: Align(
+                          alignment: FractionalOffset.bottomCenter,
+                          child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const ImboxPage()));
+                          },
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all(EdgeInsets.zero)
+                          ),
+                          child: const Icon(Icons.chat),
+                        ),
+                        ),
+                      ),
+                      SizedBox(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const SettingsPage()));
+                          },
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all(EdgeInsets.zero)
+                          ),
+                          child: const Icon(Icons.settings),
+                        ),
+                      )
                     ],
                   ))),
           Flexible(
