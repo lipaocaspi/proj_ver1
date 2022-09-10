@@ -35,13 +35,6 @@ class MobileUserRidesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-        // title: const Text("Mis viajes"),
-        // iconTheme: const IconThemeData(color: Colors.white),
-        // actions: [
-        // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
-        // ],
-      // ),
       body: Row(
         children: [
           Flexible(
@@ -64,7 +57,7 @@ class MobileUserRidesPage extends StatelessWidget {
                                 space,
                                 Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                                 Text("UIS", style: TextStyle(color: kTextColor)),
-                                Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                                Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                               ],
                             ),
                           )),
@@ -83,7 +76,7 @@ class MobileUserRidesPage extends StatelessWidget {
                               space,
                               Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                               Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -103,7 +96,7 @@ class MobileUserRidesPage extends StatelessWidget {
                               space,
                               Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                               Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -123,7 +116,7 @@ class MobileUserRidesPage extends StatelessWidget {
                               space,
                               Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                               Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -143,7 +136,7 @@ class MobileUserRidesPage extends StatelessWidget {
                               space,
                               Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                               Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -163,7 +156,7 @@ class MobileUserRidesPage extends StatelessWidget {
                               space,
                               Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                               Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
@@ -183,7 +176,7 @@ class MobileUserRidesPage extends StatelessWidget {
                               space,
                               Text("Cra 15 # 67-74", style: TextStyle(color: kTextColor)),
                               Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30 AM", style: TextStyle(color: kTextColor)),
+                              Text("25/10/2022, 10:30", style: TextStyle(color: kTextColor)),
                             ],
                         ),
                         )
