@@ -45,14 +45,14 @@ class MobileLoginPageState extends State<MobileLoginPage> {
         height: MediaQuery.of(context).size.height,
         child: Form(
           key: _formKey,
-          child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Row(
+          // child: Stack(
+          // alignment: Alignment.center,
+          // children: <Widget>[
+            child: Column(
               children: [
                 Flexible(
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(15),
                       // child: Center(
                       child: ListView(
                         children: [
@@ -163,18 +163,18 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                                       ),
                                     ),
                                     )
-                                  
                             ],
                           ), 
                         ],
                       ),
-                ))
+                  )
+                )
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+            // SizedBox(height: MediaQuery.of(context).size.height * 0.09),
             // SafeArea(child: child),
-          ],
-        ),
+          // ],
+        // ),
         ),
       ),
     );
