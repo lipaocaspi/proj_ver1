@@ -236,6 +236,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                       space,
                       TextField(
                         textInputAction: TextInputAction.next,
+                        cursorColor: Colors.black,
                         // decoration: tfdecoration,
                         controller: TextEditingController(text: "Usuario"),
                       ),
@@ -268,16 +269,17 @@ class MobileUserPageState extends State<MobileUserPage> {
                                   padding: const EdgeInsets.all(3),
                                   child: TextField(
                                     textInputAction: TextInputAction.next,
+                                    cursorColor: Colors.black,
                                     // decoration: tfdecoration,
                                     controller: TextEditingController(
-                                        text:
-                                            '${date.day}/${date.month}/${date.year}'),
+                                        text: '${date.day}/${date.month}/${date.year}'),
                                   )))
                         ],
                       ),
                       space,
                       TextField(
                         textInputAction: TextInputAction.next,
+                        cursorColor: Colors.black,
                         // decoration: tfdecoration,
                         controller: TextEditingController(text: "Correo"),
                       ),
