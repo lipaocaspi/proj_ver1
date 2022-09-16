@@ -94,7 +94,6 @@ class MobileUserRidesPageState extends State<MobileUserRidesPage> {
                                   iconSize: 20,
                                   icon: const Icon(Icons.arrow_drop_down),
                                   borderRadius: BorderRadius.circular(10),
-                                  // focusColor: Colors.green,
                                   items: choice.map(buildMenuChoice).toList(),
                                   onChanged: (value) =>
                                       setState(() => value1 = value),
