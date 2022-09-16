@@ -28,6 +28,7 @@ class MobileUserPage extends StatefulWidget {
 
 class MobileUserPageState extends State<MobileUserPage> {
   DateTime date = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
   // final tfdecoration = const InputDecoration(
   // enabledBorder: OutlineInputBorder(
   // borderSide: BorderSide(width: 1, color: kButtonPrimaryColor)));
@@ -168,172 +169,139 @@ class MobileUserPageState extends State<MobileUserPage> {
         );
 
     return Scaffold(
-      // appBar: AppBar(
-      // title: const Text("Mi Perfil"),
-      // iconTheme: const IconThemeData(color: Colors.white),
-      // actions: [
-      // IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
-      // ],
-      // ),
-      body: Row(
+      body: Column(
         children: [
-          Flexible(
-              flex: 1,
-              child: Container(
-                  padding: const EdgeInsets.all(20),
-                  color: kButtonPrimaryLightColor,
-                  child: ListView(
-                    children: [
-                      const Icon(Icons.drive_eta, color: Colors.black54),
-                      space,
-                      const Icon(Icons.face, color: Colors.black54),
-                      space,
-                      const Icon(Icons.star, color: Colors.black54),
-                      space, space, space, space, space, space, space, space, space, space, space,
-                      space, space, space, space, space, space, space, space, space, space, space,
-                      SizedBox(
-                        child: Align(
-                          alignment: FractionalOffset.bottomCenter,
-                          child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const ImboxPage()));
-                          },
-                          style: ButtonStyle(
-                            padding: MaterialStateProperty.all(EdgeInsets.zero)
-                          ),
-                          child: const Icon(Icons.chat),
-                        ),
-                        ),
-                      ),
-                      SizedBox(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SettingsPage()));
-                          },
-                          style: ButtonStyle(
-                            padding: MaterialStateProperty.all(EdgeInsets.zero)
-                          ),
-                          child: const Icon(Icons.settings),
-                        ),
-                      )
-                    ],
-                  ))),
+          // Flexible(
+              // flex: 1,
+              // child: Container(
+                  // padding: const EdgeInsets.all(20),
+                  // color: kButtonPrimaryLightColor,
+                  // child: ListView(
+                    // children: [
+                      // const Icon(Icons.drive_eta, color: Colors.black54),
+                      // const Icon(Icons.face, color: Colors.black54),
+                      // const Icon(Icons.star, color: Colors.black54),
+                    // ],
+                  // ))),
           Flexible(
               flex: 4,
               child: Container(
                   padding: const EdgeInsets.all(15),
                   color: Colors.white,
-                  child: ListView(
-                    children: <Widget>[
-                      const CircleAvatar(
-                        radius: 50,
-                        backgroundImage: NetworkImage(
-                            'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'),
-                      ),
-                      space,
-                      space,
-                      TextField(
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Colors.black,
-                        // decoration: tfdecoration,
-                        controller: TextEditingController(text: "Usuario"),
-                      ),
-                      space,
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.all(3),
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    DateTime? newDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(1900),
-                                        lastDate: DateTime(2100));
-                                    if (newDate == null) return;
-                                    setState(() => date = newDate);
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    fixedSize: const Size(45, 45),
-                                  ),
-                                  child: const Icon(Icons.calendar_month),
-                                ),
-                              )),
-                          Expanded(
-                              flex: 3,
-                              child: Padding(
+                  child: Form(
+                    key: _formKey,
+                    child: ListView(
+                      children: <Widget>[
+                        const CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(
+                              'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'),
+                        ),
+                        space,
+                        space,
+                        TextFormField(
+                          textInputAction: TextInputAction.next,
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            hintText: "Usuario"
+                          ),
+                          // controller: TextEditingController(text: "Usuario"),
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
                                   padding: const EdgeInsets.all(3),
-                                  child: TextField(
-                                    textInputAction: TextInputAction.next,
-                                    cursorColor: Colors.black,
-                                    // decoration: tfdecoration,
-                                    controller: TextEditingController(
-                                        text: '${date.day}/${date.month}/${date.year}'),
-                                  )))
-                        ],
-                      ),
-                      space,
-                      TextField(
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Colors.black,
-                        // decoration: tfdecoration,
-                        controller: TextEditingController(text: "Correo"),
-                      ),
-                      space,
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.all(3),
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    await openDialogPassword();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.grey,
-                                    fixedSize: const Size(45, 45),
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      DateTime? newDate = await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: DateTime(1900),
+                                          lastDate: DateTime(2100));
+                                      if (newDate == null) return;
+                                      setState(() => date = newDate);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      fixedSize: const Size(45, 45),
+                                    ),
+                                    child: const Icon(Icons.calendar_month),
                                   ),
-                                  child: const Text(
-                                    "Cambiar mi contraseña",
-                                    textAlign: TextAlign.center,
+                                )),
+                            Expanded(
+                                flex: 3,
+                                child: Padding(
+                                    padding: const EdgeInsets.all(3),
+                                    child: TextFormField(
+                                      textInputAction: TextInputAction.next,
+                                      cursorColor: Colors.black,
+                                      controller: TextEditingController(
+                                          text: '${date.day}/${date.month}/${date.year}'),
+                                    )))
+                          ],
+                        ),
+                        space,
+                        TextFormField(
+                          textInputAction: TextInputAction.next,
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            hintText: "Correo"
+                          ),
+                          // controller: TextEditingController(text: "Correo"),
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3),
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      await openDialogPassword();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.grey,
+                                      fixedSize: const Size(45, 45),
+                                    ),
+                                    child: const Text(
+                                      "Cambiar mi contraseña",
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
-                                ),
-                              )),
-                          Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.all(3),
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    await openDialogDelete();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary:
-                                        const Color.fromARGB(255, 255, 70, 57),
-                                    fixedSize: const Size(45, 45),
+                                )),
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3),
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      await openDialogDelete();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary:
+                                          const Color.fromARGB(255, 255, 70, 57),
+                                      fixedSize: const Size(45, 45),
+                                    ),
+                                    child: const Text("Eliminar mi cuenta",
+                                        textAlign: TextAlign.center),
                                   ),
-                                  child: const Text("Eliminar mi cuenta",
-                                      textAlign: TextAlign.center),
-                                ),
-                              ))
-                        ],
-                      ),
-                      space,
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(250, 45)),
-                        onPressed: () {
-                          showCToast();
-                        },
-                        child: const Icon(Icons.save),
-                      ),
-                    ],
-                  ))),
+                                ))
+                          ],
+                        ),
+                        space,
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              fixedSize: const Size(250, 45)),
+                          onPressed: () {
+                            showCToast();
+                          },
+                          child: const Icon(Icons.save),
+                        ),
+                      ],
+                  )))),
         ],
       ),
     );
