@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/ImboxPage/imbox_page_screen.dart';
 import 'package:proj_ver1/RidesPage/rides_page_screen.dart';
+import 'package:proj_ver1/SettingsPage/settings_page_screen.dart';
 import 'package:proj_ver1/UserPage/user_page_screen.dart';
 import 'package:proj_ver1/UserRidesPage/user_rides_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
@@ -39,9 +41,14 @@ class MobileMainPageState extends State<MobileMainPage> {
         title: Text(indexSelected == 2 ? "Mi Perfil" : "Viajes"),
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(indexSelected == 0 ? Icons.search : null))
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const ImboxPage()));
+          }, icon: Icon(indexSelected == 2 ? Icons.chat : null)),
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const SettingsPage()));
+          }, icon: Icon(indexSelected == 2 ? Icons.settings : null)),
         ],
       ),
       // drawer: const NavigationDrawer(),
