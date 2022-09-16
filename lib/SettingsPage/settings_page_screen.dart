@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
+import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
 // import 'package:proj_ver1/TutorialPage/tutorial_page_screen.dart';
-// import 'package:proj_ver1/UserPage/user_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -65,9 +65,6 @@ class MobileSettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Configuración"),
-        // actions: [
-        // IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-        // ],
       ),
       body: Row(
         children: [
@@ -83,10 +80,10 @@ class MobileSettingsPage extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         padding: const EdgeInsets.all(10),
                         child: InkWell(
-                          // onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          // builder: (context) => const MessagePage()));
-                          // },
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const PrivacyPage()));
+                          },
                           child: Column(
                             children: [
                               Row(
