@@ -203,17 +203,19 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                       children: <Widget>[
                         Expanded(
                             child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                            value: value1,
-                            iconSize: 20,
-                            icon: const Icon(Icons.arrow_drop_down),
-                            items: vehicle.map(buildMenuVehicle).toList(),
-                            onChanged: (value) =>
-                                setState(() => value1 = value),
-                          )),
-                        )),
+                              padding: const EdgeInsets.all(10),
+                              child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                value: value1,
+                                iconSize: 20,
+                                icon: const Icon(Icons.arrow_drop_down),
+                                borderRadius: BorderRadius.circular(10),
+                                items: vehicle.map(buildMenuVehicle).toList(),
+                                onChanged: (value) =>
+                                    setState(() => value1 = value),
+                              )),
+                            )
+                        ),
                         Expanded(
                             child: Padding(
                           padding: EdgeInsets.all(5),
