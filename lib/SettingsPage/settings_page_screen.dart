@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
-// import 'package:proj_ver1/TutorialPage/tutorial_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -22,11 +21,23 @@ class MobileSettingsPage extends StatelessWidget {
   const MobileSettingsPage({Key? key}) : super(key: key);
 
   static final bdecoration = BoxDecoration(
-    color: Colors.grey.withOpacity(0.2),
+    border: Border.all(color: Colors.black.withAlpha(130), style: BorderStyle.solid, width: 1),
+    boxShadow: [
+      BoxShadow(
+          color: Colors.green.withOpacity(0.1),
+          spreadRadius: 2,
+          blurRadius: 10,
+          blurStyle: BlurStyle.outer,
+      )
+    ],
+    // color: Colors.grey.withOpacity(0.1),
+    gradient: LinearGradient(
+      colors: [Colors.green.withOpacity(0.3), Colors.grey.withOpacity(0.3)],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter
+    ),
+    borderRadius: BorderRadius.circular(10),
   );
-
-  static final whiteBox = SizedBox(height: 20, child: Container(color: Colors.white));
-  static final greyBox = SizedBox(height: 1, child: Container(color: Colors.grey));
 
   @override
   Widget build(BuildContext context) {
@@ -71,137 +82,155 @@ class MobileSettingsPage extends StatelessWidget {
           Flexible(
             flex: 4,
             child: Container(
+              padding: EdgeInsets.all(20),
                 color: Colors.white,
                 child: ListView(
                   children: [
-                    whiteBox,
-                    Container(
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height*0.21,
+                              decoration: bdecoration,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const PrivacyPage()));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.privacy_tip, size: 30),
+                                space,
+                                Text("Privacidad", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                              ],
+                            ),
+                          ),
+                        )),
+                        space1,
+                        Expanded(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height*0.21,
+                              decoration: bdecoration,
+                          // alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              // builder: (context) => const PrivacyPage()));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.security, size: 30),
+                                space,
+                                Text("Seguridad", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                              ],
+                            ),
+                          ),
+                        )),
+                      ],
+                    ),
+                    space,
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height*0.21,
+                              decoration: bdecoration,
+                          // alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              // builder: (context) => const PrivacyPage()));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.document_scanner, size: 30),
+                                space,
+                                Text("Términos y condiciones", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                              ],
+                            ),
+                          ),
+                        )),
+                      ],
+                    ),
+                    space,
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height*0.21,
+                              decoration: bdecoration,
+                          // alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              // builder: (context) => const PrivacyPage()));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.camera, size: 30),
+                                space,
+                                Text("Tutorial", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                              ],
+                            ),
+                          ),
+                        )),
+                        space1,
+                        Expanded(
+                            child: Container(
+                              height: MediaQuery.of(context).size.height*0.21,
+                              decoration: bdecoration,
+                          // alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(15),
+                          child: InkWell(
+                            onTap: () {
+                              openDialogAbout();
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.info, size: 30),
+                                space,
+                                Text("Acerca de UIS Wheels", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                              ],
+                            ),
+                          ),
+                        )),
+                      ],
+                    ),
+                    space,
+                    Padding(
+                      padding: EdgeInsets.only(left: 60, right: 60),
+                      child: Container(
+                        // height: 130,
+                        // width: 130,
                         decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(10),
+                        // alignment: Alignment.topLeft,
+                        padding: EdgeInsets.all(10),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const PrivacyPage()));
+                            builder: (context) => const LoginPage()));
                           },
-                          child: Column(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Row(
-                                children: const <Widget>[
-                                  Expanded(child: Icon(Icons.privacy_tip)),
-                                  Expanded(
-                                      flex: 4,
-                                      child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Text("Privacidad"))),
-                                  Expanded(child: Icon(Icons.arrow_right))
-                                ],
-                              ),
+                              Icon(Icons.logout, size: 30),
+                              space1,
+                              Text("Cerrar Sesión", style: TextStyle(fontSize: 15), textAlign: TextAlign.center)
                             ],
                           ),
-                        )),
-                    greyBox,
-                    Container(
-                        decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(10),
-                        child: InkWell(
-                          // onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          // builder: (context) => const MessagePage()));
-                          // },
-                          child: Column(
-                            children: [
-                              Row(
-                                children: const <Widget>[
-                                  Expanded(child: Icon(Icons.document_scanner)),
-                                  Expanded(
-                                      flex: 4,
-                                      child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child:
-                                              Text("Términos y Condiciones"))),
-                                  Expanded(child: Icon(Icons.arrow_right))
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
-                    greyBox,
-                    Container(
-                        decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(10),
-                        child: InkWell(
-                          onTap: () {
-                            openDialogAbout();
-                          },
-                          child: Column(
-                            children: [
-                              Row(
-                                children: const <Widget>[
-                                  Expanded(child: Icon(Icons.info)),
-                                  Expanded(
-                                      flex: 4,
-                                      child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Text("Acerca de UIS Wheels"))),
-                                  Expanded(child: Icon(Icons.arrow_right))
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
-                    whiteBox,
-                    Container(
-                        decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(10),
-                        child: InkWell(
-                          // onTap: () {
-                            // Navigator.of(context).push(MaterialPageRoute(
-                                // builder: (context) => const TutorialPage()));
-                          // },
-                          child: Column(
-                            children: [
-                              Row(
-                                children: const <Widget>[
-                                  Expanded(child: Icon(Icons.camera)),
-                                  Expanded(
-                                      flex: 4,
-                                      child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Text("Tutorial"))),
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
-                    greyBox,
-                    Container(
-                        decoration: bdecoration,
-                        alignment: Alignment.topLeft,
-                        padding: const EdgeInsets.all(10),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const LoginPage()));
-                          },
-                          child: Column(
-                            children: [
-                              Row(
-                                children: const <Widget>[
-                                  Expanded(child: Icon(Icons.logout)),
-                                  Expanded(
-                                      flex: 4,
-                                      child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Text("Cerrar Sesión"))),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))
+                        ),
+                      ),
+                    )
                   ],
                 )),
           ),
