@@ -8,3 +8,4 @@ const kButtonPrimaryLightColor = Color.fromARGB(255, 233, 233, 233);
 const kIconColor = Color.fromARGB(255, 168, 216, 164);
 const kTextColor = Color.fromARGB(255, 87, 87, 87);
 const space = SizedBox(height: 10);
+const space1 = SizedBox(width: 10);
