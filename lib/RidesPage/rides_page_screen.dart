@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/RidesPage/components/add_ride.dart';
 import 'package:proj_ver1/UserRidesPage/components/selected_ride.dart';
 import 'package:proj_ver1/constants.dart';
@@ -55,7 +56,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewRidePage()));
+          Navigator.of(context).push(
+            PageTransition(
+              child: const NewRidePage(),
+              type: PageTransitionType.bottomToTop,
+            ),
+          );
         },
         backgroundColor: kPrimaryColor,
         child: const Icon(Icons.add),
@@ -115,8 +121,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,8 +147,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,8 +173,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,8 +199,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,8 +225,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -225,8 +251,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,8 +277,12 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         padding: const EdgeInsets.all(15),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RidePage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

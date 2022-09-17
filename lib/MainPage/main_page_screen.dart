@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/ImboxPage/imbox_page_screen.dart';
 import 'package:proj_ver1/RidesPage/rides_page_screen.dart';
 import 'package:proj_ver1/SettingsPage/settings_page_screen.dart';
@@ -47,14 +48,22 @@ class MobileMainPageState extends State<MobileMainPage> {
             actions: [
               IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ImboxPage()));
+                    Navigator.of(context).push(
+                      PageTransition(
+                        child: const ImboxPage(),
+                        type: PageTransitionType.rightToLeft,
+                      ),
+                    );
                   },
                   icon: Icon(indexSelected == 2 ? Icons.chat : null)),
               IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const SettingsPage()));
+                    Navigator.of(context).push(
+                      PageTransition(
+                        child: const SettingsPage(),
+                        type: PageTransitionType.rightToLeft,
+                      ),
+                    );
                   },
                   icon: Icon(indexSelected == 2 ? Icons.settings : null)),
             ],

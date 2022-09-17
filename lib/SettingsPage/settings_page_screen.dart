@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/SettingsPage/components/help_page.dart';
 import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
@@ -99,8 +100,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const PrivacyPage()));
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const PrivacyPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -121,8 +126,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SecurityPage()));
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const SecurityPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -147,8 +156,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const TermsPage()));
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const TermsPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -173,8 +186,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const HelpPage()));
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const HelpPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -220,8 +237,12 @@ class MobileSettingsPage extends StatelessWidget {
                         padding: EdgeInsets.all(10),
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
+                            Navigator.of(context).push(
+                              PageTransition(
+                                  child: const LoginPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                            );
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
