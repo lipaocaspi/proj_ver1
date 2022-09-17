@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
+import 'package:proj_ver1/SettingsPage/components/help_page.dart';
 import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
+import 'package:proj_ver1/SettingsPage/components/security_page.dart';
+import 'package:proj_ver1/SettingsPage/components/terms_page.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -118,8 +121,8 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              // builder: (context) => const PrivacyPage()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const SecurityPage()));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -144,15 +147,15 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              // builder: (context) => const PrivacyPage()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const TermsPage()));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(Icons.document_scanner, size: 30),
                                 space,
-                                Text("Términos y condiciones", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                                Text("Términos y Condiciones", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
                               ],
                             ),
                           ),
@@ -170,15 +173,15 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              // builder: (context) => const PrivacyPage()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const HelpPage()));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.camera, size: 30),
+                                Icon(Icons.help, size: 30),
                                 space,
-                                Text("Tutorial", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+                                Text("Ayuda", style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
                               ],
                             ),
                           ),
