@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/responsive.dart';
 
-class PrivacyPage extends StatelessWidget {
-  const PrivacyPage({
+class SecurityPage extends StatelessWidget {
+  const SecurityPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Responsive(
-      mobile: MobilePrivacyPage(),
+      mobile: MobileSecurityPage(),
     );
   }
 }
 
-class MobilePrivacyPage extends StatelessWidget {
-  const MobilePrivacyPage({Key? key}) : super(key: key);
+class MobileSecurityPage extends StatelessWidget {
+  const MobileSecurityPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Privacidad"),
+        title: const Text("Seguridad"),
       ),
       body: Column(
         children: const [
