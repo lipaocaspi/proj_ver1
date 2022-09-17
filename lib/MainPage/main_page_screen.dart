@@ -36,43 +36,54 @@ class MobileMainPageState extends State<MobileMainPage> {
       const UserRidesPage(),
       const UserPage()
     ];
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(indexSelected == 2 ? "Mi Perfil" : "Viajes"),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const ImboxPage()));
-          }, icon: Icon(indexSelected == 2 ? Icons.chat : null)),
-          IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const SettingsPage()));
-          }, icon: Icon(indexSelected == 2 ? Icons.settings : null)),
-        ],
-      ),
-      // drawer: const NavigationDrawer(),
-      body: children[indexSelected],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kPrimaryColor,
-        fixedColor: Colors.black,
-        currentIndex: indexSelected,
-        onTap: (index) => setState(() {
-          indexSelected = index;
-        }),
-        items: const [
-          BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home),
-              icon: Icon(Icons.home_outlined), label: "Viajes"),
-          BottomNavigationBarItem(
-            activeIcon: Icon(Icons.drive_eta),
-              icon: Icon(Icons.drive_eta_outlined), label: "Mis Viajes"),
-          BottomNavigationBarItem(
-            activeIcon: Icon(Icons.person),
-              icon: Icon(Icons.person_outline), label: "Perfil")
-        ],
-      ),
-    );
+    return WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(indexSelected == 2 ? "Mi Perfil" : "Viajes"),
+            automaticallyImplyLeading: false,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ImboxPage()));
+                  },
+                  icon: Icon(indexSelected == 2 ? Icons.chat : null)),
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SettingsPage()));
+                  },
+                  icon: Icon(indexSelected == 2 ? Icons.settings : null)),
+            ],
+          ),
+          // drawer: const NavigationDrawer(),
+          body: children[indexSelected],
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: kPrimaryColor,
+            fixedColor: Colors.black,
+            currentIndex: indexSelected,
+            onTap: (index) => setState(() {
+              indexSelected = index;
+            }),
+            items: const [
+              BottomNavigationBarItem(
+                  activeIcon: Icon(Icons.home),
+                  icon: Icon(Icons.home_outlined),
+                  label: "Viajes"),
+              BottomNavigationBarItem(
+                  activeIcon: Icon(Icons.drive_eta),
+                  icon: Icon(Icons.drive_eta_outlined),
+                  label: "Mis Viajes"),
+              BottomNavigationBarItem(
+                  activeIcon: Icon(Icons.person),
+                  icon: Icon(Icons.person_outline),
+                  label: "Perfil")
+            ],
+          ),
+        ));
   }
 }
 
