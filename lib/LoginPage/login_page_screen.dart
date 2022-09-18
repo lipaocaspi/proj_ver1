@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,11 +31,13 @@ class MobileLoginPage extends StatefulWidget {
 }
 
 class MobileLoginPageState extends State<MobileLoginPage> {
+  String email = '';
+  String password = '';
   final _formKey = GlobalKey<FormState>();
 
-  void _validate() {
-    _formKey.currentState?.validate();
-  }
+  // void _validate() {
+  // _formKey.currentState?.validate();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -87,13 +90,10 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             cursorColor: Colors.black,
-                            validator: ValidationBuilder()
-                                .maxLength(50)
-                                .regExp(
-                                    RegExp(
-                                        r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
-                                    'Ingrese un correo válido')
-                                .build(),
+                            validator: (email) =>
+                                email != null && !EmailValidator.validate(email)
+                                    ? 'Ingrese un correo válido'
+                                    : null,
                             decoration: const InputDecoration(
                               hintText: "Correo",
                               prefixIcon: Padding(
@@ -111,9 +111,11 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                             obscureText: true,
                             cursorColor: Colors.black,
                             validator: ValidationBuilder()
-                                .maxLength(
-                                    30, 'Número máximo de caracteres: 30')
-                                .build(),
+                              .regExp(
+                                  RegExp(
+                                      r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}"),
+                                    "Ingrese una contraseña válida")
+                              .build(),
                             decoration: const InputDecoration(
                               hintText: "Contraseña",
                               prefixIcon: Padding(
@@ -153,12 +155,15 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                                 padding: EdgeInsets.only(left: 5, right: 50),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                      PageTransition(
-                                        child: const MainPage(),
-                                        type: PageTransitionType.fade,
-                                      ),
-                                    );
+                                    final isValidForm =
+                                        _formKey.currentState!.validate();
+                                    if (isValidForm) {
+                                      Navigator.of(context).push(PageTransition(
+                                              child: MainPage(),
+                                              type: PageTransitionType.fade)
+                                          // (Route<dynamic> route) => false
+                                          );
+                                    }
                                   },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(100, 45),
