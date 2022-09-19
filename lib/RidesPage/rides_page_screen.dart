@@ -99,9 +99,8 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
+                            padding: EdgeInsets.all(5),
+                              child: DropdownButtonFormField<String>(
                                 value: value1,
                                 iconSize: 20,
                                 icon: const Icon(Icons.arrow_drop_down),
@@ -111,7 +110,6 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                                 onChanged: (value) =>
                                     setState(() => value1 = value),
                               )
-                            ),
                           )
                         )
                       ],
