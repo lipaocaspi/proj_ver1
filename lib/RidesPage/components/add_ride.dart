@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,6 +26,7 @@ class MobileNewRidePage extends StatefulWidget {
 
 class MobileNewRidePageState extends State<MobileNewRidePage> {
   DateTime dateTime = DateTime.now();
+  final formKey = GlobalKey<FormState>();
 
   Future pickDateTime() async {
     DateTime? date = await pickDate();
@@ -57,7 +60,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
   final vehicle = ["Automóvil", "Motocicleta"];
 
   String? value1;
-  
+
   DropdownMenuItem<String> buildMenuVehicle(String vehicle) => DropdownMenuItem(
         value: vehicle,
         child: Text(
@@ -109,103 +112,110 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
         ),
         body: Container(
             padding: const EdgeInsets.all(10),
-            child: Container(
-                padding: const EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                child: ListView(
-                  children: [
-                    Row(
+            child: Form(
+                key: formKey,
+                child: Container(
+                    padding: const EdgeInsets.all(30),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: ListView(
                       children: [
-                        Expanded(
-                            flex: 3,
-                            child: Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextFormField(
-                                textInputAction: TextInputAction.next,
-                                decoration: const InputDecoration(
-                                    hintText: "Salida",
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: Icon(Icons.room),
-                                    )),
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  child: Icon(Icons.map),
-                                )))
-                      ],
-                    ),
-                    space,
-                    Row(
-                      children: [
-                        Expanded(
-                            flex: 3,
-                            child: Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextFormField(
-                                textInputAction: TextInputAction.next,
-                                decoration: const InputDecoration(
-                                    hintText: "Llegada",
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: Icon(Icons.room),
-                                    )),
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  child: Icon(Icons.map),
-                                )))
-                      ],
-                    ),
-                    space,
-                    Row(
-                      children: [
-                        Expanded(
-                            flex: 3,
-                            child: Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextFormField(
-                                textInputAction: TextInputAction.next,
-                                controller: TextEditingController(
-                                    text:
-                                        '${dateTime.day}/${dateTime.month}/${dateTime.year}, $hours:$minutes'),
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    pickDateTime();
-                                  },
-                                  child: Icon(Icons.calendar_month),
-                                )))
-                      ],
-                    ),
-                    space,
-                    Text("Vehículo",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    space,
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: DropdownButtonHideUnderline(
-                                  child: DropdownButton<String>(
+                        Row(
+                          children: [
+                            Expanded(
+                                flex: 3,
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextFormField(
+                                    textInputAction: TextInputAction.next,
+                                    decoration: const InputDecoration(
+                                        hintText: "Salida",
+                                        prefixIcon: Padding(
+                                          padding: EdgeInsets.all(10),
+                                          child: Icon(Icons.room),
+                                        )),
+                                  ),
+                                )),
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(Icons.map),
+                                    )))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: [
+                            Expanded(
+                                flex: 3,
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextFormField(
+                                    textInputAction: TextInputAction.next,
+                                    decoration: const InputDecoration(
+                                        hintText: "Llegada",
+                                        prefixIcon: Padding(
+                                          padding: EdgeInsets.all(10),
+                                          child: Icon(Icons.room),
+                                        )),
+                                  ),
+                                )),
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(Icons.map),
+                                    )))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: [
+                            Expanded(
+                                flex: 3,
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextFormField(
+                                    textInputAction: TextInputAction.next,
+                                    validator: ValidationBuilder()
+                                        .regExp(
+                                            RegExp(
+                                                r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} (00|[0-9]|1[0-9]|2[0-3]):([0-5][0-9])"),
+                                            "Ingrese una fecha válida")
+                                        .build(),
+                                    controller: TextEditingController(
+                                        text:
+                                            '${dateTime.day}/${dateTime.month}/${dateTime.year} $hours:$minutes'),
+                                  ),
+                                )),
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        pickDateTime();
+                                      },
+                                      child: Icon(Icons.calendar_month),
+                                    )))
+                          ],
+                        ),
+                        space,
+                        Text("Vehículo",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.all(5),
+                                  child: DropdownButtonFormField<String>(
                                 value: value1,
                                 iconSize: 20,
                                 icon: const Icon(Icons.arrow_drop_down),
@@ -213,89 +223,111 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                 items: vehicle.map(buildMenuVehicle).toList(),
                                 onChanged: (value) =>
                                     setState(() => value1 = value),
-                              )),
-                            )
-                        ),
-                        Expanded(
-                            child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: TextFormField(
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(hintText: "Cupos"),
-                          ),
-                        ))
-                      ],
-                    ),
-                    space,
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                            child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: TextFormField(
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(hintText: "Color"),
-                          ),
-                        )),
-                        Expanded(
-                            child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: TextFormField(
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(hintText: "Placa"),
-                          ),
-                        ))
-                      ],
-                    ),
-                    space,
-                    TextFormField(
-                        textInputAction: TextInputAction.done,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          hintText: "Valor",
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Icon(Icons.money),
-                          ),
-                        )),
-                    space,
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: const EdgeInsets.all(3),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.red,
-                                  fixedSize: const Size(45, 45),
-                                ),
-                                child: const Text("CANCELAR"),
+                                validator: (value) => value == null ? 'Elija una opción' : null,
                               ),
                             )),
-                        Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: const EdgeInsets.all(3),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  showSToast();
-                                  Navigator.pop(context);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  fixedSize: const Size(45, 45),
-                                ),
-                                child: const Text("AÑADIR"),
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: TextFormField(
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.number,
+                                validator: ValidationBuilder()
+                                        .regExp(
+                                            RegExp(
+                                                r"^([1-4]$)"),
+                                            "Número no válido")
+                                        .build(),
+                                decoration: InputDecoration(hintText: "Cupos"),
                               ),
                             ))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: TextFormField(
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(hintText: "Color"),
+                              ),
+                            )),
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: TextFormField(
+                                textInputAction: TextInputAction.next,
+                                validator: ValidationBuilder()
+                                        .regExp(
+                                            RegExp(
+                                                r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)$"),
+                                            "Placa no válida")
+                                        .build(),
+                                decoration: InputDecoration(hintText: "Placa"),
+                              ),
+                            ))
+                          ],
+                        ),
+                        space,
+                        TextFormField(
+                            textInputAction: TextInputAction.done,
+                            keyboardType: TextInputType.number,
+                            validator: ValidationBuilder()
+                              .regExp(
+                                RegExp(
+                                    r"^(\d{4})$"),
+                                  "Valor no válido")
+                              .build(),
+                            decoration: InputDecoration(
+                              hintText: "Valor",
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Icon(Icons.money),
+                              ),
+                            )),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.red,
+                                      fixedSize: const Size(45, 45),
+                                    ),
+                                    child: const Text("CANCELAR"),
+                                  ),
+                                )),
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      final isValidForm =
+                                          formKey.currentState!.validate();
+                                      if (isValidForm) {
+                                        showSToast();
+                                        Navigator.of(context).pop();
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Colors.green,
+                                      fixedSize: const Size(45, 45),
+                                    ),
+                                    child: const Text("AÑADIR"),
+                                  ),
+                                ))
+                          ],
+                        ),
                       ],
-                    ),
-                  ],
-                ))));
+                    )))));
   }
 }
