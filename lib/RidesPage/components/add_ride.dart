@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -129,6 +128,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
+                                    validator: ValidationBuilder().build(),
                                     decoration: const InputDecoration(
                                         hintText: "Salida",
                                         prefixIcon: Padding(
@@ -156,6 +156,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
+                                    validator: ValidationBuilder().build(),
                                     decoration: const InputDecoration(
                                         hintText: "Llegada",
                                         prefixIcon: Padding(
@@ -251,6 +252,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                               padding: EdgeInsets.all(5),
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
+                                validator: ValidationBuilder().build(),
                                 decoration: InputDecoration(hintText: "Color"),
                               ),
                             )),
