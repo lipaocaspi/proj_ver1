@@ -264,7 +264,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                 validator: ValidationBuilder()
                                         .regExp(
                                             RegExp(
-                                                r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)$"),
+                                                r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)|([A-Z]{3}\d{2})$"),
                                             "Placa no válida")
                                         .build(),
                                 decoration: InputDecoration(hintText: "Placa"),
