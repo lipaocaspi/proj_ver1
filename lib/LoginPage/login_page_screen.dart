@@ -7,6 +7,7 @@ import 'package:proj_ver1/MainPage/main_page_screen.dart';
 import 'package:proj_ver1/SignupPage/signup_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
+import 'package:proj_ver1/variables.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({
@@ -31,8 +32,6 @@ class MobileLoginPage extends StatefulWidget {
 }
 
 class MobileLoginPageState extends State<MobileLoginPage> {
-  String email = '';
-  String password = '';
   final _formKey = GlobalKey<FormState>();
 
   // void _validate() {
@@ -94,6 +93,9 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                                 email != null && !EmailValidator.validate(email)
                                     ? 'Ingrese un correo válido'
                                     : null,
+                            onChanged: (value) {
+                              email = value;
+                            },
                             decoration: const InputDecoration(
                               hintText: "Correo",
                               prefixIcon: Padding(
@@ -116,6 +118,9 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                                       r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}"),
                                     "Ingrese una contraseña válida")
                               .build(),
+                            onChanged: (value) {
+                              password = value;
+                            },
                             decoration: const InputDecoration(
                               hintText: "Contraseña",
                               prefixIcon: Padding(

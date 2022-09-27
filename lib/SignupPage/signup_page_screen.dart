@@ -7,6 +7,7 @@ import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/MainPage/main_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
+import 'package:proj_ver1/variables.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -29,11 +30,6 @@ class MobileSignUpPage extends StatefulWidget {
 }
 
 class MobileSignUpPageState extends State<MobileSignUpPage> {
-  String name = '';
-  DateTime date = DateTime.now();
-  String email = '';
-  String password = '';
-  String confpassword = '';
   final _formKey = GlobalKey<FormState>();
 
   // void _validate() {
@@ -79,6 +75,9 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                                 .maxLength(
                                     50, 'Número máximo de caracteres: 50')
                                 .build(),
+                            onChanged: (value) {
+                              name = value;
+                            },
                             decoration: const InputDecoration(
                               hintText: "Nombre",
                               prefixIcon: Padding(
@@ -151,6 +150,9 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                                 email != null && !EmailValidator.validate(email)
                                     ? 'Ingrese un correo válido'
                                     : null,
+                            onChanged: (value) {
+                              email = value;
+                            },
                             decoration: const InputDecoration(
                               hintText: "Correo",
                               prefixIcon: Padding(
@@ -243,10 +245,10 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                                         _formKey.currentState!.validate();
                                     if (isValidForm) {
                                       Navigator.of(context).push(PageTransition(
-                                        child: MainPage(),
-                                        type: PageTransitionType.fade)
-                                        // (Route<dynamic> route) => false
-                                      );
+                                              child: MainPage(),
+                                              type: PageTransitionType.fade)
+                                          // (Route<dynamic> route) => false
+                                          );
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(

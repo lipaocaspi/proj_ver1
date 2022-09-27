@@ -5,6 +5,7 @@ import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:proj_ver1/variables.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({
@@ -30,10 +31,6 @@ class MobileUserPageState extends State<MobileUserPage> {
   static final indecoration = InputDecoration(
     filled: false,
   );
-  String name = '';
-  DateTime date = DateTime.now();
-  String email = '';
-  String password = '';
   String newpassword = '';
   String confnewpassword = '';
   final _formKey = GlobalKey<FormState>();
@@ -285,7 +282,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                                                   .build(),
                                               decoration: indecoration,
                                               controller: TextEditingController(
-                                                  text: "Liliana Castellanos"),
+                                                text: '${name}'),
                                             ),
                                             Row(
                                               children: [
@@ -375,7 +372,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                                     : null,
                                 decoration: indecoration,
                                 controller: TextEditingController(
-                                    text: "lipaocaspi@hotmail.com"),
+                                  text: '${email}'),
                               ),
                               space,
                               Row(

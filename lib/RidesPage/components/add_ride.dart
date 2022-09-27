@@ -3,6 +3,7 @@ import 'package:form_validator/form_validator.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:proj_ver1/variables.dart';
 
 class NewRidePage extends StatelessWidget {
   const NewRidePage({
@@ -41,7 +42,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
       time.hour,
       time.minute,
     );
-    setState(() => this.dateTime = dateTime); // pressed 'OK'
+    setState(() => this.dateTime = dateTime); 
   }
 
   Future<DateTime?> pickDate() => showDatePicker(
@@ -129,6 +130,9 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
                                     validator: ValidationBuilder().build(),
+                                    onChanged: (value) {
+                                      start = value;
+                                    },
                                     decoration: const InputDecoration(
                                         hintText: "Salida",
                                         prefixIcon: Padding(
@@ -157,6 +161,9 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
                                     validator: ValidationBuilder().build(),
+                                    onChanged: (value) {
+                                      end = value;
+                                    },
                                     decoration: const InputDecoration(
                                         hintText: "Llegada",
                                         prefixIcon: Padding(
@@ -187,7 +194,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                     validator: ValidationBuilder()
                                         .regExp(
                                             RegExp(
-                                                r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} (00|[0-9]|1[0-9]|2[0-3]):([0-5][0-9])"),
+                                                r"^(([0-9])|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} (00|[0-9]|1[0-9]|2[0-3]):([0-5][0-9])"),
                                             "Ingrese una fecha válida")
                                         .build(),
                                     controller: TextEditingController(
@@ -216,7 +223,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                             Expanded(
                                 child: Padding(
                               padding: const EdgeInsets.all(5),
-                                  child: DropdownButtonFormField<String>(
+                              child: DropdownButtonFormField<String>(
                                 value: value1,
                                 iconSize: 20,
                                 icon: const Icon(Icons.arrow_drop_down),
@@ -224,7 +231,8 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                 items: vehicle.map(buildMenuVehicle).toList(),
                                 onChanged: (value) =>
                                     setState(() => value1 = value),
-                                validator: (value) => value == null ? 'Elija una opción' : null,
+                                validator: (value) =>
+                                    value == null ? 'Elija una opción' : null,
                               ),
                             )),
                             Expanded(
@@ -234,11 +242,12 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.number,
                                 validator: ValidationBuilder()
-                                        .regExp(
-                                            RegExp(
-                                                r"^([1-4]$)"),
-                                            "Número no válido")
-                                        .build(),
+                                    .regExp(RegExp(r"^([1-4]$)"),
+                                        "Número no válido")
+                                    .build(),
+                                onChanged: (value) {
+                                  room = value as int;
+                                },
                                 decoration: InputDecoration(hintText: "Cupos"),
                               ),
                             ))
@@ -262,11 +271,14 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
                                 validator: ValidationBuilder()
-                                        .regExp(
-                                            RegExp(
-                                                r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)|([A-Z]{3}\d{2})$"),
-                                            "Placa no válida")
-                                        .build(),
+                                    .regExp(
+                                        RegExp(
+                                            r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)|([A-Z]{3}\d{2})$"),
+                                        "Placa no válida")
+                                    .build(),
+                                onChanged: (value) {
+                                  plate = value;
+                                },
                                 decoration: InputDecoration(hintText: "Placa"),
                               ),
                             ))
@@ -277,11 +289,11 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.number,
                             validator: ValidationBuilder()
-                              .regExp(
-                                RegExp(
-                                    r"^(\d{4})$"),
-                                  "Valor no válido")
-                              .build(),
+                                .regExp(RegExp(r"^(\d{4})$"), "Valor no válido")
+                                .build(),
+                            onChanged: (value) {
+                              price = value as int;
+                            },
                             decoration: InputDecoration(
                               hintText: "Valor",
                               prefixIcon: Padding(
