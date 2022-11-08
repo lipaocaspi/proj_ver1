@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:form_validator/form_validator.dart';
+import 'package:proj_ver1/MainPage/main_page_screen.dart';
+import 'package:proj_ver1/RidesPage/rides_page_screen.dart';
+// import 'package:form_validator/form_validator.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -26,7 +28,7 @@ class MobileNewRidePage extends StatefulWidget {
 
 class MobileNewRidePageState extends State<MobileNewRidePage> {
   DateTime dateTime = DateTime.now();
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
 
   Future pickDateTime() async {
     DateTime? date = await pickDate();
@@ -42,7 +44,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
       time.hour,
       time.minute,
     );
-    setState(() => this.dateTime = dateTime); 
+    setState(() => this.dateTime = dateTime);
   }
 
   Future<DateTime?> pickDate() => showDatePicker(
@@ -66,6 +68,33 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
         child: Text(
           vehicle,
           style: const TextStyle(fontSize: 15),
+        ),
+      );
+
+  Future<String?> openDialogExit() => showDialog<String>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Salir', textAlign: TextAlign.center),
+          content: const Text(
+            "¿Está seguro que desea salir? No se guardaran los cambios.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          actions: [
+            TextButton(
+                child: const Text('CANCELAR'),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MainPage()));
+                },
+                child: const Text('SALIR')),
+          ],
         ),
       );
 
@@ -108,17 +137,33 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Nuevo Viaje"),
-          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () async {
+              await openDialogExit();
+            },
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  // final isValidForm =
+                  // formKey.currentState!.validate();
+                  // if (isValidForm) {
+                  showSToast();
+                  Navigator.of(context).pop();
+                },
+                // },
+                icon: Icon(Icons.check))
+          ],
         ),
         body: Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(15),
             child: Form(
-                key: formKey,
+                // key: formKey,
                 child: Container(
-                    padding: const EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.all(15),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     child: ListView(
                       children: [
                         Row(
@@ -129,12 +174,12 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
-                                    validator: ValidationBuilder().build(),
+                                    // validator: ValidationBuilder().build(),
                                     onChanged: (value) {
                                       start = value;
                                     },
                                     decoration: const InputDecoration(
-                                        hintText: "Salida",
+                                        hintText: "Origen",
                                         prefixIcon: Padding(
                                           padding: EdgeInsets.all(10),
                                           child: Icon(Icons.room),
@@ -160,12 +205,12 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
-                                    validator: ValidationBuilder().build(),
+                                    // validator: ValidationBuilder().build(),
                                     onChanged: (value) {
                                       end = value;
                                     },
                                     decoration: const InputDecoration(
-                                        hintText: "Llegada",
+                                        hintText: "Destino",
                                         prefixIcon: Padding(
                                           padding: EdgeInsets.all(10),
                                           child: Icon(Icons.room),
@@ -191,12 +236,12 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
                                     textInputAction: TextInputAction.next,
-                                    validator: ValidationBuilder()
-                                        .regExp(
-                                            RegExp(
-                                                r"^(([0-9])|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} (00|[0-9]|1[0-9]|2[0-3]):([0-5][0-9])"),
-                                            "Ingrese una fecha válida")
-                                        .build(),
+                                    // validator: ValidationBuilder()
+                                    // .regExp(
+                                    // RegExp(
+                                    // r"^(([0-9])|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} (00|[0-9]|1[0-9]|2[0-3]):([0-5][0-9])"),
+                                    // "Ingrese una fecha válida")
+                                    // .build(),
                                     controller: TextEditingController(
                                         text:
                                             '${dateTime.day}/${dateTime.month}/${dateTime.year} $hours:$minutes'),
@@ -231,8 +276,8 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                 items: vehicle.map(buildMenuVehicle).toList(),
                                 onChanged: (value) =>
                                     setState(() => value1 = value),
-                                validator: (value) =>
-                                    value == null ? 'Elija una opción' : null,
+                                // validator: (value) =>
+                                // value == null ? 'Elija una opción' : null,
                               ),
                             )),
                             Expanded(
@@ -241,10 +286,10 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.number,
-                                validator: ValidationBuilder()
-                                    .regExp(RegExp(r"^([1-4]$)"),
-                                        "Número no válido")
-                                    .build(),
+                                // validator: ValidationBuilder()
+                                // .regExp(RegExp(r"^([1-4]$)"),
+                                // "Número no válido")
+                                // .build(),
                                 onChanged: (value) {
                                   room = value as int;
                                 },
@@ -261,7 +306,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                               padding: EdgeInsets.all(5),
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
-                                validator: ValidationBuilder().build(),
+                                // validator: ValidationBuilder().build(),
                                 decoration: InputDecoration(hintText: "Color"),
                               ),
                             )),
@@ -270,12 +315,12 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                               padding: EdgeInsets.all(5),
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
-                                validator: ValidationBuilder()
-                                    .regExp(
-                                        RegExp(
-                                            r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)|([A-Z]{3}\d{2})$"),
-                                        "Placa no válida")
-                                    .build(),
+                                // validator: ValidationBuilder()
+                                // .regExp(
+                                // RegExp(
+                                // r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)|([A-Z]{3}\d{2})$"),
+                                // "Placa no válida")
+                                // .build(),
                                 onChanged: (value) {
                                   plate = value;
                                 },
@@ -288,9 +333,9 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                         TextFormField(
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.number,
-                            validator: ValidationBuilder()
-                                .regExp(RegExp(r"^(\d{4})$"), "Valor no válido")
-                                .build(),
+                            // validator: ValidationBuilder()
+                            // .regExp(RegExp(r"^(\d{4})$"), "Valor no válido")
+                            // .build(),
                             onChanged: (value) {
                               price = value as int;
                             },
@@ -301,46 +346,6 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                                 child: Icon(Icons.money),
                               ),
                             )),
-                        space,
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(3),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.red,
-                                      fixedSize: const Size(45, 45),
-                                    ),
-                                    child: const Text("CANCELAR"),
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(3),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      final isValidForm =
-                                          formKey.currentState!.validate();
-                                      if (isValidForm) {
-                                        showSToast();
-                                        Navigator.of(context).pop();
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.green,
-                                      fixedSize: const Size(45, 45),
-                                    ),
-                                    child: const Text("AÑADIR"),
-                                  ),
-                                ))
-                          ],
-                        ),
                       ],
                     )))));
   }
