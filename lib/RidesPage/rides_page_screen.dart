@@ -85,9 +85,7 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                               decoration: InputDecoration(
                                 hintText: "Buscar",
                                 prefixIcon: Icon(Icons.search, color: Colors.black),
-                                filled: true,
-                                fillColor: Colors.grey.shade100,
-                                contentPadding: EdgeInsets.all(8),
+                                contentPadding: EdgeInsets.all(7),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
