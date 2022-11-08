@@ -1,4 +1,4 @@
-import 'package:email_validator/email_validator.dart';
+// import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +32,7 @@ class MobileLoginPage extends StatefulWidget {
 }
 
 class MobileLoginPageState extends State<MobileLoginPage> {
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
 
   // void _validate() {
   // _formKey.currentState?.validate();
@@ -50,7 +50,7 @@ class MobileLoginPageState extends State<MobileLoginPage> {
             color: kBackgroundColor,
             height: MediaQuery.of(context).size.height,
             child: Form(
-              key: _formKey,
+              // key: _formKey,
               // child: Stack(
               // alignment: Alignment.center,
               // children: <Widget>[
@@ -89,10 +89,10 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             cursorColor: Colors.black,
-                            validator: (email) =>
-                                email != null && !EmailValidator.validate(email)
-                                    ? 'Ingrese un correo válido'
-                                    : null,
+                            // validator: (email) =>
+                                // email != null && !EmailValidator.validate(email)
+                                    // ? 'Ingrese un correo válido'
+                                    // : null,
                             onChanged: (value) {
                               email = value;
                             },
@@ -160,16 +160,16 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                                 padding: EdgeInsets.only(left: 5, right: 50),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    final isValidForm =
-                                        _formKey.currentState!.validate();
-                                    if (isValidForm) {
+                                    // final isValidForm =
+                                        // _formKey.currentState!.validate();
+                                    // if (isValidForm) {
                                       Navigator.of(context).push(PageTransition(
                                               child: MainPage(),
                                               type: PageTransitionType.fade)
                                           // (Route<dynamic> route) => false
                                           );
-                                    }
-                                  },
+                                    },
+                                  // },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(100, 45),
                                   ),
@@ -186,10 +186,6 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                   ))
                 ],
               ),
-              // SizedBox(height: MediaQuery.of(context).size.height * 0.09),
-              // SafeArea(child: child),
-              // ],
-              // ),
             ),
           ),
         ));

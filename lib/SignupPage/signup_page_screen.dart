@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart';
-import 'package:form_validator/form_validator.dart';
+// import 'package:email_validator/email_validator.dart';
+// import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
@@ -30,7 +30,7 @@ class MobileSignUpPage extends StatefulWidget {
 }
 
 class MobileSignUpPageState extends State<MobileSignUpPage> {
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
 
   // void _validate() {
   // _formKey.currentState?.validate();
@@ -49,7 +49,7 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
             height: MediaQuery.of(context).size.height,
             child: Form(
               // autovalidateMode: AutovalidateMode.onUserInteraction,
-              key: _formKey,
+              // key: _formKey,
               child: Column(
                 children: [
                   Flexible(
@@ -71,10 +71,10 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                             keyboardType: TextInputType.text,
                             textInputAction: TextInputAction.next,
                             cursorColor: Colors.black,
-                            validator: ValidationBuilder()
-                                .maxLength(
-                                    50, 'Número máximo de caracteres: 50')
-                                .build(),
+                            // validator: ValidationBuilder()
+                                // .maxLength(
+                                    // 50, 'Número máximo de caracteres: 50')
+                                // .build(),
                             onChanged: (value) {
                               name = value;
                             },
@@ -121,12 +121,12 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                                   keyboardType: TextInputType.datetime,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Colors.black,
-                                  validator: ValidationBuilder()
-                                      .regExp(
-                                          RegExp(
-                                              r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4}"),
-                                          "Ingrese una fecha válida")
-                                      .build(),
+                                  // validator: ValidationBuilder()
+                                      // .regExp(
+                                          // RegExp(
+                                              // r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4}"),
+                                          // "Ingrese una fecha válida")
+                                      // .build(),
                                   controller: TextEditingController(
                                       text:
                                           '${date.day}/${date.month}/${date.year}'),
@@ -146,10 +146,10 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             cursorColor: Colors.black,
-                            validator: (email) =>
-                                email != null && !EmailValidator.validate(email)
-                                    ? 'Ingrese un correo válido'
-                                    : null,
+                            // validator: (email) =>
+                                // email != null && !EmailValidator.validate(email)
+                                    // ? 'Ingrese un correo válido'
+                                    // : null,
                             onChanged: (value) {
                               email = value;
                             },
@@ -172,12 +172,12 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                             onChanged: (value) {
                               password = value;
                             },
-                            validator: ValidationBuilder()
-                                .regExp(
-                                    RegExp(
-                                        r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}"),
-                                    "Ingrese una contraseña válida")
-                                .build(),
+                            // validator: ValidationBuilder()
+                                // .regExp(
+                                    // RegExp(
+                                        // r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}"),
+                                    // "Ingrese una contraseña válida")
+                                // .build(),
                             decoration: const InputDecoration(
                               hintText: "Contraseña",
                               prefixIcon: Padding(
@@ -194,14 +194,14 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                             textInputAction: TextInputAction.done,
                             obscureText: true,
                             cursorColor: Colors.black,
-                            validator: (value) {
-                              if (value != null && value.isEmpty) {
-                                return 'This field is required';
-                              }
-                              if (value != password) {
-                                return "Las contraseñas no coinciden.";
-                              }
-                            },
+                            // validator: (value) {
+                              // if (value != null && value.isEmpty) {
+                                // return 'This field is required';
+                              // }
+                              // if (value != password) {
+                                // return "Las contraseñas no coinciden.";
+                              // }
+                            // },
                             decoration: const InputDecoration(
                               hintText: "Confirmar contraseña",
                               prefixIcon: Padding(
@@ -241,16 +241,16 @@ class MobileSignUpPageState extends State<MobileSignUpPage> {
                                 padding: EdgeInsets.only(left: 5, right: 50),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    final isValidForm =
-                                        _formKey.currentState!.validate();
-                                    if (isValidForm) {
+                                    // final isValidForm =
+                                        // _formKey.currentState!.validate();
+                                    // if (isValidForm) {
                                       Navigator.of(context).push(PageTransition(
                                               child: MainPage(),
                                               type: PageTransitionType.fade)
                                           // (Route<dynamic> route) => false
                                           );
-                                    }
-                                  },
+                                    },
+                                  // },
                                   style: ElevatedButton.styleFrom(
                                     fixedSize: const Size(100, 45),
                                   ),
