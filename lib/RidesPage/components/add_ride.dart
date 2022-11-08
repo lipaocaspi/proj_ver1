@@ -76,7 +76,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
         builder: (context) => AlertDialog(
           title: const Text('Salir', textAlign: TextAlign.center),
           content: const Text(
-            "¿Está seguro que desea salir? No se guardaran los cambios.",
+            "¿Está seguro que desea salir? No se guardarán los cambios.",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -267,7 +267,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                           children: <Widget>[
                             Expanded(
                                 child: Padding(
-                              padding: const EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(3),
                               child: DropdownButtonFormField<String>(
                                 value: value1,
                                 iconSize: 20,
@@ -282,7 +282,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                             )),
                             Expanded(
                                 child: Padding(
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(3),
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.number,
@@ -303,7 +303,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                           children: <Widget>[
                             Expanded(
                                 child: Padding(
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(3),
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
                                 // validator: ValidationBuilder().build(),
@@ -312,7 +312,7 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                             )),
                             Expanded(
                                 child: Padding(
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(3),
                               child: TextFormField(
                                 textInputAction: TextInputAction.next,
                                 // validator: ValidationBuilder()
