@@ -39,16 +39,17 @@ class MobileRidesPageState extends State<MobileRidesPage> {
       );
 
   static final bdecoration = BoxDecoration(
-    boxShadow: [
-      BoxShadow(
-          color: Colors.green.withOpacity(0.1),
-          spreadRadius: 1,
-          blurRadius: 8,
-          blurStyle: BlurStyle.inner,
-          offset: const Offset(0, 3))
-    ],
-    color: Colors.grey.withOpacity(0.1),
-    borderRadius: BorderRadius.circular(5),
+    // boxShadow: [
+      // BoxShadow(
+          // color: Colors.green.withOpacity(0.1),
+          // spreadRadius: 1,
+          // blurRadius: 8,
+          // blurStyle: BlurStyle.inner,
+          // offset: const Offset(0, 3))
+    // ],
+    color: Colors.grey.withOpacity(0.2),
+    borderRadius: BorderRadius.circular(2),
+    border: Border.all(color: Colors.black.withOpacity(0.3))
   );
 
   @override
@@ -88,30 +89,31 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                                 fillColor: Colors.grey.shade100,
                                 contentPadding: EdgeInsets.all(8),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide(
-                                    style: BorderStyle.none
+                                    style: BorderStyle.solid,
+                                    color: Colors.black
                                   )
                                 )
                               )
                             ),
                           )
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(5),
-                              child: DropdownButtonFormField<String>(
-                                value: value1,
-                                iconSize: 20,
-                                icon: const Icon(Icons.arrow_drop_down),
-                                borderRadius: BorderRadius.circular(10),
+                        // Expanded(
+                          // child: Padding(
+                            // padding: EdgeInsets.all(5),
+                              // child: DropdownButtonFormField<String>(
+                                // value: value1,
+                                // iconSize: 20,
+                                // icon: const Icon(Icons.arrow_drop_down),
+                                // borderRadius: BorderRadius.circular(10),
                                   // focusColor: Colors.green,
-                                items: choice.map(buildMenuChoice).toList(),
-                                onChanged: (value) =>
-                                    setState(() => value1 = value),
-                              )
-                          )
-                        )
+                                // items: choice.map(buildMenuChoice).toList(),
+                                // onChanged: (value) =>
+                                    // setState(() => value1 = value),
+                              // )
+                          // )
+                        // )
                       ],
                     ),
                     Container(
@@ -128,12 +130,29 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Icon(Icons.drive_eta),
                               space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text("Cra 15 # 67-74"))
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 4,
+                                    child: Text("UIS"))
+                                ],
+                              ),
                               Text("25/10/2022, 10:30",
                                   style: TextStyle(color: kTextColor)),
                             ],
@@ -154,12 +173,29 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Icon(Icons.motorcycle),
                               space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text("Cra 15 # 67-74"))
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 4,
+                                    child: Text("UIS"))
+                                ],
+                              ),
                               Text("25/10/2022, 10:30",
                                   style: TextStyle(color: kTextColor)),
                             ],
@@ -180,116 +216,72 @@ class MobileRidesPageState extends State<MobileRidesPage> {
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
+                              Icon(Icons.drive_eta),
+                              space,
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text("Cra 15 # 67-74"))
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 4,
+                                    child: Text("UIS"))
+                                ],
+                              ),
+                              Text("25/10/2022, 10:30",
+                                  style: TextStyle(color: kTextColor)),
+                            ],
+                          ),
+                        )),
+                    space,
+                    Container(
+                        decoration: bdecoration,
+                        padding: const EdgeInsets.all(15),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              PageTransition(
+                                child: const RidePage(),
+                                type: PageTransitionType.rightToLeft,
+                              ),
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               Icon(Icons.motorcycle),
                               space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text("Cra 15 # 67-74"))
+                                ],
                               ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Icon(Icons.drive_eta),
-                              space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
+                                    ),
+                                  Expanded(
+                                    flex: 4,
+                                    child: Text("UIS"))
+                                ],
                               ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Icon(Icons.motorcycle),
-                              space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
-                              ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Icon(Icons.drive_eta),
-                              space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
-                              ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Icon(Icons.drive_eta),
-                              space,
-                              Text("Cra 15 # 67-74",
-                                  style: TextStyle(color: kTextColor)),
-                              Text("UIS", style: TextStyle(color: kTextColor)),
                               Text("25/10/2022, 10:30",
                                   style: TextStyle(color: kTextColor)),
                             ],
