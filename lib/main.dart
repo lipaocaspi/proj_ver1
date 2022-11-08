@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black
         ),
           primaryColor: Colors.green.withOpacity(0.8),
-          scaffoldBackgroundColor: const Color.fromARGB(255, 230, 230, 230),
+          scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254),
           textTheme: GoogleFonts.latoTextTheme(),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
@@ -29,20 +29,24 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18)
+                borderRadius: BorderRadius.circular(10)
               ),
             ),
           ),
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
-            fillColor: const Color.fromARGB(255, 242, 255, 239),
+            fillColor: Color.fromARGB(255, 253, 255, 253),
             iconColor: Colors.white,
-            prefixIconColor: Colors.grey.withOpacity(0.8),
+            prefixIconColor: Color.fromARGB(255, 131, 131, 131).withOpacity(0.8),
             contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            border: const OutlineInputBorder(
-              // borderRadius: BorderRadius.all(Radius.circular(10)),
-              borderSide: BorderSide.none
-            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+              borderSide: BorderSide(
+                style: BorderStyle.solid,
+                color: Colors.black
+                
+              )
+            )
           ),
 
         ),
