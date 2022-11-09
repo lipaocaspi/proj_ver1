@@ -100,7 +100,7 @@ class MobileLoginPageState extends State<MobileLoginPage> {
                               hintText: "Correo",
                               prefixIcon: Padding(
                                 padding: EdgeInsets.all(10),
-                                child: Icon(Icons.person),
+                                child: Icon(Icons.email),
                               ),
                             ),
                           ),
