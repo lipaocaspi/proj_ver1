@@ -1,3 +1,4 @@
+// import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/ImboxPage/imbox_page_screen.dart';
@@ -43,19 +44,20 @@ class MobileMainPageState extends State<MobileMainPage> {
         },
         child: Scaffold(
           appBar: AppBar(
-            title: Text(indexSelected == 2 ? "Mi Perfil" : "Viajes"),
-            automaticallyImplyLeading: false,
+            title: Text(indexSelected == 2 ? "Perfil" : "Viajes"),
+            leading: IconButton(
+              icon: Icon(indexSelected == 2 ? Icons.chat : null),
+              onPressed: () {
+                Navigator.of(context).push(
+                  PageTransition(
+                    child: const ImboxPage(),
+                    type: PageTransitionType.rightToLeft,
+                  ),
+                );
+              },
+            ),
+            // automaticallyImplyLeading: false,
             actions: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      PageTransition(
-                        child: const ImboxPage(),
-                        type: PageTransitionType.rightToLeft,
-                      ),
-                    );
-                  },
-                  icon: Icon(indexSelected == 2 ? Icons.chat : null)),
               IconButton(
                   onPressed: () {
                     Navigator.of(context).push(
