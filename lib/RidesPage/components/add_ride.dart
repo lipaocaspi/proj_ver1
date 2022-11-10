@@ -157,13 +157,9 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
           ],
         ),
         body: Container(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(25),
             child: Form(
                 // key: formKey,
-                child: Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     child: ListView(
                       children: [
                         Row(
@@ -347,6 +343,6 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
                               ),
                             )),
                       ],
-                    )))));
+                    ))));
   }
 }
