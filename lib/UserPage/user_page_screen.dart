@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proj_ver1/variables.dart';
 
 class UserPage extends StatelessWidget {
@@ -46,39 +46,39 @@ class MobileUserPageState extends State<MobileUserPage> {
   // String confnewpassword = '';
   // final _formKey = GlobalKey<FormState>();
   // final formKey = GlobalKey<FormState>();
-  final toast = FToast();
+  // final toast = FToast();
 
-  @override
-  void initState() {
-    super.initState();
-    toast.init(context);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   toast.init(context);
+  // }
 
   @override
   Widget build(BuildContext context) {
-    Widget savedToast() => Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: const Color.fromARGB(255, 197, 197, 197),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.person, color: Colors.black87),
-              SizedBox(width: 10.0),
-              Text(
-                'Se ha guardado exitosamente',
-                style: TextStyle(color: Colors.black, fontSize: 15),
-              ),
-            ],
-          ),
-        );
+    // Widget savedToast() => Container(
+    //       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    //       decoration: BoxDecoration(
+    //         borderRadius: BorderRadius.circular(25),
+    //         color: const Color.fromARGB(255, 197, 197, 197),
+    //       ),
+    //       child: Row(
+    //         mainAxisSize: MainAxisSize.min,
+    //         children: const [
+    //           Icon(Icons.save, color: Colors.black87),
+    //           SizedBox(width: 10.0),
+    //           Text(
+    //             'Se ha guardado exitosamente',
+    //             style: TextStyle(color: Colors.black, fontSize: 15),
+    //           ),
+    //         ],
+    //       ),
+    //     );
 
-    void showCToast() => toast.showToast(
-          child: savedToast(),
-          gravity: ToastGravity.BOTTOM,
-        );
+    // void showSToast() => toast.showToast(
+    //       child: savedToast(),
+    //       gravity: ToastGravity.BOTTOM,
+    //     );
 
     return Scaffold(
       body: Column(
@@ -236,7 +236,7 @@ class MobileUserPageState extends State<MobileUserPage> {
                                     // final isValidForm =
                                     //     _formKey.currentState!.validate();
                                     // if (isValidForm) {
-                                    showCToast();
+                                    //   showSToast();
                                     // }
                                   },
                                   child: const Icon(Icons.save),
