@@ -277,7 +277,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                                       style: TextStyle(
                                           fontSize: 20,
                                         ),),
-                                      space,
+                                      doublespace,
                                       Row(
                                         children: [
                                           Expanded(
