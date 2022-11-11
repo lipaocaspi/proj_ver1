@@ -39,6 +39,7 @@ dependencies:
   form_validator: ^1.0.2
   email_validator: '^2.1.16'
   fluttertoast: ^8.0.7
+  modal_bottom_sheet: ^2.1.2
 
 dev_dependencies:
   flutter_test:
