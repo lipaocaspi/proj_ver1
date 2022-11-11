@@ -35,7 +35,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
   bool isSwitchOnEma = false;
   bool isSwitchOnDev = false;
   static final bdecoration = BoxDecoration(
-    color: Colors.grey.withOpacity(0.3),
+    color: Colors.grey.withOpacity(0.1),
   );
 
   static final whiteBox =
@@ -106,10 +106,10 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
       appBar: AppBar(
         title: const Text("Privacidad"),
       ),
-      body: Row(
+      body: Column(
         children: [
           Flexible(
-              flex: 4,
+              // flex: 4,
               child: ListView(
                 children: [
                   Container(
@@ -148,7 +148,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                               child: Icon(Icons.place),
                             )),
                             Expanded(
-                                flex: 4,
+                                flex: 3,
                                 child: Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text("Ubicación"))),
@@ -173,7 +173,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                               child: Icon(Icons.camera_alt),
                             )),
                             Expanded(
-                                flex: 4,
+                                flex: 3,
                                 child: Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text("Cámara"))),
@@ -198,7 +198,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                               child: Icon(Icons.folder),
                             )),
                             Expanded(
-                                flex: 4,
+                                flex: 3,
                                 child: Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text("Almacenamiento"))),
@@ -253,7 +253,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                               child: Icon(Icons.chat),
                             )),
                             Expanded(
-                                flex: 4,
+                                flex: 3,
                                 child: Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text("Mensajes de texto"))),
@@ -278,7 +278,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                               child: Icon(Icons.email),
                             )),
                             Expanded(
-                                flex: 4,
+                                flex: 3,
                                 child: Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text("Correo electrónico"))),
@@ -303,7 +303,7 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                               child: Icon(Icons.phone_android),
                             )),
                             Expanded(
-                                flex: 4,
+                                flex: 3,
                                 child: Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text("Dispositivo"))),
