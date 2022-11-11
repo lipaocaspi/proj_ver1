@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           color: kPrimaryColor,
           centerTitle: true,
-          foregroundColor: Colors.black
+          foregroundColor: Colors.white
         ),
           primaryColor: Colors.green.withOpacity(0.8),
           scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254),
@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide(
                 style: BorderStyle.solid,
                 color: Colors.black
-                
               )
             )
           ),
