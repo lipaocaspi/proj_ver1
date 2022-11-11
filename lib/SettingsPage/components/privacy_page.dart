@@ -5,6 +5,7 @@ import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class PrivacyPage extends StatelessWidget {
   const PrivacyPage({
@@ -27,6 +28,12 @@ class MobilePrivacyPage extends StatefulWidget {
 }
 
 class MobilePrivacyPageState extends State<MobilePrivacyPage> {
+  bool isSwitchOnLoc = false;
+  bool isSwitchOnCam = false;
+  bool isSwitchOnSto = false;
+  bool isSwitchOnTex = false;
+  bool isSwitchOnEma = false;
+  bool isSwitchOnDev = false;
   static final bdecoration = BoxDecoration(
     color: Colors.grey.withOpacity(0.3),
   );
@@ -105,6 +112,216 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
               flex: 4,
               child: ListView(
                 children: [
+                  Container(
+                    decoration: bdecoration,
+                    alignment: Alignment.topLeft,
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: const <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.perm_device_info),
+                            )),
+                            Expanded(
+                                flex: 5,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Permisos del sistema"))),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.place),
+                            )),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Ubicación"))),
+                            Expanded(
+                                child: FlutterSwitch(
+                              value: isSwitchOnLoc,
+                              activeColor: Colors.green,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSwitchOnLoc = value;
+                                });
+                              },
+                            ))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.camera_alt),
+                            )),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Cámara"))),
+                            Expanded(
+                                child: FlutterSwitch(
+                              value: isSwitchOnCam,
+                              activeColor: Colors.green,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSwitchOnCam = value;
+                                });
+                              },
+                            ))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.folder),
+                            )),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Almacenamiento"))),
+                            Expanded(
+                                child: FlutterSwitch(
+                              value: isSwitchOnSto,
+                              activeColor: Colors.green,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSwitchOnSto = value;
+                                });
+                              },
+                            ))
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                      decoration: bdecoration,
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: const <Widget>[
+                                Expanded(
+                                    child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(Icons.notification_important),
+                                )),
+                                Expanded(
+                                    flex: 5,
+                                    child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Text("Notificaciones"))),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.chat),
+                            )),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Mensajes de texto"))),
+                            Expanded(
+                                child: FlutterSwitch(
+                              value: isSwitchOnTex,
+                              activeColor: Colors.green,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSwitchOnTex = value;
+                                });
+                              },
+                            ))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.email),
+                            )),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Correo electrónico"))),
+                            Expanded(
+                                child: FlutterSwitch(
+                              value: isSwitchOnEma,
+                              activeColor: Colors.green,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSwitchOnEma = value;
+                                });
+                              },
+                            ))
+                          ],
+                        ),
+                        space,
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Icon(Icons.phone_android),
+                            )),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Dispositivo"))),
+                            Expanded(
+                                child: FlutterSwitch(
+                              value: isSwitchOnDev,
+                              activeColor: Colors.green,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSwitchOnDev = value;
+                                });
+                              },
+                            ))
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                   Container(
                       decoration: bdecoration,
                       alignment: Alignment.topLeft,
@@ -242,11 +459,20 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                             Row(
                               children: const <Widget>[
                                 Expanded(
-                                    flex: 3,
+                                    child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(Icons.password),
+                                )),
+                                Expanded(
+                                    flex: 5,
                                     child: Padding(
                                         padding: EdgeInsets.all(10),
                                         child: Text("Cambiar contraseña"))),
-                                Expanded(child: Icon(Icons.arrow_right))
+                                Expanded(
+                                    child: Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: Colors.grey,
+                                ))
                               ],
                             ),
                           ],
@@ -259,63 +485,84 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                       padding: const EdgeInsets.all(10),
                       child: InkWell(
                         onTap: () {
-                          showModalBottomSheet(
+                          showBarModalBottomSheet(
                               context: context,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15),
-                                  topRight: Radius.circular(15)
-                                )
-                              ),
+                              // shape: RoundedRectangleBorder(
+                              //     borderRadius: BorderRadius.only(
+                              //         topLeft: Radius.circular(15),
+                              //         topRight: Radius.circular(15))),
                               builder: (context) {
-                                return Padding (
-                                  padding: EdgeInsets.all(25),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text("¿Está seguro que desea eliminar su cuenta? Esta acción no se puede deshacer.",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                        ),),
-                                      doublespace,
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 10, right: 10),
-                                                child: ElevatedButton(
+                                return Padding(
+                                    padding: EdgeInsets.all(40),
+                                    child: Column(
+                                      // mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          "¿Está seguro que desea eliminar su cuenta? Esta acción no se puede deshacer.",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                        doublespace,
+                                        Text(
+                                          "Ingrese la contraseña para confirmar.",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        doublespace,
+                                        TextFormField(
+                                          obscureText: true,
+                                          textInputAction: TextInputAction.next,
+                                          cursorColor: Colors.black,
+                                          decoration: const InputDecoration(
+                                              hintText: "Contraseña",
+                                              prefixIcon: Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: Icon(Icons.lock),
+                                              )),
+                                        ),
+                                        doublespace,
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10, right: 10),
+                                                  child: ElevatedButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                              primary:
+                                                                  Colors.grey),
+                                                      child: Text("CANCELAR"))),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10, right: 10),
+                                                  child: ElevatedButton(
                                                     onPressed: () {
-                                                      Navigator.pop(context);
+                                                      Navigator.of(context).push(
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  const LoginPage()));
+                                                      showDToast();
                                                     },
                                                     style: ElevatedButton
                                                         .styleFrom(
                                                             primary:
-                                                                Colors.grey),
-                                                    child: Text("CANCELAR"))),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 10, right: 10),
-                                                child: ElevatedButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).push(MaterialPageRoute(
-                                                      builder: (context) => const LoginPage()));
-                                                    showDToast();
-                                                  },
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          primary:
-                                                              Colors.red),
-                                                  child: Text("CONFIRMAR"),
-                                                )),
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  )
-                                );
+                                                                Colors.red),
+                                                    child: Text("CONFIRMAR"),
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ));
                               });
                         },
                         child: Column(
@@ -323,11 +570,20 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                             Row(
                               children: const <Widget>[
                                 Expanded(
-                                    flex: 3,
+                                    child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(Icons.delete_forever),
+                                )),
+                                Expanded(
+                                    flex: 5,
                                     child: Padding(
                                         padding: EdgeInsets.all(10),
                                         child: Text("Eliminar cuenta"))),
-                                Expanded(child: Icon(Icons.arrow_right))
+                                Expanded(
+                                    child: Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: Colors.grey,
+                                ))
                               ],
                             ),
                           ],
