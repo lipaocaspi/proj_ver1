@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/MainPage/main_page_screen.dart';
-import 'package:proj_ver1/RidesPage/rides_page_screen.dart';
+// import 'package:proj_ver1/RidesPage/rides_page_screen.dart';
 // import 'package:form_validator/form_validator.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
@@ -71,33 +71,6 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
         ),
       );
 
-  Future<String?> openDialogExit() => showDialog<String>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Salir', textAlign: TextAlign.center),
-          content: const Text(
-            "¿Está seguro que desea salir? No se guardarán los cambios.",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.grey,
-            ),
-          ),
-          actions: [
-            TextButton(
-                child: const Text('CANCELAR'),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
-            TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const MainPage()));
-                },
-                child: const Text('SALIR')),
-          ],
-        ),
-      );
-
   final toast = FToast();
 
   @override
@@ -139,8 +112,64 @@ class MobileNewRidePageState extends State<MobileNewRidePage> {
           title: const Text("Nuevo Viaje"),
           leading: IconButton(
             icon: Icon(Icons.close),
-            onPressed: () async {
-              await openDialogExit();
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15)
+                  )
+                ),
+                builder: (context) {
+                  return Padding (
+                    padding: EdgeInsets.all(25),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("¿Está seguro que desea salir? No se guardarán los cambios.",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),),
+                        doublespace,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 10, right: 10),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  style: ElevatedButton
+                                    .styleFrom(
+                                      primary:
+                                        Colors.grey),
+                                  child: Text("CANCELAR"))),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 10, right: 10),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const MainPage()));
+                                  },
+                                  style:
+                                    ElevatedButton.styleFrom(
+                                      primary:
+                                        Colors.green),
+                                  child: Text("SALIR"),
+                                  )),
+                            )
+                          ],
+                        ),
+                      ],
+                    )
+                  );
+                });
             },
           ),
           actions: [
