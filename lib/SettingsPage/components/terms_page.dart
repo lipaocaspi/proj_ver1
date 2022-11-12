@@ -45,7 +45,13 @@ class MobileTermsPage extends StatelessWidget {
                         child:
                             Text("Términos y condiciones de uso de UIS Wheels"),
                       ),
-                    )
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Icon(Icons.keyboard_arrow_right)
+                      ),
+                    ),
                   ],
                 )
               ],
@@ -72,7 +78,13 @@ class MobileTermsPage extends StatelessWidget {
                         padding: EdgeInsets.all(5),
                         child: Text("Aviso de privacidad de UIS Wheels"),
                       ),
-                    )
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Icon(Icons.keyboard_arrow_right)
+                      ),
+                    ),
                   ],
                 ),
               ],
