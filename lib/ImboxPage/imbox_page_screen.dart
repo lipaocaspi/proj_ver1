@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/ImboxPage/components/selected_message.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -21,6 +22,9 @@ class MobileImboxPage extends StatelessWidget {
     color: Colors.grey.withOpacity(0.3),
   );
 
+  static final whiteBox =
+      SizedBox(height: 5, child: Container(color: Colors.white));
+
   static final greyBox = SizedBox(height: 1, child: Container(color: Colors.grey));
 
   @override
@@ -28,11 +32,8 @@ class MobileImboxPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mensajes"),
-        // actions: [
-          // IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-        // ],
       ),
-      body: Row(
+      body: Column(
         children: [
           Flexible(
               flex: 4,
@@ -44,8 +45,12 @@ class MobileImboxPage extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const MessagePage()));
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const MessagePage(),
+                                  type: PageTransitionType.rightToLeft,
+                                ),
+                              );
                             },
                             child: Column(
                               children: [
@@ -66,21 +71,25 @@ class MobileImboxPage extends StatelessWidget {
                                         child: Padding(
                                             padding: EdgeInsets.all(10),
                                             child: Text("NOMBRE"))),
-                                    Expanded(child: Icon(Icons.arrow_right))
+                                    Expanded(child: Icon(Icons.keyboard_arrow_right))
                                   ],
                                 ),
                               ],
                             ),
                           )),
-                      greyBox,
+                      whiteBox,
                       Container(
                           decoration: bdecoration,
                           alignment: Alignment.topLeft,
                           padding: const EdgeInsets.all(10),
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const MessagePage()));
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const MessagePage(),
+                                  type: PageTransitionType.rightToLeft,
+                                ),
+                              );
                             },
                             child: Column(
                               children: [
@@ -101,7 +110,7 @@ class MobileImboxPage extends StatelessWidget {
                                         child: Padding(
                                             padding: EdgeInsets.all(10),
                                             child: Text("NOMBRE"))),
-                                    Expanded(child: Icon(Icons.arrow_right))
+                                    Expanded(child: Icon(Icons.keyboard_arrow_right))
                                   ],
                                 ),
                               ],
