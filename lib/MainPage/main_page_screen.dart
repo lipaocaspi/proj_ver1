@@ -48,24 +48,29 @@ class MobileMainPageState extends State<MobileMainPage> {
             leading: IconButton(
               icon: Icon(indexSelected == 2 ? Icons.chat : null),
               onPressed: () {
-                Navigator.of(context).push(
-                  PageTransition(
-                    child: const ImboxPage(),
-                    type: PageTransitionType.rightToLeft,
-                  ),
-                );
+                if (indexSelected == 2) {
+                  Navigator.of(context).push(
+                    PageTransition(
+                      child: const ImboxPage(),
+                      type: PageTransitionType.rightToLeft,
+                    ),
+                  );
+                }
               },
             ),
             // automaticallyImplyLeading: false,
             actions: [
               IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      PageTransition(
-                        child: const SettingsPage(),
-                        type: PageTransitionType.rightToLeft,
-                      ),
-                    );
+                    if (indexSelected == 2) {
+                      Navigator.of(context).push(
+                        PageTransition(
+                          child: const SettingsPage(),
+                          type: PageTransitionType.rightToLeft,
+                        ),
+                      );
+                    }
+                    ;
                   },
                   icon: Icon(indexSelected == 2 ? Icons.settings : null)),
             ],
