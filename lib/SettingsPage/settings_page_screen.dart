@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
-// import 'package:proj_ver1/SettingsPage/components/help_page.dart';
+import 'package:proj_ver1/SettingsPage/components/help_page.dart';
 import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
-// import 'package:proj_ver1/SettingsPage/components/security_page.dart';
-// import 'package:proj_ver1/SettingsPage/components/terms_page.dart';
+import 'package:proj_ver1/SettingsPage/components/terms_page.dart';
+import 'package:proj_ver1/SettingsPage/components/security_page.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 
@@ -49,7 +49,7 @@ class MobileSettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Configuración"),
       ),
-      body: Row(
+      body: Column(
         children: [
           Flexible(
             flex: 4,
@@ -95,12 +95,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(
-                              //   PageTransition(
-                              //     child: const SecurityPage(),
-                              //     type: PageTransitionType.fade,
-                              //   ),
-                              // );
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const SecurityPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -126,12 +126,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(
-                              //   PageTransition(
-                              //     child: const TermsPage(),
-                              //     type: PageTransitionType.fade,
-                              //   ),
-                              // );
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const TermsPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -157,12 +157,12 @@ class MobileSettingsPage extends StatelessWidget {
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(
-                              //   PageTransition(
-                              //     child: const HelpPage(),
-                              //     type: PageTransitionType.fade,
-                              //   ),
-                              // );
+                              Navigator.of(context).push(
+                                PageTransition(
+                                  child: const HelpPage(),
+                                  type: PageTransitionType.fade,
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -289,7 +289,7 @@ class MobileSettingsPage extends StatelessWidget {
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                           primary:
-                                                              Colors.red),
+                                                              Colors.green),
                                                   child: Text("CERRAR SESIÓN"),
                                                 )),
                                           )
