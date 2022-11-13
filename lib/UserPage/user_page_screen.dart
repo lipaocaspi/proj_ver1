@@ -6,7 +6,7 @@ import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proj_ver1/variables.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+// import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({
@@ -108,14 +108,14 @@ class MobileUserPageState extends State<MobileUserPage> {
                             bottom: 5,
                             child: InkWell(
                                 onTap: () {
-                                  showBarModalBottomSheet(
-                                    expand: true,
-                                    context: context, 
-                                    builder: (context){
-                                      return Padding(
-                                        padding: EdgeInsets.all(20)
-                                      );
-                                    });
+                                  // showBarModalBottomSheet(
+                                  //   expand: true,
+                                  //   context: context, 
+                                  //   builder: (context){
+                                  //     return Padding(
+                                  //       padding: EdgeInsets.all(20)
+                                  //     );
+                                  //   });
                                 },
                                 child: Container(
                                   child: Padding(
