@@ -1,5 +1,4 @@
 // library proj_ver1.variables;
-
 String name = '';
 DateTime date = DateTime.now();
 String email = '';
