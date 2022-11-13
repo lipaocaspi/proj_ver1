@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/constants.dart';
 import 'package:proj_ver1/responsive.dart';
+import 'package:proj_ver1/variables.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -46,6 +47,16 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
     return true;
   }
 
+  // Future<bool> deactivateLocationPermission() async {
+  //   var statusLoc = await Permission.location.status;
+  //   if (statusLoc.isDenied) {
+  //     setState(() {
+  //       isSwitchOnLoc = false;
+  //     });
+  //   }
+  //   return false;
+  // }
+
   Future<bool> requestCameraPermission() async {
     var statusCam = await Permission.camera.status;
     PermissionStatus resultCam;
@@ -64,15 +75,15 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
     return true;
   }
 
-  Future<bool> deactivateCameraPermission() async {
-    var statusCam = await Permission.camera.status;
-    if (statusCam.isDenied) {
-      setState(() {
-        isSwitchOnCam = false;
-      });
-    }
-    return false;
-  }
+  // Future<bool> deactivateCameraPermission() async {
+  //   var statusCam = await Permission.camera.status;
+  //   if (statusCam.isDenied) {
+  //     setState(() {
+  //       isSwitchOnCam = false;
+  //     });
+  //   }
+  //   return false;
+  // }
 
   Future<bool> requestStoragePermission() async {
     var statusSto = await Permission.storage.status;
@@ -89,22 +100,16 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
     return true;
   }
 
-  Future<bool> deactivateStoragePermission() async {
-    var statusSto = await Permission.storage.status;
-    if (statusSto.isDenied) {
-      setState(() {
-        isSwitchOnSto = false;
-      });
-    }
-    return false;
-  }
+  // Future<bool> deactivateStoragePermission() async {
+  //   var statusSto = await Permission.storage.status;
+  //   if (statusSto.isDenied) {
+  //     setState(() {
+  //       isSwitchOnSto = false;
+  //     });
+  //   }
+  //   return false;
+  // }
 
-  bool isSwitchOnLoc = false;
-  bool isSwitchOnCam = false;
-  bool isSwitchOnSto = false;
-  bool isSwitchOnTex = false;
-  bool isSwitchOnEma = false;
-  bool isSwitchOnDev = true;
   static final bdecoration = BoxDecoration(
     color: Colors.grey.withOpacity(0.1),
   );
@@ -227,6 +232,8 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                             child: FlutterSwitch(
                           value: isSwitchOnLoc,
                           activeColor: Colors.green,
+                          activeIcon: Icon(Icons.check, color: Colors.green),
+                          inactiveIcon: Icon(Icons.close, color: Colors.grey),
                           onToggle: (value) {
                             setState(() {
                               isSwitchOnLoc = true;
@@ -256,6 +263,8 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                             child: FlutterSwitch(
                           value: isSwitchOnCam,
                           activeColor: Colors.green,
+                          activeIcon: Icon(Icons.check, color: Colors.green),
+                          inactiveIcon: Icon(Icons.close, color: Colors.grey),
                           onToggle: (value) {
                             setState(() {
                               isSwitchOnCam = true;
@@ -285,6 +294,8 @@ class MobilePrivacyPageState extends State<MobilePrivacyPage> {
                             child: FlutterSwitch(
                           value: isSwitchOnSto,
                           activeColor: Colors.green,
+                          activeIcon: Icon(Icons.check, color: Colors.green),
+                          inactiveIcon: Icon(Icons.close, color: Colors.grey),
                           onToggle: (value) {
                             setState(() {
                               isSwitchOnSto = true;
