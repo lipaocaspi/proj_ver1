@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:proj_ver1/FirstPage/components/image.dart';
 import 'package:proj_ver1/FirstPage/components/signup_login_btn.dart';
 import 'package:proj_ver1/components/background.dart';
+import 'package:proj_ver1/data/repository/models/user_model.dart';
 import 'package:proj_ver1/responsive.dart';
 
 class FirstPage extends StatelessWidget {
@@ -9,7 +10,7 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Background(
+    return Background(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
@@ -22,7 +23,8 @@ class FirstPage extends StatelessWidget {
 }
 
 class MobileFirstPage extends StatelessWidget {
-  const MobileFirstPage({Key? key}) : super(key: key);
+  MobileFirstPage({Key? key}) : super(key: key);
+  final List<Users> _users = [];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MobileFirstPage extends StatelessWidget {
       children: <Widget>[
         const Imag(),
         Row(
-          children: const[
+          children: const [
             Spacer(),
             Expanded(
               flex: 6,
