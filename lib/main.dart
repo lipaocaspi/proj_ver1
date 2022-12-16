@@ -49,7 +49,8 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
             color: kPrimaryColor,
             centerTitle: true,
-            foregroundColor: Colors.white),
+            foregroundColor: Colors.white
+        ),
         primaryColor: Colors.green.withOpacity(0.8),
         scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254),
         textTheme: GoogleFonts.latoTextTheme(),
@@ -62,6 +63,9 @@ class MyApp extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
         ),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: Colors.black
+        ),
         inputDecorationTheme: InputDecorationTheme(
             filled: true,
             fillColor: Color.fromARGB(255, 253, 255, 253),
@@ -73,9 +77,10 @@ class MyApp extends StatelessWidget {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(7),
                 borderSide:
-                    BorderSide(style: BorderStyle.solid, color: Colors.black))),
+                    BorderSide(style: BorderStyle.solid, color: Colors.black))
+        ),
       ),
-      home: const FirstPage(),
+      home: FirstPage(),
     )
     );
   }
