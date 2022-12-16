@@ -15,11 +15,11 @@ class Users {
       required this.password,
   });
 
-  final int id;
-  final String name;
-  final String email;
-  final String dateOfBirth;
-  final String password;
+  int id;
+  String name;
+  String email;
+  String dateOfBirth;
+  String password;
 
   factory Users.fromJson(Map<String, dynamic> json) => Users(
       id: json["id"],
