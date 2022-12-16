@@ -1,267 +1,117 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:proj_ver1/UserRidesPage/components/selected_ride.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:proj_ver1/RidesPage/components/bloc/ride_bloc.dart';
+import 'package:proj_ver1/UserRidesPage/components/details_ride.dart';
 import 'package:proj_ver1/constants.dart';
-import 'package:proj_ver1/responsive.dart';
+import 'package:proj_ver1/data/repository/models/ride_model.dart';
 
 class UserRidesPage extends StatelessWidget {
-  const UserRidesPage({
-    Key? key,
-  }) : super(key: key);
+  int id;
+  UserRidesPage(this.id, {Key? key}) : super(key: key);
+  final List<Ride> _rides1 = [];
+
+  static final bdecoration = BoxDecoration(
+      color: Colors.grey.withOpacity(0.2),
+      borderRadius: BorderRadius.circular(2),
+      border: Border.all(color: Colors.black.withOpacity(0.3)));
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
-      mobile: MobileUserRidesPage(),
-    );
-  }
-}
-
-class MobileUserRidesPage extends StatefulWidget {
-  const MobileUserRidesPage({Key? key}) : super(key: key);
-
-  @override
-  State<MobileUserRidesPage> createState() => MobileUserRidesPageState();
-}
-
-class MobileUserRidesPageState extends State<MobileUserRidesPage> {
-
-  final choice = ["Tipo de Vehículo", "Lugar", "Fecha"];
-
-  String? value1;
-  
-  DropdownMenuItem<String> buildMenuChoice(String choice) => DropdownMenuItem(
-        value: choice,
-        child: Text(
-          choice,
-          style: const TextStyle(fontSize: 15),
-        ),
-      );
-
-static final bdecoration = BoxDecoration(
-    // boxShadow: [
-      // BoxShadow(
-          // color: Colors.green.withOpacity(0.1),
-          // spreadRadius: 1,
-          // blurRadius: 8,
-          // blurStyle: BlurStyle.inner,
-          // offset: const Offset(0, 3))
-    // ],
-    color: Colors.grey.withOpacity(0.2),
-    borderRadius: BorderRadius.circular(2),
-    border: Border.all(color: Colors.black.withOpacity(0.3))
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
-        children: [
-          Flexible(
-              flex: 4,
-              child: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: ListView(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
+    return BlocBuilder<RideBloc, RideState>(builder: (context, state) {
+      if (state is InitialRidesState) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      if (state is LoadingRidesState) {
+          _rides1.addAll(state.rides.where((element) => id == element.userId));
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("Mis Viajes"),
+            ),
+              body: ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      child: ListView.builder(
+                        physics: const ScrollPhysics(),
+                        itemCount: _rides1.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            color: Colors.grey.shade100,
                             child: Padding(
                               padding: EdgeInsets.all(10),
-                              child: TextField(
-                                cursorColor: Colors.black,
-                                decoration: InputDecoration(
-                                  hintText: "Buscar",
-                                  prefixIcon: Icon(Icons.search, color: Colors.black),
-                                  contentPadding: EdgeInsets.all(7),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      style: BorderStyle.solid,
-                                      color: Colors.black
-                                    )
-                                  )
-                                )
+                              child: GestureDetector(
+                                onTap: (() {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailsRide(
+                                          ride: _rides1[index], id: id),
+                                    ),
+                                  );
+                                }),
+                                child: SizedBox(
+                                  height: 100,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Text(_rides[index].userId.toString()),
+                                      Icon(
+                                          _rides1[index].vehicle == 'Motocicleta'
+                                              ? Icons.motorcycle
+                                              : Icons.drive_eta),
+                                      space,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text("Origen: ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(_rides1[index].start)
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text("Destino: ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(_rides1[index].end)
+                                        ],
+                                      ),
+                                      space,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(_rides1[index].dateAndTime)
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            )
-                          ),
-                        ],
+                            ),
+                          );
+                        },
                       ),
-                      Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
-                              ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(Icons.drive_eta),
-                              space,
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 5,
-                                    child: Text("Cra 15 # 67-74"))
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 4,
-                                    child: Text("UIS"))
-                                ],
-                              ),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
-                              ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(Icons.motorcycle),
-                              space,
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 5,
-                                    child: Text("Cra 15 # 67-74"))
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 4,
-                                    child: Text("UIS"))
-                                ],
-                              ),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
-                              ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(Icons.drive_eta),
-                              space,
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 5,
-                                    child: Text("Cra 15 # 67-74"))
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 4,
-                                    child: Text("UIS"))
-                                ],
-                              ),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    space,
-                    Container(
-                        decoration: bdecoration,
-                        padding: const EdgeInsets.all(15),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              PageTransition(
-                                child: const RidePage(),
-                                type: PageTransitionType.rightToLeft,
-                              ),
-                            );
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(Icons.motorcycle),
-                              space,
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Origen:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 5,
-                                    child: Text("Cra 15 # 67-74"))
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text("Destino:", style: TextStyle(fontWeight: FontWeight.bold),)
-                                    ),
-                                  Expanded(
-                                    flex: 4,
-                                    child: Text("UIS"))
-                                ],
-                              ),
-                              Text("25/10/2022, 10:30",
-                                  style: TextStyle(color: kTextColor)),
-                            ],
-                          ),
-                        )),
-                    ],
-                  ))),
-        ],
-      ),
-    );
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),);
+        }
+        return const Center(child: Text("error"));
+    });
   }
 }
