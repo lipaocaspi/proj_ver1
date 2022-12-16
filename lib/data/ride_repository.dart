@@ -14,7 +14,8 @@ class RideRepositoryImpl implements RideRepository {
 
 
     if (response.statusCode == 200) {
-      List<dynamic> myRides = json.decode(response.body);
+      List<dynamic> myRides = json.decode(utf8.decode(response.bodyBytes));
+      // List<dynamic> myRides = json.decode(response.body);
       List<Ride> rides = myRides.map((e) => Ride.fromJson(e)).toList();
 
       return rides;
