@@ -21,17 +21,17 @@ class Ride {
     required this.state,
   });
 
-  final int userId;
-  final int id;
-  final String start;
-  final String end;
-  final String dateAndTime;
-  final String vehicle;
-  final String room;
-  final String color;
-  final String plate;
-  final String price;
-  final bool state;
+  int userId;
+  int id;
+  String start;
+  String end;
+  String dateAndTime;
+  String vehicle;
+  String room;
+  String color;
+  String plate;
+  String price;
+  bool state;
 
   factory Ride.fromJson(Map<String, dynamic> json) => Ride(
         userId: json["userId"],
