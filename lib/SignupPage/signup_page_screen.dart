@@ -248,6 +248,7 @@ class SignUpPageState extends State<SignUpPage> {
         name: _controllerName.text,
         dateOfBirth: _controllerBirth.text,
         email: _controllerEmail.text,
+        icon: "https://cdn.icon-icons.com/icons2/67/PNG/512/user_13230.png",
         password: _controllerPassword.text);
     final response =
         await http.post(Uri.parse("http://192.168.1.39:3000/users"),
@@ -257,6 +258,7 @@ class SignUpPageState extends State<SignUpPage> {
               "name": newUser.name,
               "dateOfBirth": newUser.dateOfBirth,
               "email": newUser.email,
+              "icon": newUser.icon,
               "password": newUser.password,
             }));
     if (response.statusCode == 201) {
