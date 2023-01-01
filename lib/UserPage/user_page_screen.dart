@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:form_validator/form_validator.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:proj_ver1/constants.dart';
@@ -13,6 +14,11 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+  final TextEditingController _controllerName = TextEditingController();
+  final TextEditingController _controllerDate = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final _keyForm = GlobalKey<FormState>();
+
   static final icondecoration = BoxDecoration(
       border: Border.all(
         width: 1,
@@ -52,7 +58,8 @@ class _UserPageState extends State<UserPage> {
                           child: CircleAvatar(
                             radius: 55,
                             backgroundImage: NetworkImage(
-                                'https://images.unsplash.com/photo-1661544641467-d1811f77c71e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=80'),
+                                widget.users.icon),
+                            backgroundColor: Colors.white,
                           ),
                         ),
                         Positioned(
@@ -97,7 +104,7 @@ class _UserPageState extends State<UserPage> {
                           Container(
                             child: Padding(
                                 padding: const EdgeInsets.all(2),
-                                child: Icon(Icons.face, size: 30)),
+                                child: Icon(Icons.motorcycle, size: 30)),
                             decoration: icondecoration,
                           ),
                           SizedBox(
@@ -111,76 +118,71 @@ class _UserPageState extends State<UserPage> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04),
-                      TextFormField(
-                        initialValue: widget.users.name,
-                        onChanged: (value) {
-                          setState(() {
-                            widget.users.name = value;
-                          });
-                        },
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Icon(Icons.person),
-                          ),
-                        ),
-                      ),
-                      space,
-                      TextFormField(
-                        initialValue: widget.users.dateOfBirth,
-                        onChanged: (value) {
-                          setState(() {
-                            widget.users.dateOfBirth = value;
-                          });
-                        },
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Icon(Icons.calendar_month),
-                          ),
-                        ),
-                      ),
-                      space,
-                      TextFormField(
-                        initialValue: widget.users.email,
-                        onChanged: (value) {
-                          setState(() {
-                            widget.users.email = value;
-                          });
-                        },
-                        textInputAction: TextInputAction.done,
-                        decoration: const InputDecoration(
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Icon(Icons.email),
-                          ),
-                        ),
-                      ),
-                      space,
-                      Padding(
-                        padding: EdgeInsets.only(left: 50, right: 50),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            updateUser(widget.users.id);
-                            final SavedSnack = SnackBar(
-                              content: Text(
-                                "Se ha actualizado la información"),
-                              action: SnackBarAction(
-                                label: 'Cerrar',
-                                onPressed: () {
-                                  Navigator.of(context);
+                          height: MediaQuery.of(context).size.height * 0.07),
+                      Form(
+                          key: _keyForm,
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                textInputAction: TextInputAction.next,
+                                controller: _controllerName
+                                  ..text = widget.users.name,
+                                validator: ValidationBuilder().build(),
+                                onFieldSubmitted: (value) {
+                                  setState(() {
+                                    widget.users.name = _controllerName.text;
+                                    updateUser(widget.users.id);
+                                  });
                                 },
-                              )
-                            );
-                            ScaffoldMessenger.of(context)
-                              .showSnackBar(SavedSnack);
-                          },
-                          child: Icon(Icons.save),
-                        ),
-                      )
+                                decoration: const InputDecoration(
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.person),
+                                  ),
+                                ),
+                              ),
+                              space,
+                              TextFormField(
+                                keyboardType: TextInputType.datetime,
+                                textInputAction: TextInputAction.next,
+                                controller: _controllerDate
+                                  ..text = widget.users.dateOfBirth,
+                                validator: ValidationBuilder().build(),
+                                onFieldSubmitted: (value) {
+                                  setState(() {
+                                    widget.users.dateOfBirth =
+                                        _controllerDate.text;
+                                    updateUser(widget.users.id);
+                                  });
+                                },
+                                decoration: const InputDecoration(
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.calendar_month),
+                                  ),
+                                ),
+                              ),
+                              space,
+                              TextFormField(
+                                textInputAction: TextInputAction.done,
+                                controller: _controllerEmail
+                                  ..text = widget.users.email,
+                                validator: ValidationBuilder().build(),
+                                onFieldSubmitted: (value) {
+                                  setState(() {
+                                    widget.users.email = _controllerEmail.text;
+                                    updateUser(widget.users.id);
+                                  });
+                                },
+                                decoration: const InputDecoration(
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.email),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )),
                     ],
                   ))),
         ],
@@ -189,15 +191,15 @@ class _UserPageState extends State<UserPage> {
   }
 
   updateUser(id) async {
-      final response = await http.put(
-          Uri.parse(
-              "https://mockend.com/lipaocaspi/demo_server_json/users/$id"),
-          body: jsonEncode(<String, String>{
-            "name": widget.users.name,
-            "email": widget.users.email,
-            "dateOfBirth": widget.users.dateOfBirth
-          }));
-      print(response.statusCode);
-      print(response.body);
+    http.put(Uri.parse("http://192.168.1.39:3000/users/$id"),
+    headers: {"Content-Type": "application/json"},
+    body: jsonEncode(<String, dynamic>{
+      "id": widget.users.id,
+      "name": widget.users.name,
+      "dateOfBirth": widget.users.dateOfBirth,
+      "email": widget.users.email,
+      "icon": widget.users.icon,
+      "password": widget.users.password
+    }));
   }
 }
