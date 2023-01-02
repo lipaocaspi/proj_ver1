@@ -79,10 +79,10 @@ class SignUpPageState extends State<SignUpPage> {
                           child: TextFormField(
                             keyboardType: TextInputType.datetime,
                             textInputAction: TextInputAction.next,
-                            validator: ValidationBuilder().build(),
+                            validator: ValidationBuilder().regExp(RegExp(r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4}"), "Ingrese una fecha válida").build(),
                             controller: _controllerBirth,
                             decoration: const InputDecoration(
-                              hintText: "DD/MM/AAAA",
+                              hintText: "D/M/AAAA",
                               prefixIcon: Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Icon(Icons.calendar_month),
@@ -96,7 +96,7 @@ class SignUpPageState extends State<SignUpPage> {
                           child: TextFormField(
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
-                            validator: ValidationBuilder().build(),
+                            validator: ValidationBuilder().email().build(),
                             controller: _controllerEmail,
                             onChanged: (value) {
                               setState(() {
