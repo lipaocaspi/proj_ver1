@@ -66,7 +66,7 @@ class LoginPageState extends State<LoginPage> {
                             child: TextFormField(
                               keyboardType: TextInputType.emailAddress,
                               textInputAction: TextInputAction.next,
-                              validator: ValidationBuilder().build(),
+                              validator: ValidationBuilder().email().build(),
                               controller: _controllerEmail,
                               onChanged: (value) {
                                 setState(() {
