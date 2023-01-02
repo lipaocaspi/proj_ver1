@@ -10,13 +10,12 @@ class RideRepositoryImpl implements RideRepository {
   @override
   Future<List<Ride>> getRide() async {
     final response =
-        await http.get(Uri.parse("https://mockend.com/lipaocaspi/demo_server_json/rides"));
-
+        await http.get(Uri.parse("http://192.168.1.39:3000/rides"));
 
     if (response.statusCode == 200) {
       List<dynamic> myRides = json.decode(utf8.decode(response.bodyBytes));
-      // List<dynamic> myRides = json.decode(response.body);
       List<Ride> rides = myRides.map((e) => Ride.fromJson(e)).toList();
+      print(rides);
 
       return rides;
     } else {
