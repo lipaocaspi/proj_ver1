@@ -14,9 +14,6 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  final TextEditingController _controllerName = TextEditingController();
-  final TextEditingController _controllerDate = TextEditingController();
-  final TextEditingController _controllerEmail = TextEditingController();
   final _keyForm = GlobalKey<FormState>();
 
   static final icondecoration = BoxDecoration(
@@ -57,8 +54,7 @@ class _UserPageState extends State<UserPage> {
                           backgroundColor: Colors.black,
                           child: CircleAvatar(
                             radius: 55,
-                            backgroundImage: NetworkImage(
-                                widget.users.icon),
+                            backgroundImage: NetworkImage(widget.users.icon),
                             backgroundColor: Colors.white,
                           ),
                         ),
@@ -125,13 +121,14 @@ class _UserPageState extends State<UserPage> {
                             children: [
                               TextFormField(
                                 textInputAction: TextInputAction.next,
-                                controller: _controllerName
-                                  ..text = widget.users.name,
+                                initialValue: widget.users.name,
                                 validator: ValidationBuilder().build(),
-                                onFieldSubmitted: (value) {
+                                onChanged: (value) {
                                   setState(() {
-                                    widget.users.name = _controllerName.text;
-                                    updateUser(widget.users.id);
+                                    if (_keyForm.currentState!.validate()) {
+                                      widget.users.name = value;
+                                      updateUser(widget.users.id);
+                                    }
                                   });
                                 },
                                 decoration: const InputDecoration(
@@ -145,14 +142,14 @@ class _UserPageState extends State<UserPage> {
                               TextFormField(
                                 keyboardType: TextInputType.datetime,
                                 textInputAction: TextInputAction.next,
-                                controller: _controllerDate
-                                  ..text = widget.users.dateOfBirth,
-                                validator: ValidationBuilder().build(),
-                                onFieldSubmitted: (value) {
+                                initialValue: widget.users.dateOfBirth,
+                                validator: ValidationBuilder().regExp(RegExp(r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4}"), "Ingrese una fecha válida").build(),
+                                onChanged: (value) {
                                   setState(() {
-                                    widget.users.dateOfBirth =
-                                        _controllerDate.text;
-                                    updateUser(widget.users.id);
+                                    if (_keyForm.currentState!.validate()) {
+                                      widget.users.dateOfBirth = value;
+                                      updateUser(widget.users.id);
+                                    }
                                   });
                                 },
                                 decoration: const InputDecoration(
@@ -165,13 +162,14 @@ class _UserPageState extends State<UserPage> {
                               space,
                               TextFormField(
                                 textInputAction: TextInputAction.done,
-                                controller: _controllerEmail
-                                  ..text = widget.users.email,
-                                validator: ValidationBuilder().build(),
-                                onFieldSubmitted: (value) {
+                                initialValue: widget.users.email,
+                                validator: ValidationBuilder().email().build(),
+                                onChanged: (value) {
                                   setState(() {
-                                    widget.users.email = _controllerEmail.text;
-                                    updateUser(widget.users.id);
+                                    if (_keyForm.currentState!.validate()) {
+                                      widget.users.email = value;
+                                      updateUser(widget.users.id);
+                                    }
                                   });
                                 },
                                 decoration: const InputDecoration(
@@ -192,14 +190,14 @@ class _UserPageState extends State<UserPage> {
 
   updateUser(id) async {
     http.put(Uri.parse("http://192.168.1.39:3000/users/$id"),
-    headers: {"Content-Type": "application/json"},
-    body: jsonEncode(<String, dynamic>{
-      "id": widget.users.id,
-      "name": widget.users.name,
-      "dateOfBirth": widget.users.dateOfBirth,
-      "email": widget.users.email,
-      "icon": widget.users.icon,
-      "password": widget.users.password
-    }));
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(<String, dynamic>{
+          "id": widget.users.id,
+          "name": widget.users.name,
+          "dateOfBirth": widget.users.dateOfBirth,
+          "email": widget.users.email,
+          "icon": widget.users.icon,
+          "password": widget.users.password
+        }));
   }
 }
