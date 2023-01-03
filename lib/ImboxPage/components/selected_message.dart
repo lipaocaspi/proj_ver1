@@ -1,21 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proj_ver1/responsive.dart';
 
 class MessagePage extends StatelessWidget {
-  const MessagePage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Responsive(
-      mobile: MobileMessagePage(),
-    );
-  }
-}
-
-class MobileMessagePage extends StatelessWidget {
-  const MobileMessagePage({Key? key}) : super(key: key);
+  const MessagePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
