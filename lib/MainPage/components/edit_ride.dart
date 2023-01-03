@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:http/http.dart' as http;
 import 'package:proj_ver1/constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -13,18 +14,24 @@ class EditRidePage extends StatefulWidget {
 }
 
 class EditRidePageState extends State<EditRidePage> {
-
+  final TextEditingController _controllerStart = TextEditingController();
+  final TextEditingController _controllerEnd = TextEditingController();
+  final TextEditingController _controllerDate = TextEditingController();
+  final TextEditingController _controllerRoom = TextEditingController();
+  final TextEditingController _controllerColor = TextEditingController();
+  final TextEditingController _controllerPlate = TextEditingController();
+  final TextEditingController _controllerPrice = TextEditingController();
   final vehicle = ["Automóvil", "Motocicleta"];
+  final _keyForm = GlobalKey<FormState>();
 
   String? value1;
-
   DropdownMenuItem<String> buildMenuVehicle(String vehicle) => DropdownMenuItem(
-        value: vehicle,
-        child: Text(
-          vehicle,
-          style: const TextStyle(fontSize: 15),
-        ),
-      );
+    value: vehicle,
+    child: Text(
+      vehicle,
+      style: const TextStyle(fontSize: 15),
+    ),
+  );
 
   final toast = FToast();
 
@@ -37,212 +44,167 @@ class EditRidePageState extends State<EditRidePage> {
   @override
   Widget build(BuildContext context) {
     Widget saveToast() => Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: const Color.fromARGB(255, 197, 197, 197),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: const Color.fromARGB(255, 197, 197, 197),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: const [
+          Icon(Icons.drive_eta, color: Colors.black87),
+          SizedBox(width: 10.0),
+          Text(
+            'Se ha guardado exitosamente',
+            style: TextStyle(color: Colors.black, fontSize: 15),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.drive_eta, color: Colors.black87),
-              SizedBox(width: 10.0),
-              Text(
-                'Se ha guardado exitosamente',
-                style: TextStyle(color: Colors.black, fontSize: 15),
-              ),
-            ],
-          ),
-        );
+        ],
+      ),
+    );
 
     void showSToast() => toast.showToast(
-          child: saveToast(),
-          gravity: ToastGravity.BOTTOM,
-        );
+      child: saveToast(),
+      gravity: ToastGravity.BOTTOM,
+    );
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Editar Viaje"),
-          leading: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              showModalBottomSheet(
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15))),
-                  builder: (context) {
-                    return Padding(
-                        padding: EdgeInsets.all(25),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              "¿Está seguro que desea salir? No se guardarán los cambios.",
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                            doublespace,
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                              primary: Colors.grey),
-                                          child: Text("CANCELAR"))),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          // Navigator.of(context).push(MaterialPageRoute(
-                                          //   builder: (context) => MainPage()));
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.green),
-                                        child: Text("SALIR"),
-                                      )),
-                                )
-                              ],
-                            ),
-                          ],
-                        ));
-                  });
-            },
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  updateRide(widget.ride.id);
-                  // final isValidForm =
-                  // formKey.currentState!.validate();
-                  // if (isValidForm) {
-                  showSToast();
-                  Navigator.of(context).pop();
-                },
-                // },
-                icon: Icon(Icons.check))
-          ],
+      appBar: AppBar(
+        title: const Text("Editar Viaje"),
+        leading: IconButton(
+          icon: Icon(Icons.close),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        body: Container(
-            padding: const EdgeInsets.all(25),
-            child: ListView(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 3,
-                        child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: TextFormField(
-                            initialValue: widget.ride.start,
-                            textInputAction: TextInputAction.next,
-                            // validator: ValidationBuilder().build(),
-                            onChanged: (value) {
-                              setState(() {
-                                widget.ride.start = value;
-                              });
-                            },
-                            decoration: const InputDecoration(
-                                hintText: "Origen",
-                                prefixIcon: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(Icons.room),
-                                )),
-                          ),
-                        )),
-                    Expanded(
-                        flex: 1,
-                        child: Padding(
-                            padding: EdgeInsets.all(5),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Icon(Icons.map),
-                            )))
-                  ],
-                ),
-                space,
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 3,
-                        child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: TextFormField(
-                            initialValue: widget.ride.end,
-                            textInputAction: TextInputAction.next,
-                            // validator: ValidationBuilder().build(),
-                            onChanged: (value) {
-                              setState(() {
-                                widget.ride.end = value;
-                              });
-                            },
-                            decoration: const InputDecoration(
-                                hintText: "Destino",
-                                prefixIcon: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(Icons.room),
-                                )),
-                          ),
-                        )),
-                    Expanded(
-                        flex: 1,
-                        child: Padding(
-                            padding: EdgeInsets.all(5),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Icon(Icons.map),
-                            )))
-                  ],
-                ),
-                space,
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 3,
-                        child: Padding(
-                          padding: EdgeInsets.all(5),
-                          child: TextFormField(
-                            initialValue: widget.ride.dateAndTime,
-                            textInputAction: TextInputAction.next,
-                            onChanged: (value) {
-                              setState(() {
-                                widget.ride.dateAndTime = value;
-                              });
-                            },
-                            decoration: const InputDecoration(
-                                hintText: "Origen",
-                                prefixIcon: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(Icons.calendar_month),
-                            )),
-                            // validator: ValidationBuilder()
-                            // .regExp(
-                            // RegExp(
-                            // r"^(([0-9])|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} (00|[0-9]|1[0-9]|2[0-3]):([0-5][0-9])"),
-                            // "Ingrese una fecha válida")
-                            // .build(),
-                          ),
-                        )),
-                  ],
-                ),
-                space,
-                Text("Vehículo", style: TextStyle(fontWeight: FontWeight.bold)),
-                space,
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Padding(
+        actions: [
+          IconButton(
+            onPressed: () {
+              if (_keyForm.currentState!.validate()) {
+                updateRide(widget.ride.id);
+                Navigator.of(context).pop();
+                showSToast();
+              }
+            },
+              icon: Icon(Icons.check)
+          )
+        ],
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(25),
+        child: Form(
+          key: _keyForm,
+          child: ListView(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: TextFormField(
+                        controller: _controllerStart..text = widget.ride.start,
+                        textInputAction: TextInputAction.next,
+                        validator: ValidationBuilder().build(),
+                        onFieldSubmitted: (value) {
+                          setState(() {
+                            widget.ride.start = _controllerStart.text;
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Icon(Icons.room),
+                          )
+                        ),
+                      ),
+                    )
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.map),
+                      )
+                    )
+                  )
+                ],
+              ),
+              space,
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: TextFormField(
+                        controller: _controllerEnd..text = widget.ride.end,
+                        textInputAction: TextInputAction.next,
+                        validator: ValidationBuilder().build(),
+                        onFieldSubmitted: (value) {
+                          setState(() {
+                            widget.ride.end = _controllerEnd.text;
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Icon(Icons.room),
+                          )
+                        ),
+                      ),
+                    )
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.map),
+                      )
+                    )
+                  )
+                ],
+              ),
+              space,
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: TextFormField(
+                        controller: _controllerDate..text = widget.ride.dateAndTime,
+                        textInputAction: TextInputAction.next,
+                        validator: ValidationBuilder().regExp(RegExp(r"^([0-9]|[1-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4} ([0-1]?[0-9]|2[0-3]):[0-5][0-9]"), "Ingrese una fecha válida").build(),
+                        onFieldSubmitted: (value) {
+                          setState(() {
+                            widget.ride.dateAndTime = _controllerDate.text;
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Icon(Icons.calendar_month),
+                          )
+                        ),
+                      ),
+                    )
+                  ),
+                ],
+              ),
+              space,
+              Text(
+                "Vehículo",
+                style: TextStyle(fontWeight: FontWeight.bold)
+              ),
+              space,
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
                       padding: const EdgeInsets.all(3),
                       child: DropdownButtonFormField<String>(
                         value: widget.ride.vehicle,
@@ -255,109 +217,104 @@ class EditRidePageState extends State<EditRidePage> {
                             widget.ride.vehicle = value!;
                           });
                         },
-                        // validator: (value) =>
-                        // value == null ? 'Elija una opción' : null,
                       ),
-                    )),
-                    Expanded(
-                        child: Padding(
+                    )
+                  ),
+                  Expanded(
+                    child: Padding(
                       padding: EdgeInsets.all(3),
                       child: TextFormField(
-                        initialValue: widget.ride.room,
+                        controller: _controllerRoom..text = widget.ride.room,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
-                        // validator: ValidationBuilder()
-                        // .regExp(RegExp(r"^([1-4]$)"),
-                        // "Número no válido")
-                        // .build(),
-                        onChanged: (value) {
+                        validator: ValidationBuilder().regExp(RegExp(r"^([1-4]$)"), "Número no válido").build(),
+                        onFieldSubmitted: (value) {
                           setState(() {
-                            widget.ride.room = value;
+                            widget.ride.room = _controllerRoom.text;
                           });
                         },
-                        decoration: InputDecoration(hintText: "Cupos"),
                       ),
-                    ))
-                  ],
-                ),
-                space,
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Padding(
+                    )
+                  )
+                ],
+              ),
+              space,
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
                       padding: EdgeInsets.all(3),
                       child: TextFormField(
-                        initialValue: widget.ride.color,
+                        controller: _controllerColor..text = widget.ride.color,
                         textInputAction: TextInputAction.next,
-                        onChanged: (value) {
+                        validator: ValidationBuilder().build(),
+                        onFieldSubmitted: (value) {
                           setState(() {
-                            widget.ride.color = value;
+                            widget.ride.color = _controllerColor.text;
                           });
                         },
-                        // validator: ValidationBuilder().build(),
                         decoration: InputDecoration(hintText: "Color"),
                       ),
-                    )),
-                    Expanded(
-                        child: Padding(
+                    )
+                  ),
+                  Expanded(
+                    child: Padding(
                       padding: EdgeInsets.all(3),
                       child: TextFormField(
-                        initialValue: widget.ride.plate,
+                        controller: _controllerPlate..text = widget.ride.plate,
                         textInputAction: TextInputAction.next,
-                        // validator: ValidationBuilder()
-                        // .regExp(
-                        // RegExp(
-                        // r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)|([A-Z]{3}\d{2})$"),
-                        // "Placa no válida")
-                        // .build(),
-                        onChanged: (value) {
+                        validator: ValidationBuilder().regExp(RegExp(r"^([A-Z]{3}\d{3}$)|([A-Z]{3}\d{2}[A-Z]$)"), "Placa no válida").build(),
+                        onFieldSubmitted: (value) {
                           setState(() {
-                            widget.ride.plate = value;
+                            widget.ride.plate = _controllerPlate.text;
                           });
                         },
-                        decoration: InputDecoration(hintText: "Placa"),
                       ),
-                    ))
-                  ],
-                ),
-                space,
-                TextFormField(
-                    initialValue: widget.ride.price,
-                    textInputAction: TextInputAction.done,
-                    keyboardType: TextInputType.number,
-                    // validator: ValidationBuilder()
-                    // .regExp(RegExp(r"^(\d{4})$"), "Valor no válido")
-                    // .build(),
-                    onChanged: (value) {
-                      setState(() {
-                        widget.ride.price = value;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Valor",
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Icon(Icons.money),
-                      ),
-                    )),
-              ],
-            )));
+                    )
+                  )
+                ],
+              ),
+              space,
+              TextFormField(
+                controller: _controllerPrice..text = widget.ride.price,
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.number,
+                validator: ValidationBuilder().regExp(RegExp(r"^(\d{4})$"), "Precio no válido").build(),
+                onFieldSubmitted: (value) {
+                  setState(() {
+                    widget.ride.price = _controllerPrice.text;
+                  });
+                },
+                decoration: InputDecoration(
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(Icons.money),
+                  ),
+                )
+              ),
+            ],
+          )
+        )
+      )
+    );
   }
 
   updateRide(id) async {
-    final response = await http.put(
-        Uri.parse("https://mockend.com/lipaocaspi/demo_server_json/rides/$id"),
-        body: jsonEncode(<String, String>{
-          "start": widget.ride.start,
-          "end": widget.ride.end,
-          "dateAndTime": widget.ride.dateAndTime,
-          "vehicle": widget.ride.vehicle,
-          "room": widget.ride.room,
-          "color": widget.ride.color,
-          "plate": widget.ride.plate,
-          "price": widget.ride.price
-        }));
-    print(response.statusCode);
-    print(response.body);
+    http.put(Uri.parse("http://192.168.1.39:3000/rides/$id"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode(<String, dynamic>{
+        "id": widget.ride.id,
+        "userId": widget.ride.userId,
+        "start": widget.ride.start,
+        "end": widget.ride.end,
+        "dateAndTime": widget.ride.dateAndTime,
+        "vehicle": widget.ride.vehicle,
+        "room": widget.ride.room,
+        "color": widget.ride.color,
+        "plate": widget.ride.plate,
+        "price": widget.ride.price,
+        "state": widget.ride.state
+      })
+    );
   }
 }
