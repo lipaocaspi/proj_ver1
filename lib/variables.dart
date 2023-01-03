@@ -1,16 +1,16 @@
 // library proj_ver1.variables;
 
 String name = '';
-DateTime date = DateTime.now();
+String date = '';
 String email = '';
 String password = '';
 String confpassword = '';
 String start = '';
 String end = '';
-int room = 0;
+String room = '';
 String color = '';
 String plate = '';
-int price = 0;
+String price = '';
 bool isSwitchOnLoc = false;
 bool isSwitchOnCam = false;
 bool isSwitchOnSto = false;
