@@ -2,9 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:proj_ver1/data/repository/models/user_model.dart';
 import 'package:proj_ver1/data/user_repository.dart';
-
 part 'user_event.dart';
-
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
@@ -19,8 +17,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     if (event is InitialUserEvent) {
       yield InitialUsersState();
       try {
-        //UsersRepository? repository;
-        List<Users> users = await repository.getUsers();
+        List<Users> users = await repository.getUser();
 
         yield LoadingUsersState(users: users);
       } catch (_) {
