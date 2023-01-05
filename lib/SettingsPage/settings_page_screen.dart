@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/constants.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
-import 'package:proj_ver1/SettingsPage/components/help_page.dart';
-import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
-import 'package:proj_ver1/SettingsPage/components/terms_page.dart';
-import 'package:proj_ver1/SettingsPage/components/security_page.dart';
-import 'package:proj_ver1/constants.dart';
+import 'package:proj_ver1/data/repository/models/ride_model.dart';
 import 'package:proj_ver1/data/repository/models/user_model.dart';
+import 'package:proj_ver1/SettingsPage/components/help_page.dart';
+import 'package:proj_ver1/SettingsPage/components/terms_page.dart';
+import 'package:proj_ver1/SettingsPage/components/privacy_page.dart';
+import 'package:proj_ver1/SettingsPage/components/security_page.dart';
 
 class SettingsPage extends StatelessWidget {
-  SettingsPage(this.users, {Key? key}) : super(key: key);
+  SettingsPage(this.users, this._ridesU, {Key? key}) : super(key: key);
   final Users users;
+  List<Ride> _ridesU = [];
 
   static final bdecoration = BoxDecoration(
-    border: Border.all(
-        color: Colors.black.withAlpha(130), 
-        style: BorderStyle.solid, width: 1
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      colors: [Colors.green.withOpacity(0.3), Colors.grey.withOpacity(0.3)],
+      end: Alignment.bottomCenter
     ),
+    border: Border.all(
+      color: Colors.black.withAlpha(130), 
+      style: BorderStyle.solid, width: 1
+    ),
+    borderRadius: BorderRadius.circular(10),
     boxShadow: [
       BoxShadow(
-        color: Colors.green.withOpacity(0.1),
-        spreadRadius: 2,
         blurRadius: 10,
         blurStyle: BlurStyle.outer,
+        color: Colors.green.withOpacity(0.1),
+        spreadRadius: 2,
       )
     ],
-    gradient: LinearGradient(
-        colors: [Colors.green.withOpacity(0.3), Colors.grey.withOpacity(0.3)],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter),
-    borderRadius: BorderRadius.circular(10),
   );
 
   @override
@@ -51,15 +54,15 @@ class SettingsPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.21,
-                          decoration: bdecoration,
                           alignment: Alignment.center,
+                          decoration: bdecoration,
+                          height: MediaQuery.of(context).size.height * 0.21,
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
                               Navigator.of(context).push(
                                 PageTransition(
-                                  child: PrivacyPage(users),
+                                  child: PrivacyPage(users, _ridesU),
                                   type: PageTransitionType.fade,
                                 ),
                               );
@@ -82,8 +85,8 @@ class SettingsPage extends StatelessWidget {
                       space1,
                       Expanded(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.21,
                           decoration: bdecoration,
+                          height: MediaQuery.of(context).size.height * 0.21,
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
@@ -116,8 +119,8 @@ class SettingsPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.21,
                           decoration: bdecoration,
+                          height: MediaQuery.of(context).size.height * 0.21,
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
@@ -150,8 +153,8 @@ class SettingsPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.21,
                           decoration: bdecoration,
+                          height: MediaQuery.of(context).size.height * 0.21,
                           padding: EdgeInsets.all(15),
                           child: InkWell(
                             onTap: () {
@@ -180,19 +183,31 @@ class SettingsPage extends StatelessWidget {
                       space1,
                       Expanded(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.21,
                           decoration: bdecoration,
+                          height: MediaQuery.of(context).size.height * 0.21,
                           padding: EdgeInsets.all(15),
                           child: InkWell(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.info, size: 30),
+                                space,
+                                Text(
+                                  "Acerca de UIS Wheels",
+                                  style: TextStyle(fontSize: 20),
+                                  textAlign: TextAlign.center
+                                )
+                              ],
+                            ),
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(15),
-                                      topRight: Radius.circular(15)
-                                    )
-                                  ),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15)
+                                  )
+                                ),
                                 builder: (context) {
                                   return Padding(
                                     padding: EdgeInsets.all(25),
@@ -217,18 +232,6 @@ class SettingsPage extends StatelessWidget {
                                 }
                               );
                             },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.info, size: 30),
-                                space,
-                                Text(
-                                  "Acerca de UIS Wheels",
-                                  style: TextStyle(fontSize: 20),
-                                  textAlign: TextAlign.center
-                                )
-                              ],
-                            ),
                           ),
                         )
                       ),
@@ -267,11 +270,11 @@ class SettingsPage extends StatelessWidget {
                                           child: Padding(
                                             padding: EdgeInsets.only(left: 8, right: 8),
                                             child: ElevatedButton(
+                                              child: Text("CANCELAR"),
+                                              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
-                                              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                                              child: Text("CANCELAR")
                                             )
                                           ),
                                         ),
@@ -279,6 +282,8 @@ class SettingsPage extends StatelessWidget {
                                           child: Padding(
                                             padding: EdgeInsets.only(left: 8, right: 8),
                                             child: ElevatedButton(
+                                              child: Text("CERRAR SESIÓN"),
+                                              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                                               onPressed: () {
                                                 Navigator.of(context).push(
                                                   MaterialPageRoute(
@@ -286,8 +291,6 @@ class SettingsPage extends StatelessWidget {
                                                   )
                                                 );
                                               },
-                                              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                                              child: Text("CERRAR SESIÓN"),
                                             )
                                           ),
                                         )
