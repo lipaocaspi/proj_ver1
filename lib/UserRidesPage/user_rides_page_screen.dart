@@ -14,10 +14,10 @@ class UserRidesPage extends StatefulWidget {
 }
 
 class UserRidesPageState extends State<UserRidesPage> {
+
   reloadRides() async {
     widget._ridesU.clear();
-    final response =
-        await http.get(Uri.parse("http://192.168.1.37:3000/rides"));
+    final response = await http.get(Uri.parse("http://192.168.1.37:3000/rides"));
 
     if (response.statusCode == 200) {
       List<dynamic> myRides = json.decode(utf8.decode(response.bodyBytes));
@@ -45,10 +45,10 @@ class UserRidesPageState extends State<UserRidesPage> {
         title: Text("Mis Viajes"),
         actions: [
           IconButton(
+            icon: Icon(Icons.refresh),
             onPressed: () {
               reloadRides();
             }, 
-            icon: Icon(Icons.refresh)
           )
         ],
       ),
@@ -59,22 +59,22 @@ class UserRidesPageState extends State<UserRidesPage> {
             child: Column(
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height *0.8,
+                  width: MediaQuery.of(context).size.width,
                   child: ListView.builder(
-                    physics: ScrollPhysics(),
                     itemCount: widget._ridesU.length,
+                    physics: ScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Card(
                         color: Colors.grey.shade100,
                         child: Column(
                           children: [
                             ListTile(
-                              contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                              visualDensity: VisualDensity(vertical: -3),
                               leading: Icon(widget._ridesU[index].vehicle == 'Motocicleta' ? Icons.motorcycle : Icons.drive_eta),
                               title: Text(widget._ridesU[index].start + " - " + widget._ridesU[index].end),
                               subtitle: Text(widget._ridesU[index].dateAndTime),
+                              contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                              visualDensity: VisualDensity(vertical: -3),
                               trailing: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -87,6 +87,7 @@ class UserRidesPageState extends State<UserRidesPage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 IconButton(
+                                  icon: Icon(Icons.edit),
                                   onPressed: (){
                                     if(widget._ridesU[index].state == true) {
                                       final errorEditSnack = SnackBar(
@@ -109,16 +110,15 @@ class UserRidesPageState extends State<UserRidesPage> {
                                       );
                                     }
                                   }, 
-                                  icon: Icon(Icons.edit)
                                 ),
                                 IconButton(
+                                  icon: Icon(Icons.delete),
                                   onPressed: (){
                                     deleteRide(widget._ridesU[index].id);
                                     setState(() {
                                       widget._ridesU.removeAt(index);
                                     });
                                   }, 
-                                  icon: Icon(Icons.delete)
                                 ),
                               ],
                             ),
@@ -135,6 +135,7 @@ class UserRidesPageState extends State<UserRidesPage> {
       ),
     );
   }
+
   deleteRide(id) async {
     http.delete(Uri.parse("http://192.168.1.37:3000/rides/$id"),
       headers: {"Content-Type": "application/json"},
