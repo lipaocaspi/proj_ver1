@@ -3,3 +3,6 @@
 ## Información
 
 - [Flutter](https://docs.flutter.dev/get-started/codelab)
+```
+npm install --save json-server
+```
