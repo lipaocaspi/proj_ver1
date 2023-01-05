@@ -243,7 +243,7 @@ class NewRidePageState extends State<NewRidePage> {
       price: _controllerPrice.text,
       state: false,
     );
-    final response = await http.post(Uri.parse("http://192.168.1.38:3000/rides"),
+    final response = await http.post(Uri.parse("http://192.168.1.37:3000/rides"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(<String, dynamic>{
         "id": newRide.id,

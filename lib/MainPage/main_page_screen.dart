@@ -43,7 +43,7 @@ class MainPageState extends State<MainPage> {
   loadRides() async {
     widget._rides.clear();
     widget._ridesU.clear();
-    final response = await http.get(Uri.parse("http://192.168.1.38:3000/rides"));
+    final response = await http.get(Uri.parse("http://192.168.1.37:3000/rides"));
 
     if (response.statusCode == 200) {
       List<dynamic> myRides = json.decode(utf8.decode(response.bodyBytes));
@@ -68,7 +68,7 @@ class MainPageState extends State<MainPage> {
   loadFilter() async {
     widget._rides.clear();
     final response =
-        await http.get(Uri.parse("http://192.168.1.38:3000/rides?start_like=$searchStart&end_like=$searchEnd&dateAndTime_like=$searchDate"));
+        await http.get(Uri.parse("http://192.168.1.37:3000/rides?start_like=$searchStart&end_like=$searchEnd&dateAndTime_like=$searchDate"));
 
     if (response.statusCode == 200) {
       List<dynamic> myRides = json.decode(utf8.decode(response.bodyBytes));

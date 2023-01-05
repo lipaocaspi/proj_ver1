@@ -301,7 +301,7 @@ class EditRidePageState extends State<EditRidePage> {
   }
 
   updateRide(id) async {
-    http.put(Uri.parse("http://192.168.1.38:3000/rides/$id"),
+    http.put(Uri.parse("http://192.168.1.37:3000/rides/$id"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(<String, dynamic>{
         "id": widget.ride.id,
