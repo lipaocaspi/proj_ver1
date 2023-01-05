@@ -1,43 +1,38 @@
 import 'dart:convert';
-import 'package:form_validator/form_validator.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:proj_ver1/LoginPage/login_page_screen.dart';
+import 'package:http/http.dart' as http;
 import 'package:proj_ver1/constants.dart';
-import 'package:proj_ver1/data/repository/models/user_model.dart';
 import 'package:proj_ver1/variables.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:proj_ver1/LoginPage/login_page_screen.dart';
+import 'package:proj_ver1/data/repository/models/ride_model.dart';
+import 'package:proj_ver1/data/repository/models/user_model.dart';
 
 class PrivacyPage extends StatefulWidget {
-  PrivacyPage(this.users, {Key? key}) : super(key: key);
+  PrivacyPage(this.users, this._ridesU, {Key? key}) : super(key: key);
   final Users users;
-  String currentPass = "";
-  String newPass = "";
-  String confnewPass = "";
-  String confDelete = "";
+  List<Ride> _ridesU = [];
 
   @override
   PrivacyPageState createState() => PrivacyPageState();
 }
 
 class PrivacyPageState extends State<PrivacyPage> {
-    static final bdecoration = BoxDecoration(
-    color: Colors.grey.withOpacity(0.1),
-  );
-
-  static final tdecoration = BoxDecoration(
-    borderRadius: BorderRadius.circular(25),
-    color: const Color.fromARGB(255, 197, 197, 197),
-  );
-
-  static final whiteBox = SizedBox(height: 5, child: Container(color: Colors.white));
-
   final _formkey_up = GlobalKey<FormState>();
   final _formkey_de = GlobalKey<FormState>();
+
+  final toast = FToast();
+
+  @override
+  void initState() {
+    super.initState();
+    toast.init(context);
+  }
 
   Future<bool> requestLocationPermission() async {
     PermissionStatus resultLoc;
@@ -89,13 +84,16 @@ class PrivacyPageState extends State<PrivacyPage> {
     return true;
   }
 
-  final toast = FToast();
+  static final bdecoration = BoxDecoration(
+    color: Colors.grey.withOpacity(0.1),
+  );
 
-  @override
-  void initState() {
-    super.initState();
-    toast.init(context);
-  }
+  static final tdecoration = BoxDecoration(
+    borderRadius: BorderRadius.circular(25),
+    color: const Color.fromARGB(255, 197, 197, 197),
+  );
+
+  static final whiteBox = SizedBox(height: 5, child: Container(color: Colors.white));
 
   @override
   Widget build(BuildContext context) {
@@ -151,8 +149,8 @@ class PrivacyPageState extends State<PrivacyPage> {
             child: ListView(
               children: [
                 Container(
-                  decoration: bdecoration,
                   alignment: Alignment.topLeft,
+                  decoration: bdecoration,
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: [
@@ -198,10 +196,10 @@ class PrivacyPageState extends State<PrivacyPage> {
                           ),
                           Expanded(
                             child: FlutterSwitch(
-                              value: isSwitchOnLoc,
                               activeColor: Colors.green,
                               activeIcon: Icon(Icons.check, color: Colors.green),
                               inactiveIcon: Icon(Icons.close, color: Colors.grey),
+                              value: isSwitchOnLoc,
                               onToggle: (value) {
                                 setState(() {
                                   isSwitchOnLoc = true;
@@ -232,10 +230,10 @@ class PrivacyPageState extends State<PrivacyPage> {
                           ),
                           Expanded(
                             child: FlutterSwitch(
-                              value: isSwitchOnCam,
                               activeColor: Colors.green,
                               activeIcon: Icon(Icons.check, color: Colors.green),
                               inactiveIcon: Icon(Icons.close, color: Colors.grey),
+                              value: isSwitchOnCam,
                               onToggle: (value) {
                                 setState(() {
                                   isSwitchOnCam = true;
@@ -267,10 +265,10 @@ class PrivacyPageState extends State<PrivacyPage> {
                           ),
                           Expanded(
                             child: FlutterSwitch(
-                              value: isSwitchOnSto,
                               activeColor: Colors.green,
                               activeIcon: Icon(Icons.check, color: Colors.green),
                               inactiveIcon: Icon(Icons.close, color: Colors.grey),
+                              value: isSwitchOnSto,
                               onToggle: (value) {
                                 setState(() {
                                   isSwitchOnSto = true;
@@ -288,8 +286,8 @@ class PrivacyPageState extends State<PrivacyPage> {
                   ),
                 ),
                 Container(
-                  decoration: bdecoration,
                   alignment: Alignment.topLeft,
+                  decoration: bdecoration,
                   padding: const EdgeInsets.all(10),
                   child: InkWell(
                     onTap: () {
@@ -316,14 +314,6 @@ class PrivacyPageState extends State<PrivacyPage> {
                                   ),
                                   space,
                                   TextFormField(
-                                    onChanged: (value) {
-                                      setState(() {
-                                        widget.currentPass = value;
-                                      });
-                                    },
-                                    obscureText: true,
-                                    textInputAction: TextInputAction.next,
-                                    validator: ValidationBuilder().build(),
                                     decoration: const InputDecoration(
                                       hintText: "Contraseña actual",
                                       prefixIcon: Padding(
@@ -331,17 +321,17 @@ class PrivacyPageState extends State<PrivacyPage> {
                                         child: Icon(Icons.lock),
                                       )
                                     ),
-                                  ),
-                                  space,
-                                  TextFormField(
                                     obscureText: true,
                                     textInputAction: TextInputAction.next,
                                     validator: ValidationBuilder().build(),
                                     onChanged: (value) {
                                       setState(() {
-                                        widget.newPass = value;
+                                        currentPass = value;
                                       });
                                     },
+                                  ),
+                                  space,
+                                  TextFormField(
                                     decoration: const InputDecoration(
                                       hintText: "Contraseña nueva",
                                       prefixIcon: Padding(
@@ -349,17 +339,17 @@ class PrivacyPageState extends State<PrivacyPage> {
                                         child: Icon(Icons.lock),
                                       )
                                     ),
-                                  ),
-                                  space,
-                                  TextFormField(
                                     obscureText: true,
-                                    textInputAction: TextInputAction.done,
+                                    textInputAction: TextInputAction.next,
                                     validator: ValidationBuilder().build(),
                                     onChanged: (value) {
                                       setState(() {
-                                        widget.confnewPass = value;
+                                        newPass = value;
                                       });
                                     },
+                                  ),
+                                  space,
+                                  TextFormField(
                                     decoration: const InputDecoration(
                                       hintText: "Confirme la contraseña",
                                       prefixIcon: Padding(
@@ -367,6 +357,14 @@ class PrivacyPageState extends State<PrivacyPage> {
                                         child: Icon(Icons.lock),
                                       )
                                     ),
+                                    obscureText: true,
+                                    textInputAction: TextInputAction.done,
+                                    validator: ValidationBuilder().build(),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        confnewPass = value;
+                                      });
+                                    },
                                   ),
                                   doublespace,
                                   Row(
@@ -375,11 +373,11 @@ class PrivacyPageState extends State<PrivacyPage> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 10, right: 10),
                                           child: ElevatedButton(
+                                            child: Icon(Icons.cancel),
+                                            style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
-                                            style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                                            child: Icon(Icons.cancel)
                                           )
                                         ),
                                       ),
@@ -387,12 +385,14 @@ class PrivacyPageState extends State<PrivacyPage> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 10, right: 10),
                                           child: ElevatedButton(
+                                            child: Icon(Icons.save),
+                                            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                                             onPressed: () {
                                               if (_formkey_up.currentState!.validate()) {
-                                                if (widget.currentPass == widget.users.password) {
-                                                  if (widget.newPass == widget.confnewPass) {
+                                                if (currentPass == widget.users.password) {
+                                                  if (newPass == confnewPass) {
                                                     setState(() {
-                                                      widget.users.password = widget.newPass;
+                                                      widget.users.password = newPass;
                                                     });
                                                     updateUserPassword(widget.users.id);
                                                   } else {
@@ -403,8 +403,6 @@ class PrivacyPageState extends State<PrivacyPage> {
                                                 }
                                               }
                                             },
-                                            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                                            child: Icon(Icons.save),
                                           )
                                         ),
                                       )
@@ -479,7 +477,7 @@ class PrivacyPageState extends State<PrivacyPage> {
                                     validator: ValidationBuilder().build(),
                                     onChanged: (value) {
                                       setState(() {
-                                        widget.confDelete = value;
+                                        confDelete = value;
                                       });
                                     },
                                     decoration: const InputDecoration(
@@ -513,7 +511,7 @@ class PrivacyPageState extends State<PrivacyPage> {
                                           child: ElevatedButton(
                                             onPressed: () {
                                               if (_formkey_de.currentState!.validate()) {
-                                                if (widget.confDelete == widget.users.password) {
+                                                if (confDelete == widget.users.password) {
                                                   deleteUser(widget.users.id);
                                                 } else {
                                                   showEToast();
@@ -574,7 +572,7 @@ class PrivacyPageState extends State<PrivacyPage> {
   }
 
   updateUserPassword(id) async {
-    final response = await http.put(Uri.parse("http://192.168.1.39:3000/users/$id"),
+    final response = await http.put(Uri.parse("http://192.168.1.37:3000/users/$id"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(<String, dynamic>{
         "id": widget.users.id,
@@ -602,16 +600,10 @@ class PrivacyPageState extends State<PrivacyPage> {
 
   deleteUser(id) async {
     final response = await http.delete(
-      Uri.parse("http://192.168.1.39:3000/users/$id"),
+      Uri.parse("http://192.168.1.37:3000/users/$id"),
       headers: {"Content-Type": "application/json"},
     );
     if (response.statusCode == 200) {
-      Navigator.of(context).push(
-        PageTransition(
-          child: const LoginPage(),
-          type: PageTransitionType.fade,
-        ),
-      );
       final successDelSnack = SnackBar(
         content: Text("Se ha borrado exitosamente"),
         action: SnackBarAction(
@@ -621,7 +613,27 @@ class PrivacyPageState extends State<PrivacyPage> {
           },
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(successDelSnack);
+      if(widget._ridesU.isNotEmpty) {
+        for(var i = 0; i == widget._ridesU.length; i++){
+          id = widget._ridesU[i].id;
+          http.delete(Uri.parse("http://192.168.1.37:3000/rides/$id"));
+        }
+        Navigator.of(context).push(
+          PageTransition(
+            child: const LoginPage(),
+            type: PageTransitionType.fade,
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(successDelSnack);
+      } else {
+        Navigator.of(context).push(
+          PageTransition(
+            child: const LoginPage(),
+            type: PageTransitionType.fade,
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(successDelSnack);
+      }
     }
   }
 }
