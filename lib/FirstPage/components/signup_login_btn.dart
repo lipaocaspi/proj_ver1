@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:proj_ver1/constants.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:proj_ver1/LoginPage/login_page_screen.dart';
 import 'package:proj_ver1/SignupPage/signup_page_screen.dart';
-import 'package:proj_ver1/constants.dart';
 
 class LoginSignUpBtn extends StatelessWidget {
   const LoginSignUpBtn({
@@ -23,7 +23,7 @@ class LoginSignUpBtn extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-            primary: kButtonPrimaryColor,
+            backgroundColor: kButtonPrimaryColor,
             fixedSize: const Size(250, 50)
           ),
           child: const Text(
@@ -41,14 +41,12 @@ class LoginSignUpBtn extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-            primary: kButtonPrimaryLightColor,
+            backgroundColor: kButtonPrimaryLightColor,
             fixedSize: const Size(250, 50)
           ),
           child: const Text(
             "REGISTRARSE",
-            style: TextStyle(
-              color: kButtonPrimaryColor,
-            )
+            style: TextStyle(color: kButtonPrimaryColor)
           ),
         ),
       ],
